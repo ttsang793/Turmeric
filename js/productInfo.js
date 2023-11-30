@@ -1,3 +1,5 @@
+const productView = document.querySelector(".product-view");
+
 function showInfo(id) {
     product = getProduct(id);
     $('.product-view').css("display", "block");
@@ -6,7 +8,7 @@ function showInfo(id) {
 
     productView.innerHTML = `       
         <div class="container">
-            <button class="btn close" onclick="closeView()">x</button>
+            <button class="btn close" onclick="closeInfo()">x</button>
             <div class="row p-5">
                 <div class="col-5">
                     <img src="${product.img}" alt="" style="width:70%">
@@ -16,10 +18,10 @@ function showInfo(id) {
                         <h2 class="mb-4">${product.name}</h2>
                         <h3 style="color: palevioletred">${getGia(product.price)}đ</h3>
                         <div class="input-group mb-3 pt-3">
-                            <button class="btn ammount text-center" onclick="changeNumber("-")">-</button>
-                            <input type="number" name="" id="" value="1" min="1" max="" class="ammount text-center" id="ammount">
-                            <button class="btn ammount text-center" onclick="changeNumber("+")">+</button>
-                            <div class="btn btn-warning">Thêm vào giỏ hàng</div>
+                            <button class="btn ammount text-center" onclick="changeNumber('-')">-</button>
+                            <input id="ammount-info" type="number" name="" id="" value="1" min="1" max="" readonly class="ammount text-center">
+                            <button class="btn ammount text-center" onclick="changeNumber('+')">+</button>
+                            <div class="btn btn-warning" onclick="addToCart_Check(${product.id})">Thêm vào giỏ hàng</div>
                         </div>
                     </fieldset>
 
@@ -51,4 +53,16 @@ function closeInfo() {
     $('body').css("overflow", "initial");
 
     productView.innerHTML = '';
+}
+
+function changeNumber(input) {
+    ammount = document.getElementById("ammount-info");
+    if (input === "+") ammount.value++;
+    else if (ammount.value > 1) ammount.value--;
+}
+
+function addToCart_Check(product) {
+    ammount = document.getElementById("ammount-info");
+    alert("Hello");
+    addToCart(product, ammount.value);
 }

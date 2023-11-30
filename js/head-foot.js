@@ -28,7 +28,10 @@ document.getElementsByTagName("header")[0].innerHTML += `
         </div>
 
         <div class="col-1">
-            <i class="bi bi-cart" style="font-size: 32px"></i>
+        
+            <a href="./cart.html" style="color: black">
+                <i class="bi bi-cart" style="font-size: 32px"></i>
+            </a>
         </div>
     </div>        
 </div>

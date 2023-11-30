@@ -1,37 +1,25 @@
-let productsList, current;
-let content = document.querySelector(".danh-sach");
-let productView = document.querySelector(".product-view");
-let pageProducts;
+const page = {current: 1, numOfProducts: 9};
+const content = document.querySelector(".danh-sach");
+let productsList;
 
-function sort(index) {
-    if (index===0)
-        for (let i=0; i<productsList.length - 1; i++)
-            for (let j=i+1; j<productsList.length; j++) {
-                if (productsList[i].id > productsList[j].id)                
-                    [productsList[i], productsList[j]] = [productsList[j], productsList[i]];
-        }       
-    else if (index<3) {
-        for (let i=0; i<productsList.length - 1; i++)
-            for (let j=i+1; j<productsList.length; j++) {
-                price1 = Number(productsList[i].price);
-                price2 = Number(productsList[j].price);
-                if((index===1 && price1>price2) || (index===2 && price1<price2))
-                    [productsList[i], productsList[j]] = [productsList[j], productsList[i]];
-            }
-    }
-    else {
-        for (let i=0; i<productsList.length - 1; i++)
-            for (let j=i+1; j<productsList.length; j++) {
-                letter1 = productsList[i].name.toLowerCase();
-                letter2 = productsList[j].name.toLowerCase();
-                if((index===3 && letter1>letter2) || (index===4 && letter1<letter2))
-                    [productsList[i], productsList[j]] = [productsList[j], productsList[i]];
-            }
-    }
-    getPage(current);
+window.onload = () => {
+    const urlParam = new URLSearchParams(location.search);
+    const searchString = urlParam.get('search');
+
+    if (searchString === undefined || searchString === null) createProduct();
+    else searchProduct(searchString);
+
+    productsList = JSON.parse(localStorage.getItem("productsList"));
+    setPage();
 }
 
-function empty() {
+function setPage(current = page.current, numOfProducts = page.numOfProducts) {
+    page.current = current;
+    page.numOfProducts = numOfProducts;
+    renderPage();
+}
+
+function renderPage() {
     if (productsList === null || productsList.length === 0) {
         content.style.display = "initial";
         content.innerHTML = `
@@ -40,50 +28,48 @@ function empty() {
                 <img src="https://media.tenor.com/v_W_gDtULNwAAAAi/confused-face.gif" alt="">
             </div>
         `
-        return true;
+        return;
     }
-    return false
-}
 
-function getProduct(id) {
-    for (let i=0; i<productsList.length; i++)
-        if (productsList[i].id === `${id}`) return productsList[i];
-    return null;
-}
+    let start = page.numOfProducts * (page.current - 1);
+    let end = Math.min(page.numOfProducts * page.current, productsList.length);
+    let contentDetail = "";
 
-function getPage(currentPage) {
-    let start = pageProducts * (currentPage - 1);
-    let end = (pageProducts * currentPage > productsList.length) ? productsList.length : pageProducts * currentPage;
-    let page = "";
-
-    if (empty()) return;
     for (let i=start; i<end; i++) {
-        page += `
-            <div id="chi-tiet" class="chi-tiet" onclick="showInfo(${productsList[i].id})">
+        contentDetail += `
+            <div id="chi-tiet" class="chi-tiet">
                 <div class="hinh-san-pham">
-                    <img src="${productsList[i].img}" alt="">
+                    <img src="${productsList[i].img}" alt="" onclick="showInfo(${productsList[i].id})">
                 </div>
-                <div class="ten-san-pham pt-3">
+                <div class="ten-san-pham pt-3" onclick="showInfo(${productsList[i].id})">
                     ${productsList[i].name}
                 </div>
                 <div class="gia">${getGia(productsList[i].price)}đ</div>
 
                 <div class="input-group mb-3 justify-content-center pt-3">
                     <input type="number" name="" id="" value="1" min="1" max="" class="ammount text-center">
-                    <button class="btn btn-warning">
+                    <button class="btn btn-warning" onclick="addToCart(${productsList[i].id})">
                         <i class="bi bi-cart"></i>
                     </button>
                 </div>
             </div>
         `;
-        content.innerHTML = page;
+        content.innerHTML = contentDetail;
     }
-    current = currentPage;
+    renderNumber();
 }
 
-function renderPage(number = 1) {
+function renderNumber() {
+    let bottom = '';
+    for (let i=1; i<=Math.ceil(productsList.length / page.numOfProducts); i++) {
+        bottom += `
+            <button class="btn btn-outline-danger" value="${i}" onclick="setPage(this.value)">${i}</button>
+        `;
+        document.getElementById("page").innerHTML = bottom;
+    }
+
     document.querySelectorAll("#page .btn").forEach(button => {
-        if (button.value !== `${number}`) {
+        if (button.value !== `${page.current}`) {
             button.style.backgroundColor = "white";
             button.style.color = "var(--bs-danger)";
         }
@@ -92,35 +78,39 @@ function renderPage(number = 1) {
             button.style.color = "white";
         }
     });
-    getPage(number);
-    current = Number(number);
 }
 
-function reset(numOfProduct = 9) {
-    renderPageNumber(numOfProduct);
-    renderPage();
+function getProduct(id) {
+    for (let i=0; i<productsList.length; i++)
+        if (productsList[i].id === `${id}`) return productsList[i];
+    return null;
 }
 
-function renderPageNumber(numOfProduct) {
-    page = '';
-    for (let i=1; i<=Math.ceil(productsList.length / numOfProduct); i++) {
-        page += `
-            <button class="btn btn-outline-danger" value="${i}" onclick="renderPage(this.value)">${i}</button>
-        `;
-        document.getElementById("page").innerHTML = page;
+function sort(index) {
+    if (index===0) {
+        for (let i=productsList.length - 1; i>0; i--)
+            for (let j=0; j<i; j++)
+                if (productsList[j].id > productsList[j+1].id)
+                [productsList[j], productsList[j+1]] = [productsList[j+1], productsList[j]];
     }
-    pageProducts = numOfProduct;
-}
+    else if (index==1 || index==2) {
+        for (let i=productsList.length - 1; i>0; i--)
+            for (let j=0; j<i; j++) {
+                price1 = Number(productsList[j].price);
+                price2 = Number(productsList[j+1].price);
+                if((index === 1 && price1 > price2) || (index===2 && price1 < price2))
+                    [productsList[j], productsList[j+1]] = [productsList[j+1], productsList[j]];
+            }
+    }
+    else {        
+        for (let i=productsList.length - 1; i>0; i--)
+            for (let j=0; j<i; j++) {
+                letter1 = productsList[j].name.toLowerCase();
+                letter2 = productsList[j+1].name.toLowerCase();
+                if((index===3 && letter1 > letter2) || (index===4 && letter1 < letter2))
+                    [productsList[j], productsList[j+1]] = [productsList[j+1], productsList[j]];
+            }
+    }
 
-window.onload = () => {
-    const queryString = location.search;
-    let urlParam = new URLSearchParams(queryString);
-    let searchString = urlParam.get('search');
-
-    if (searchString === undefined || searchString === null) createProduct();
-    else searchProduct(searchString);
-
-    productsList = JSON.parse(localStorage.getItem("productsList"));
-    empty();
-    reset();
+    setPage();
 }

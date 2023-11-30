@@ -59,3 +59,25 @@ function searchProduct(searchString) {
     }
     localStorage.setItem('productsList', JSON.stringify(foundProduct));
 }
+
+function createCart(){
+    if(localStorage.getItem('userCart') === null){
+        var defaultCart=[{
+            "maDon":"",
+            "maKH": "",
+            "statusKH": "",
+            "statusAD":"",
+            "statusGH":"",
+            "ten":"",
+            "img":"",
+            "sl": "",
+            "maSP": "",
+            "gia": "",
+            "hang":"",
+            "month":"",
+            "year":"",
+            "daycr": ""
+          }];
+          localStorage.setItem('userCart',JSON.stringify(defaultCart));
+    }
+}
