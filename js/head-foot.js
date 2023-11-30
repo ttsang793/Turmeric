@@ -5,7 +5,7 @@ document.getElementsByTagName("header")[0].innerHTML += `
         <i class="bi bi-instagram icon align-middle"></i>
         <i class="bi bi-pinterest icon align-middle"></i>
         <i class="bi bi-envelope icon align-middle"></i>
-        <button class="btn">
+        <button class="btn" id="login">
             <i class="bi bi-person-fill"></i>
             Đăng nhập
         </button>
@@ -18,9 +18,9 @@ document.getElementsByTagName("header")[0].innerHTML += `
 
         <div class="col-8">
             <div class="input-group">
-                <input type="text" placeholder="Tìm kiếm" class="search">
+                <input type="search" placeholder="Tìm kiếm" class="search" id="search">
                 <div class="input-group-append">
-                    <button class="btn btn-warning">
+                    <button class="btn btn-warning" onclick="search()">
                         <i class="bi bi-search"></i>
                     </button>
                 </div>
@@ -107,3 +107,16 @@ document.getElementsByTagName("footer")[0].innerHTML = `
     </div>
 </div>
 `
+
+function search() {
+    const search = document.getElementById("search").value;
+    window.location = `./san-pham.html?search=${search}`;
+}
+
+document.getElementById("search").addEventListener("keyup", event => {
+    if (event.key === "Enter") search();
+})
+
+function getGia(gia) {
+    return Number(gia).toLocaleString("de-DE"); //định dạng số 1.000.000 VN
+}
