@@ -121,5 +121,7 @@ document.getElementById("search").addEventListener("keyup", event => {
 })
 
 function getGia(gia) {
-    return Number(gia).toLocaleString("de-DE") + "đ"; //định dạng số 1.000.000 VN
+    return Number(gia).toLocaleString("vi-VN") + "đ"; //định dạng số 1.000.000 VN
 }
+
+let username = "Ly"; //lưu ý: username này chỉ có mục đích là kiểm thử

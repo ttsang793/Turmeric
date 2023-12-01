@@ -1,5 +1,4 @@
 initCart();
-let username = "Sang";
 let cartList = JSON.parse(localStorage.getItem('cartList')); //danh sách toàn bộ cart của toàn bộ user
 
 function findProduct(id) {
@@ -57,7 +56,7 @@ function deleteAllCart() {
 //danh sách cart của user đang đăng nhập, chỉ dùng để output
 let userCart = [];
 
-function select() {
+function selectCart() {
     userCart = [];
     for (let i=0; i<cartList.length; i++)
         if (cartList[i].username === username)

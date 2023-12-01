@@ -1,11 +1,11 @@
-function empty() {
-    select();
+function emptyCart() {
+    selectCart()
     if (userCart.length === 0) {
         document.getElementById("cart-list").innerHTML = `
             <h2>
                 Bạn cần phải thêm <a href="./san-pham.html" style="text-decoration:none;">sản phẩm</a> vào giỏ hàng!!!
             </h2>
-            <img src="https://cdn.dribbble.com/users/5107895/screenshots/14532312/media/a7e6c2e9333d0989e3a54c95dd8321d7.gif" style="width: 50%">
+            <img src="https://www.aachifoods.com/templates/default-new/images/empty-cart.png" style="width: 25%">
         `;
         return true;
     }
@@ -15,7 +15,7 @@ function empty() {
         </h2>
         <table class="text-center table table-bordered" style="vertical-align: middle;">
             <thead style="font-size: 20px; vertical-align: middle">
-                <tr>
+                <tr class="table-danger">
                     <th width="3%">
                         <input type="checkbox" id="check-all" class="check" onclick="checkAll()">
                     </th>
@@ -34,7 +34,7 @@ function empty() {
 }
 
 function displayCart() {
-    if (empty()) return;
+    if (emptyCart()) return;
     let display = "";
     for (let i=0; i<userCart.length; i++) {
         let item = userCart[i];
@@ -90,6 +90,7 @@ function makeOrder() {
     const length = userCart.length;
     for (let i=0; i < length; ++i) {
         if (check[i+1].checked) {
+            userCart[i].orderDate = new Date().toLocaleString("vi-VN");
             order.push(userCart[i]);
             let index = cartList.findIndex(cart => cart === userCart[i]);
             console.log(index);
