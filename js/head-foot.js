@@ -113,7 +113,7 @@ document.getElementsByTagName("footer")[0].innerHTML = `
 
 function search() {
     const search = document.getElementById("search").value;
-    window.location = `./san-pham.html?search=${search}`;
+    window.location = (search === "") ? "./san-pham.html" : `./san-pham.html?search=${search}`;
 }
 
 document.getElementById("search").addEventListener("keyup", event => {
@@ -121,5 +121,5 @@ document.getElementById("search").addEventListener("keyup", event => {
 })
 
 function getGia(gia) {
-    return Number(gia).toLocaleString("de-DE"); //định dạng số 1.000.000 VN
+    return Number(gia).toLocaleString("de-DE") + "đ"; //định dạng số 1.000.000 VN
 }

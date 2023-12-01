@@ -16,12 +16,12 @@ function showInfo(id) {
                 <div class="col-7">
                     <fieldset class="tieu-de mb-5">
                         <h2 class="mb-4">${product.name}</h2>
-                        <h3 style="color: palevioletred">${getGia(product.price)}đ</h3>
+                        <h3 style="color: palevioletred">${getGia(product.price)}</h3>
                         <div class="input-group mb-3 pt-3">
-                            <button class="btn ammount text-center" onclick="changeNumber('-')">-</button>
-                            <input id="ammount-info" type="number" name="" id="" value="1" min="1" max="" readonly class="ammount text-center">
-                            <button class="btn ammount text-center" onclick="changeNumber('+')">+</button>
-                            <div class="btn btn-warning" onclick="addToCart_Check(${product.id})">Thêm vào giỏ hàng</div>
+                            <button class="btn amount text-center" onclick="changeNumber('-')">-</button>
+                            <input id="amount-info" type="number" name="" id="" value="1" min="1" max="" class="ammount text-center">
+                            <button class="btn amount text-center" onclick="changeNumber('+')">+</button>
+                            <div class="btn btn-warning" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</div>
                         </div>
                     </fieldset>
 
@@ -56,13 +56,26 @@ function closeInfo() {
 }
 
 function changeNumber(input) {
-    ammount = document.getElementById("ammount-info");
+    ammount = document.getElementById("amount-info");
     if (input === "+") ammount.value++;
     else if (ammount.value > 1) ammount.value--;
 }
 
-function addToCart_Check(product) {
-    ammount = document.getElementById("ammount-info");
-    alert("Hello");
-    addToCart(product, ammount.value);
+function addToCart(product, index = undefined) {
+    if (index === undefined)
+        amount = document.getElementById("amount-info");
+    else
+        amount = document.getElementsByClassName("amount-page")[index];
+
+    if(findProduct(product) === -1) {
+        insertCart(product, amount.value);
+        document.querySelector(".alert").innerHTML = "Thêm thành công sản phẩm";
+    }
+
+    else {
+        updateCart(product, amount.value);
+        document.querySelector(".alert").innerHTML = "Update thành công sản phẩm";
+    };
+    $('.alert').css("display", "initial");
+    setTimeout(() => $('.alert').css("display", "none"),3000);
 }

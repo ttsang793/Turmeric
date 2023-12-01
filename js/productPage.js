@@ -6,7 +6,7 @@ window.onload = () => {
     const urlParam = new URLSearchParams(location.search);
     const searchString = urlParam.get('search');
 
-    if (searchString === undefined || searchString === null) createProduct();
+    if (searchString === undefined || searchString === null) initProduct();
     else searchProduct(searchString);
 
     productsList = JSON.parse(localStorage.getItem("productsList"));
@@ -44,11 +44,11 @@ function renderPage() {
                 <div class="ten-san-pham pt-3" onclick="showInfo(${productsList[i].id})">
                     ${productsList[i].name}
                 </div>
-                <div class="gia">${getGia(productsList[i].price)}đ</div>
+                <div class="gia">${getGia(productsList[i].price)}</div>
 
                 <div class="input-group mb-3 justify-content-center pt-3">
-                    <input type="number" name="" id="" value="1" min="1" max="" class="ammount text-center">
-                    <button class="btn btn-warning" onclick="addToCart(${productsList[i].id})">
+                    <input type="number" name="" value="1" min="1" max="" class="amount amount-page text-center">
+                    <button class="btn btn-warning" onclick="addToCart(${productsList[i].id}, ${i%page.numOfProducts})">
                         <i class="bi bi-cart"></i>
                     </button>
                 </div>

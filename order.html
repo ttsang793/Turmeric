@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng của bạn</title>
+    <title>Đơn hàng</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -14,20 +14,14 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/cart.css">
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./css/san-pham.css">
 </head>
-<body onload="displayCart()">
+<body onload="displayOrder()">
     <header></header>
 
-    <div class="container my-5 text-center" id="cart-list"></div>
-
-    <div class="alert alert-danger py-1" role="alert">
-        Vui lòng chọn 1 món để đặt hàng
-    </div>
-    <div class="alert alert-success py-1" role="alert">
-        Đặt hàng thành công
-    </div>
+    <div class="container my-5 text-center" id="order-list"></div>
 
     <footer></footer>
 </body>
@@ -37,7 +31,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="./js/head-foot.js"></script>
 <script src="./js/database.js"></script>
-<script src="./js/cart.js"></script>
-<script src="./js/cartPage.js"></script>
 <script src="./js/order.js"></script>
 </html>

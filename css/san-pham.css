@@ -53,7 +53,7 @@ legend {
     text-transform: uppercase;
 }
 
-.ammount {
+.amount, .amount-page, #amount-info {
     width: 60px;
     border: 1px solid rgb(200,200,200);
     text-align: center;
@@ -90,10 +90,10 @@ legend {
     right: 0;
 }
 
-button.ammount {
+button.amount {
     width: 35px;
 }
 
-button.ammount:hover {
+button.amount:hover {
     border: 1px solid rgb(200,200,200);
 }

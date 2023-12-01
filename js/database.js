@@ -46,7 +46,7 @@ let productArray = [
     { id: '10045', brand: 'Maybelline', img: './img/SP/0045.jpg', name: 'Nước Tẩy Trang Maybelline Micellar Water 400ml', price: 190000 },
 ];
 
-function createProduct() {
+function initProduct() {
     localStorage.setItem('productsList', JSON.stringify(productArray));
 }
 
@@ -60,24 +60,16 @@ function searchProduct(searchString) {
     localStorage.setItem('productsList', JSON.stringify(foundProduct));
 }
 
-function createCart(){
-    if(localStorage.getItem('userCart') === null){
-        var defaultCart=[{
-            "maDon":"",
-            "maKH": "",
-            "statusKH": "",
-            "statusAD":"",
-            "statusGH":"",
-            "ten":"",
-            "img":"",
-            "sl": "",
-            "maSP": "",
-            "gia": "",
-            "hang":"",
-            "month":"",
-            "year":"",
-            "daycr": ""
-          }];
-          localStorage.setItem('userCart',JSON.stringify(defaultCart));
+function initCart(){
+    if (localStorage.getItem('cartList') === null) {
+        let initCart = [];
+        localStorage.setItem('cartList',JSON.stringify(initCart));
+    }
+}
+
+function initOrder() {
+    if(localStorage.getItem('orderList') === null){
+        let initOrder = [];
+        localStorage.setItem('orderList',JSON.stringify(initOrder));
     }
 }
