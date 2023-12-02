@@ -72,13 +72,10 @@ function makeOrder() {
     const length = userCart.length;
     for (let i=0; i < length; ++i) {
         if (check[i+1].checked) {
-            userCart[i].orderDate = new Date().toLocaleString("vi-VN");
+            delete userCart[i].username;
             order.push(userCart[i]);
             let index = cartList.findIndex(cart => cart === userCart[i]);
-            console.log(index);
-            if (index !== -1) {
-                cartList.splice(index,1);
-            }
+            if (index !== -1) cartList.splice(index,1);
             warning = false;
         }
     }
@@ -91,6 +88,6 @@ function makeOrder() {
         setTimeout(() => $('.alert-success').css("display", "none"), 3000);
         setTimeout(() => location.reload(), 3000);
         localStorage.setItem('cartList',JSON.stringify(cartList));
-        addOrder(order);
+        addOrder(order, new Date().toLocaleString("vi-VN"));
     }
 }
