@@ -1,40 +1,22 @@
 function emptyCart() {
-    selectCart()
-    if (userCart.length === 0) {
-        document.getElementById("cart-list").innerHTML = `
-            <h2>
-                Bạn cần phải thêm <a href="./san-pham.html" style="text-decoration:none;">sản phẩm</a> vào giỏ hàng!!!
-            </h2>
-            <img src="https://www.aachifoods.com/templates/default-new/images/empty-cart.png" style="width: 25%">
-        `;
+    if (userLogin === "") {
+        document.getElementById("cart-empty-message").innerHTML = "Bạn cần phải đăng nhập để mua sắm!!!";
         return true;
     }
-    document.getElementById("cart-list").innerHTML = `
-        <h2>
-            Giỏ hàng
-        </h2>
-        <table class="text-center table table-bordered" style="vertical-align: middle;">
-            <thead style="font-size: 20px; vertical-align: middle">
-                <tr class="table-danger">
-                    <th width="3%">
-                        <input type="checkbox" id="check-all" class="check" onclick="checkAll()">
-                    </th>
-                    <th width="20%">Hình ảnh</th>
-                    <th width="45%">Tên sản phẩm</th>
-                    <th width="10%">Số lượng</th>
-                    <th width="15%">Giá</th>
-                    <th width="7%"></th>
-                </tr>
-            </thead>
-            <tbody id="cart-body">
-            </tbody>
-        </table>
-    `;
+    selectCart()
+    if (userCart.length === 0) {
+        document.getElementById("cart-empty-message").innerHTML = `Bạn cần phải thêm <a href="./san-pham.html" style="text-decoration:none;">sản phẩm</a> vào giỏ hàng!!!`;
+        return true;
+    }
     return false;
 }
 
 function displayCart() {
-    if (emptyCart()) return;
+    if (emptyCart()) {
+        $('#cart-list').css("display", "none");
+        return;
+    }
+    $('#cart-empty').css("display", "none");
     let display = "";
     for (let i=0; i<userCart.length; i++) {
         let item = userCart[i];

@@ -1,16 +1,17 @@
 const page = {current: 1, numOfProducts: 9};
 const content = document.querySelector(".danh-sach");
-let productsList;
+let filter = {searchString: "", priceMin: 0, priceMax: 0, searchBrand: [], index: 0}
 
 window.onload = () => {
     const urlParam = new URLSearchParams(location.search);
-    const searchString = urlParam.get('search');
+    filter.searchString = urlParam.get('search');
 
-    if (searchString === undefined || searchString === null) initProduct();
-    else searchProduct(searchString);
+    filterProduct(filter);
 
     productsList = JSON.parse(localStorage.getItem("productsList"));
     setPage();
+    loadThuongHieu();
+    //loadLoaiSanPham();
 }
 
 function setPage(current = page.current, numOfProducts = page.numOfProducts) {
@@ -28,11 +29,13 @@ function renderPage() {
                 <img src="https://media.tenor.com/v_W_gDtULNwAAAAi/confused-face.gif" alt="">
             </div>
         `
+        document.getElementById("page").innerHTML = "";
         return;
     }
 
     let start = page.numOfProducts * (page.current - 1);
     let end = Math.min(page.numOfProducts * page.current, productsList.length);
+    content.style.display = "flex";
     let contentDetail = "";
 
     for (let i=start; i<end; i++) {
@@ -87,30 +90,47 @@ function getProduct(id) {
 }
 
 function sort(index) {
-    if (index===0) {
-        for (let i=productsList.length - 1; i>0; i--)
-            for (let j=0; j<i; j++)
-                if (productsList[j].id > productsList[j+1].id)
-                [productsList[j], productsList[j+1]] = [productsList[j+1], productsList[j]];
-    }
-    else if (index==1 || index==2) {
-        for (let i=productsList.length - 1; i>0; i--)
-            for (let j=0; j<i; j++) {
-                price1 = Number(productsList[j].price);
-                price2 = Number(productsList[j+1].price);
-                if((index === 1 && price1 > price2) || (index===2 && price1 < price2))
-                    [productsList[j], productsList[j+1]] = [productsList[j+1], productsList[j]];
-            }
-    }
-    else {        
-        for (let i=productsList.length - 1; i>0; i--)
-            for (let j=0; j<i; j++) {
-                letter1 = productsList[j].name.toLowerCase();
-                letter2 = productsList[j+1].name.toLowerCase();
-                if((index===3 && letter1 > letter2) || (index===4 && letter1 < letter2))
-                    [productsList[j], productsList[j+1]] = [productsList[j+1], productsList[j]];
-            }
-    }
-
+    filter.index = index;
+    filterProduct(filter);
+    
+    productsList = JSON.parse(localStorage.getItem("productsList"));
     setPage();
+}
+
+function locGia() {
+    filter.priceMin = Number(document.getElementById("price-min").value);
+    filter.priceMax = Number(document.getElementById("price-max").value);
+
+    if (filter.priceMin > filter.priceMax) [filter.priceMin, filter.priceMax] = [filter.priceMax, filter.priceMin];
+    filterProduct(filter);
+    
+    productsList = JSON.parse(localStorage.getItem("productsList"));
+    setPage(1);
+}
+
+const brandList = [
+    "Innisfree", "Hadalabo", "Maybelline", "Blackrouge",
+    "Perfect Diary", "Romand", "Merzy", "BBIA",
+    "Laroche Poshy", "Vichy", "L'ORÉAL", "Gogotales"
+];
+
+function loadThuongHieu() {
+    brandList.forEach(brand => {
+        document.getElementById("thuong-hieu").innerHTML += `
+            <div class="input-group mb-3">
+                <input type="checkbox" id="${brand}" class="check check-th" onclick="locThuongHieu()">
+                <label for="${brand}">${brand}</label>
+            </div>`;
+    });
+}
+
+function locThuongHieu() {
+    const check = document.querySelectorAll(".check-th");
+    filter.searchBrand = [];
+    for (let i=0; i<brandList.length; i++)
+        if (check[i].checked) filter.searchBrand.push(brandList[i]);
+    filterProduct(filter);
+    
+    productsList = JSON.parse(localStorage.getItem("productsList"));
+    setPage(1);
 }

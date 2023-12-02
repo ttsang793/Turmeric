@@ -6,9 +6,9 @@ function showInfo(id) {
     $('body').css("overflow", "hidden");
 
 
-    productView.innerHTML = `       
+    productView.innerHTML = `
         <div class="container">
-            <button class="btn close" onclick="closeInfo()">x</button>
+            <button class="btn close" onclick="closeInfo()">&times;</button>
             <div class="row p-5">
                 <div class="col-5">
                     <img src="${product.img}" alt="" style="width:70%">
@@ -27,15 +27,6 @@ function showInfo(id) {
 
                     <fieldset class="mb-3">
                         <legend>Mô tả</legend>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Sunt veniam perspiciatis id, numquam, aspernatur aliquam reiciendis pariatur unde
-                            asperiores laboriosam facere, ipsum dolorem odit sit? Ad vitae dicta laboriosam odio.
-                        </p>
-                    </fieldset>
-
-                    <fieldset class="mb-3">
-                        <legend>Cách sử dụng</legend>
                         <p>
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Sunt veniam perspiciatis id, numquam, aspernatur aliquam reiciendis pariatur unde
@@ -62,6 +53,11 @@ function changeNumber(input) {
 }
 
 function addToCart(product, index = undefined) {
+    if (userLogin === "") {
+        $('.alert-danger').css("display", "initial");
+        setTimeout(() => $('.alert-danger').css("display", "none"),3000);
+        return;
+    }
     if (index === undefined)
         amount = document.getElementById("amount-info");
     else
@@ -69,13 +65,13 @@ function addToCart(product, index = undefined) {
 
     if(findProduct(product) === -1) {
         insertCart(product, amount.value);
-        document.querySelector(".alert").innerHTML = "Thêm thành công sản phẩm";
+        document.querySelector(".alert-success").innerHTML = "Thêm thành công sản phẩm";
     }
 
     else {
         updateCart(product, amount.value);
-        document.querySelector(".alert").innerHTML = "Update thành công sản phẩm";
+        document.querySelector(".alert-success").innerHTML = "Update thành công sản phẩm";
     };
-    $('.alert').css("display", "initial");
+    $('.alert-success').css("display", "initial");
     setTimeout(() => $('.alert').css("display", "none"),3000);
 }

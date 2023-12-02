@@ -19,8 +19,31 @@
 </head>
 <body onload="displayCart()">
     <header></header>
+    
+    <div class="container my-5 text-center" id="cart-empty">
+        <h2 class="font-weight-bold" id="cart-empty-message"></h2>
+        <img src="https://www.aachifoods.com/templates/default-new/images/empty-cart.png" style="width: 25%">
+    </div>
 
-    <div class="container my-5 text-center" id="cart-list"></div>
+    <div class="container my-5 text-center" id="cart-list">        
+        <h2>Giỏ hàng</h2>
+        <table class="text-center table table-bordered" style="vertical-align: middle;">
+            <thead style="font-size: 20px; vertical-align: middle">
+                <tr class="table-danger">
+                    <th width="3%">
+                        <input type="checkbox" id="check-all" class="check" onclick="checkAll()">
+                    </th>
+                    <th width="20%">Hình ảnh</th>
+                    <th width="45%">Tên sản phẩm</th>
+                    <th width="10%">Số lượng</th>
+                    <th width="15%">Giá</th>
+                    <th width="7%"></th>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+            </tbody>
+        </table>
+    </div>
 
     <div class="alert alert-danger py-1" role="alert">
         Vui lòng chọn 1 món để đặt hàng

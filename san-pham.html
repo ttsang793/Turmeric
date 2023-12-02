@@ -23,48 +23,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    <fieldset>
+                    <fieldset id="thuong-hieu">
                         <legend>Thương hiệu</legend>
-                        <div class="input-group mb-3">
-                            <input type="checkbox" name="" value="Innisfree" id="Innisfree" class="check">
-                            <div class="input-group-prepend">Innisfree</div>
-                        </div>
-                        
-                        <div class="input-group mb-3">
-                            <input type="checkbox" name="" value="Hadalabo" id="Hadalabo" class="check">
-                            <label for="Hadalabo">Hadalabo</label>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <input type="checkbox" name="" value="Maybelline" id="Maybelline" class="check">
-                            <label for="Maybelline">Maybelline</label>
-                        </div>
                     </fieldset>
-
                     
-                    <fieldset>
+                    <fieldset id="loai-san-pham">
                         <legend>Loại sản phẩm</legend>
                         <div class="input-group mb-3">
-                            <input type="checkbox" name="" value="Sửa rửa mặt" id="sua-rua-mat" class="check">
+                            <input type="checkbox" name="" value="Sửa rửa mặt" id="sua-rua-mat" class="check check-lsp">
                             <label for="sua-rua-mat">Sửa rửa mặt</label>
                         </div>
                         
                         <div class="input-group mb-3">
-                            <input type="checkbox" name="" value="Son" id="son" class="check">
+                            <input type="checkbox" name="" value="Son" id="son" class="check check-lsp">
                             <label for="son">Son</label>
                         </div>
 
                         <div class="input-group mb-3">
-                            <input type="checkbox" name="" value= "Mặt nạ" id="mat-na" class="check">
+                            <input type="checkbox" name="" value= "Mặt nạ" id="mat-na" class="check check-lsp">
                             <label for="mat-na">Mặt nạ</label>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Lọc giá</legend>
-                        <input type="number" name="" id="" min="0" step="1000" value="0" style="width: 100px;">
+                        <input type="number" name="" id="price-min" min="0" step="1000" value="0" style="width: 100px;">
                         -
-                        <input type="number" name="" id="" min="0" step="1000" value="0" style="width: 100px;">
+                        <input type="number" name="" id="price-max" min="0" step="1000" value="0" style="width: 100px;">
+                        <br>
+                        <button class="btn btn-success my-2" onclick="locGia()">Lọc</button>
                     </fieldset>
                 </div>
 
@@ -79,7 +66,7 @@
                             </nav>
                         </div>
                         <div class="col-6 text-end">
-                            <label for="sap-xep">Số sản phẩm:</label>
+                            <label for="so-sp">Số sản phẩm:</label>
                             <select name="" id="so-sp" onchange="setPage(1, this.value)">
                                 <option value="9">9</option>
                                 <option value="18">18</option>
@@ -90,8 +77,8 @@
                             <label for="sap-xep">Sắp xếp:</label>
                             <select name="" id="sap-xep" onchange="sort(this.selectedIndex)">
                                 <option value="mac-dinh">Mặc định</option>
-                                <option value="tang-dan">Theo giá tăng dần</option>
-                                <option value="giam-dan">Theo giá giảm dần</option>
+                                <option value="tang-dan">Giá tăng dần</option>
+                                <option value="giam-dan">Giá giảm dần</option>
                                 <option value="a-z">Sắp xếp từ A-Z</option>
                                 <option value="z-a">Sắp xếp từ Z-A</option>
                             </select>
@@ -106,10 +93,12 @@
             </div>
         </div>
     </main>
-    
     <div class="product-view"></div>
 
     <div class="alert alert-success py-1" role="alert"></div>
+    <div class="alert alert-danger py-1" role="alert">
+        Bạn cần phải đăng nhập để thêm sản phẩm
+    </div>
 
     <footer></footer>
 </body>

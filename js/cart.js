@@ -11,7 +11,7 @@ function insertCart(id, amount) {
     product = getProduct(id);
 
     let temp = {
-        username: username,
+        username: userLogin,
         id: id,
         name: product.name,
         img: product.img,
@@ -44,7 +44,7 @@ function deleteCart(id) {
 
 function deleteAllCart() {
     while (true) {
-        let index = cartList.findIndex(cart => cart.username === username);
+        let index = cartList.findIndex(cart => cart.username === userLogin);
         if (index === -1) break;
         cartList.splice(index);
     }
@@ -59,7 +59,7 @@ let userCart = [];
 function selectCart() {
     userCart = [];
     for (let i=0; i<cartList.length; i++)
-        if (cartList[i].username === username)
+        if (cartList[i].username === userLogin)
             userCart.push(cartList[i]);
 }
 
