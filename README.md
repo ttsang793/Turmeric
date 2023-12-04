@@ -1,5 +1,5 @@
-# Turmerit
-Source code của đồ án cửa hàng bán mỹ phẩm Turmerit
+# Turmeric
+Source code của đồ án cửa hàng bán mỹ phẩm Turmeric
 
 Thành viên:
 * 3121410094 - Lý Văn Công

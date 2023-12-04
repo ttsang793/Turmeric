@@ -50,7 +50,7 @@ function renderPage() {
                 <div class="gia">${getGia(productsList[i].price)}</div>
 
                 <div class="input-group mb-3 justify-content-center pt-3">
-                    <input type="number" name="" value="1" min="1" max="" class="amount amount-page text-center">
+                    <input type="number" name="" value="1" min="1" max="" class="amount amount-page text-center"  onkeyup="checkKey(this, event);">
                     <button class="btn btn-warning" onclick="addToCart(${productsList[i].id}, ${i%page.numOfProducts})">
                         <i class="bi bi-cart"></i>
                     </button>
@@ -63,13 +63,37 @@ function renderPage() {
 }
 
 function renderNumber() {
-    let bottom = '';
-    for (let i=1; i<=Math.ceil(productsList.length / page.numOfProducts); i++) {
-        bottom += `
-            <button class="btn btn-outline-danger" value="${i}" onclick="setPage(this.value)">${i}</button>
-        `;
-        document.getElementById("page").innerHTML = bottom;
+    const soTrang = Math.ceil(productsList.length / page.numOfProducts);
+    const danhSach = [page.current];
+    switch (true) {
+        case (page.current === 1): {
+            let i = page.current + 1;
+            while (i<=soTrang && i<=page.current + 2) danhSach.push(i++);
+            break;
+        }
+        case (page.current === soTrang): {
+            let i = page.current - 1;
+            while (i>=1 && i>=page.current - 2) danhSach.unshift(i--);
+            break;
+        }
+        default: {
+            danhSach.unshift(page.current -  1);
+            danhSach.push(page.current + 1);
+        }
     }
+
+    let bottom = '<button class="btn btn-outline-danger" onclick="setPage(1)" id="first-page"><</button>';
+    for (let i=0; i<danhSach.length; i++) {
+        bottom += `
+            <button class="btn btn-outline-danger" value="${danhSach[i]}" onclick="setPage(${danhSach[i]})">${danhSach[i]}</button>
+        `;
+    }
+    
+    bottom += `<button class="btn btn-outline-danger" onclick="setPage(${soTrang})" id="last-page">></button>`;
+    document.getElementById("page").innerHTML = bottom;
+
+    (page.current === 1) && $("#first-page").css("visibility", "hidden") || $("#first-page").css("visibility", "visible");
+    (page.current === soTrang) && $("#last-page").css("visibility", "hidden") || $("#last-page").css("visibility", "visible");
 
     document.querySelectorAll("#page .btn").forEach(button => {
         if (button.value !== `${page.current}`) {
@@ -133,4 +157,9 @@ function locThuongHieu() {
     
     productsList = JSON.parse(localStorage.getItem("productsList"));
     setPage(1);
+}
+
+function checkKey(input, event) {
+    if (event.key === "Backspace") return;
+    if (isNaN(event.key)) input.value = input.min;
 }

@@ -2,47 +2,77 @@ const productView = document.getElementById("productModal");
 
 function showInfo(id) {
     product = getProduct(id);
-    $('#productModal').modal("show");
-
+    
     productView.innerHTML = `
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-body">
-                    <button class="close btn" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                <div class="p-2 text-end">
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
-                    <div class="container">
-                        <div class="row p-5">
-                            <div class="col-5">
-                                <img src="${product.img}" alt="" style="width:70%">
+                </div>
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="col-5">
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true" style="color: blue"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-                            <div class="col-7">
-                                <fieldset class="tieu-de mb-5">
-                                    <h2 class="mb-4">${product.name}</h2>
-                                    <h3 style="color: palevioletred">${getGia(product.price)}</h3>
-                                    <div class="input-group mb-3 pt-3">
-                                        <button class="btn amount text-center" onclick="changeNumber('-')">-</button>
-                                        <input id="amount-info" type="number" name="" id="" value="1" min="1" max="" class="ammount text-center">
-                                        <button class="btn amount text-center" onclick="changeNumber('+')">+</button>
-                                        <div class="btn btn-warning" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</div>
-                                    </div>
-                                </fieldset>
-            
-                                <fieldset class="mb-3">
-                                    <legend>Mô tả</legend>
-                                    <p>
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                        Sunt veniam perspiciatis id, numquam, aspernatur aliquam reiciendis pariatur unde
-                                        asperiores laboriosam facere, ipsum dolorem odit sit? Ad vitae dicta laboriosam odio.
-                                    </p>
-                                </fieldset>
-                            </div>
+                        </div>
+                        <div class="col-7">
+                            <fieldset class="tieu-de mb-5">
+                                <h2 class="mb-4">${product.name}</h2>
+                                <h3 style="color: palevioletred">${getGia(product.price)}</h3>
+                                <div class="input-group mb-3 pt-3">
+                                    <button class="btn amount text-center" onclick="changeNumber('-')">-</button>
+                                    <input id="amount-info" type="number" name="" id="" value="1" min="1" max="" class="ammount text-center" onkeyup="checkKey(this, event);">
+                                    <button class="btn amount text-center" onclick="changeNumber('+')">+</button>
+                                    <div class="btn btn-warning" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</div>
+                                </div>
+                            </fieldset>
+        
+                            <fieldset class="mb-3">
+                                <legend>Mô tả</legend>
+                                <p>
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                    Sunt veniam perspiciatis id, numquam, aspernatur aliquam reiciendis pariatur unde
+                                    asperiores laboriosam facere, ipsum dolorem odit sit? Ad vitae dicta laboriosam odio.
+                                </p>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     `;
+
+    const photo = ["./img/SP/0030.jpg", "./img/SP/0001.jpg", "./img/SP/0003.jpg"];
+    let slide = '';
+    for (let i=0; i < photo.length; i++) {
+        if (i === 0)
+            slide += `        
+                <div class="carousel-item active">
+                    <img src="${photo[i]}" class="d-block w-100" alt="...">
+                </div>
+            `;
+        else
+            slide += `        
+                <div class="carousel-item">
+                    <img src="${photo[i]}" class="d-block w-100" alt="...">
+                </div>
+            `;
+    }
+    console.log(photo);
+    document.querySelector(".carousel-inner").innerHTML = slide;
+    
+    new bootstrap.Modal(productView).show();
 }
 
 function changeNumber(input) {
