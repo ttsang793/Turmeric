@@ -20,10 +20,26 @@ function filterProduct(filter)  {
             ++i;
         }
 
-    i = 0  
+    i = 0;
     if (filter.searchBrand.length > 0)
         while (i < foundProduct.length) {
             if (!filter.searchBrand.includes(foundProduct[i].brand))
+                foundProduct.splice(i--, 1);
+            ++i;
+        }
+
+    i = 0;
+    if (filter.searchType.length > 0)
+        while (i < foundProduct.length) {
+            if (!filter.searchType.includes(foundProduct[i].type))
+                foundProduct.splice(i--, 1);
+            ++i;
+        }
+
+    i = 0;
+    if (filter.checked)
+        while (i < foundProduct.length) {
+            if (foundProduct[i].remain === 0)
                 foundProduct.splice(i--, 1);
             ++i;
         }

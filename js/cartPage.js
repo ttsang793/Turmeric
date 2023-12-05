@@ -105,6 +105,12 @@ function makeOrder() {
     const length = userCart.length;
     for (let i=0; i < length; ++i) {
         if (userCart[i].checked) {
+            if (userCart[i].amount > userCart[i].remain) {
+                document.querySelector(".alert-danger").innerHTML = `Bạn đang đặt sản phẩm ${userCart[i].name} với số lượng nhiều hơn tồn kho (${userCart[i].remain})`;
+                $('.alert-danger').css("display", "initial");
+                setTimeout(() => $('.alert-danger').css("display", "none"), 3000);
+                return
+            }
             delete userCart[i].username;
             delete userCart[i].checked;
             order.push(userCart[i]);
@@ -113,7 +119,8 @@ function makeOrder() {
             warning = false;
         }
     }
-    if (warning) {        
+    if (warning) {
+        document.querySelector(".alert-danger").innerHTML = "Vui lòng chọn 1 món để đặt hàng";
         $('.alert-danger').css("display", "initial");
         setTimeout(() => $('.alert-danger').css("display", "none"), 3000);
     }

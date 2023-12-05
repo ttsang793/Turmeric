@@ -84,12 +84,6 @@ legend {
     z-index: 1001;
 }
 
-.close {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 button.amount {
     width: 35px;
 }
@@ -106,8 +100,7 @@ button.amount:hover {
   background-color: darkblue;
 }
 
-.carousel-control-next-icon:after
-{
+.carousel-control-next-icon:after {
   content: '>';
   font-size: 55px;
   color: white;

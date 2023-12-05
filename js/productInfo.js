@@ -22,12 +22,7 @@ function showInfo(id) {
                             <fieldset class="tieu-de mb-5">
                                 <h2 class="mb-4">${product.name}</h2>
                                 <h3 style="color: palevioletred">${getGia(product.price)}</h3>
-                                <div class="input-group mb-3 pt-3">
-                                    <button class="btn amount text-center" onclick="changeNumber('-')">-</button>
-                                    <input id="amount-info" type="number" name="" id="" value="1" min="1" max="" class="ammount text-center" onkeyup="checkKey(this, event);">
-                                    <button class="btn amount text-center" onclick="changeNumber('+')">+</button>
-                                    <div class="btn btn-warning" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</div>
-                                </div>
+                                <div id="mua-hang-info"></div>
                             </fieldset>
         
                             <fieldset class="mb-3">
@@ -44,6 +39,16 @@ function showInfo(id) {
             </div>
         </div>
     `;
+
+    if (product.remain > 0) document.getElementById("mua-hang-info").innerHTML = `
+        <div class="input-group mb-3 pt-3">
+            <button class="btn amount text-center" onclick="changeNumber('-')">-</button>
+            <input id="amount-info" type="number" name="" id="" value="1" min="1" max="${product.remain}" class="ammount text-center" onkeyup="checkKey(this, event);">
+            <button class="btn amount text-center" onclick="changeNumber('+')">+</button>
+            <div class="btn btn-warning" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</div>
+        </div>
+    `
+    else document.getElementById("mua-hang-info").innerHTML = `<div class="mb-3 pt-3">Hết hàng</div>`
 
     //Code dưới đây chỉ mang tính chất kiểm thử
     const photo = (id%2==0) ? [product.img] : [product.img, "./img/SP/0001.jpg", "./img/SP/0003.jpg"];
@@ -94,7 +99,7 @@ function addToCart(product, index = undefined) {
         amount = document.getElementById("amount-info");
     else
         amount = document.getElementsByClassName("amount-page")[index];
-
+    console.log(amount);
     if(findProduct(product) === -1) {
         insertCart(product, amount.value);
         document.querySelector(".alert-success").innerHTML = "Thêm thành công sản phẩm";

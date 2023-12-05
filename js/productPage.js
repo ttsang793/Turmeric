@@ -1,6 +1,6 @@
 const page = {current: 1, numOfProducts: 9};
 const content = document.querySelector(".danh-sach");
-let filter = {searchString: "", priceMin: 0, priceMax: 0, searchBrand: [], index: 0}
+let filter = {searchString: "", priceMin: 0, priceMax: 0, searchBrand: [], searchType: [], index: 0, checked: false}
 
 window.onload = () => {
     const urlParam = new URLSearchParams(location.search);
@@ -49,15 +49,23 @@ function renderPage() {
                 </div>
                 <div class="gia">${getGia(productsList[i].price)}</div>
 
-                <div class="input-group mb-3 justify-content-center pt-3">
-                    <input type="number" name="" value="1" min="1" max="" class="amount amount-page text-center" onkeyup="checkKey(this, event);" onchange="checkValue(this)">
-                    <button class="btn btn-warning" onclick="addToCart(${productsList[i].id}, ${i%page.numOfProducts})">
-                        <i class="bi bi-cart"></i>
-                    </button>
-                </div>
+                <div class="mua-hang"></div>
             </div>
         `;
         content.innerHTML = contentDetail;
+    }
+
+    for (let i=start, j=0; i<end; i++) {
+        if (productsList[i].remain > 0)
+            document.querySelectorAll(".mua-hang")[i%page.numOfProducts].innerHTML = `
+                <div class="input-group mb-3 justify-content-center pt-3">
+                    <input type="number" name="" value="1" min="1" max="${Number(productsList[i].remain)}" class="amount amount-page text-center" onkeyup="checkKey(this, event);" onchange="checkValue(this)">
+                    <button class="btn btn-warning" onclick="addToCart(${productsList[i].id}, ${j++})">
+                        <i class="bi bi-cart"></i>
+                    </button>
+                </div>
+            `
+        else document.querySelectorAll(".mua-hang")[i%page.numOfProducts].innerHTML = `<div class="mb-3 pt-3">Hết hàng</div>`
     }
     renderNumber();
 }
@@ -159,6 +167,27 @@ function locThuongHieu() {
     setPage(1);
 }
 
+const typeList = ["Sửa rửa mặt", "Son", "Mặt nạ"];
+
+function locLoaiSanPham() {
+    const check = document.querySelectorAll(".check-lsp");
+    filter.searchType = [];
+    for (let i=0; i<typeList.length; i++)
+        if (check[i].checked) filter.searchType.push(typeList[i]);
+    filterProduct(filter);
+    
+    productsList = JSON.parse(localStorage.getItem("productsList"));
+    setPage(1);
+}
+
+function locCoHang() {
+    filter.checked = document.getElementById("check-co-hang").checked;
+    filterProduct(filter);
+    
+    productsList = JSON.parse(localStorage.getItem("productsList"));
+    setPage(1);
+}
+
 function checkKey(input, event) {
     if (event.key === "Backspace" || event.key === "Enter") return;
     if (isNaN(event.key)) input.value = input.min;
@@ -166,4 +195,5 @@ function checkKey(input, event) {
 
 function checkValue(input) {    
     if (input.value === "") input.value = input.min;
+    else if (input.value > input.max) input.value = input.max;
 }

@@ -17,6 +17,7 @@ function insertCart(id, amount) {
         img: product.img,
         brand: product.brand,
         amount: amount,
+        remain: product.remain,
         price: product.price,
         total: product.price * amount,
         checked: true

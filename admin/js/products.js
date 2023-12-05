@@ -1,4 +1,4 @@
-let productData = [
+/*let productData = [
     { id: '10001', brand: 'Innisfree', img: './img/SP/0001.jpg', name: 'Black Tea Youth Enhancing SET', price: 933000, status: 1},
     { id: '10002', brand: 'Innisfree', img: './img/SP/0002.jpg', name: 'Innisfree Green Tea Super Skincare SET', price: 1500000, status: 1},
     { id: '10003', brand: 'Innisfree', img: './img/SP/0003.jpg', name: 'Apple Seed Cleansing Oil & Apple Seed Lip & Eye Makeup Remover', price: 510000, status: 1},
@@ -44,6 +44,18 @@ let productData = [
     { id: '10043', brand: 'Maybelline', img: './img/SP/0043.jpg', name: 'Son Lì Maybelline Lips Vivid Matte 3.9gr', price: 190000, status: 1},
     { id: '10044', brand: 'Maybelline', img: './img/SP/0044.jpg', name: 'Son Lì Maybelline The Loaded Bolds Matte Lips', price: 190000, status: 1},
     { id: '10045', brand: 'Maybelline', img: './img/SP/0045.jpg', name: 'Nước Tẩy Trang Maybelline Micellar Water 400ml', price: 190000, status: 1}
+];*/
+
+let productData = [
+    { id: '10007', brand: 'Innisfree', img: './img/SP/0007.jpg', name: 'Green Tea Foam Cleanser 150mL', price: 260000, type: "Sửa rửa mặt", remain: 50, status: 1},
+    { id: '10008', brand: 'Innisfree', img: './img/SP/0008.jpg', name: 'Green Tea Balancing Skin EX (Toner)', price: 345000, type: "Sửa rửa mặt", remain: 50, status: 1},
+    { id: '10009', brand: 'Innisfree', img: './img/SP/0009.jpg', name: 'Green Tea Fresh Skin Innisfree (Toner)', price: 322000, type: "Sửa rửa mặt", remain: 0, status: 1},
+    { id: '10012', brand: 'Innisfree', img: './img/SP/0012.jpg', name: 'Real Peppermint Mask (Mặt nạ Bạc hà Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+    { id: '10013', brand: 'Innisfree', img: './img/SP/0013.jpg', name: 'Real Rose Mask (Mặt nạ chiếc xuất Hoa hồng Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+    { id: '10018', brand: 'Hadalabo', img: './img/SP/0018.jpg', name: 'Hộp mặt nạ tinh chất dưỡng ẩm cao cấp (5 miếng)', price: 195000, type: "Mặt nạ", remain: 0, status: 1},
+    { id: '10042', brand: 'Maybelline', img: './img/SP/0042.jpg', name: 'Son Tint Maybelline Color Sensational Lip Tint', price: 170000, type: "Son", remain: 50, status: 1},
+    { id: '10043', brand: 'Maybelline', img: './img/SP/0043.jpg', name: 'Son Lì Maybelline Lips Vivid Matte 3.9gr', price: 190000, type: "Son", remain: 50, status: 1},
+    { id: '10044', brand: 'Maybelline', img: './img/SP/0044.jpg', name: 'Son Lì Maybelline The Loaded Bolds Matte Lips', price: 190000, type: "Son", remain: 0, status: 1},
 ];
 
 onload = () => {
@@ -62,11 +74,13 @@ function loadBang(search = "") {
                 <tr>
                     <th>${productData[i].id}</th>
                     <td>${productData[i].name}</td>
+                    <td>${productData[i].type}</td>
+                    <td>${productData[i].brand}</td>
+                    <td>${productData[i].price}</td>
+                    <td>${productData[i].remain}</td>
                     <td>
                         <img src="../${productData[i].img}" style="width: 100px">
                     </td>
-                    <td>${productData[i].brand}</td>
-                    <td>${productData[i].price}</td>
                     <td>${productData[i].status}</td>
                     <td>
                         <button class="btn btn-warning" onclick="openForm('Sửa', ${productData[i].id})">Sửa</button><br>
@@ -108,8 +122,16 @@ function openForm(handle, productID = "") {
                             <input type="text" class="form-control" id="product-name" value="${product.name || ""}">
                         </div>
                         <div class="mb-3">
+                            <label for="product-type" class="col-form-label font-weight-bold">Loại sản phẩm:</label>
+                            <select name="" class="form-control" id="product-type" value="${product.type || "Sửa rửa mặt"}">
+                                <option value="Sửa rửa mặt">Sửa rửa mặt</option>
+                                <option value="Son">Son</option>
+                                <option value="Mặt nạ">Mặt nạ</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="product-brand" class="col-form-label">Thương hiệu:</label>
-                            <select name="" class="form-control" id="product-brand">
+                            <select name="" class="form-control" id="product-brand" value="${product.brand || "Innisfree"}">
                                 <option value="Innisfree">Innisfree</option>
                                 <option value="Hadalabo">Hadabalo</option>
                                 <option value="Maybelline">Maybelline</option>
@@ -127,6 +149,10 @@ function openForm(handle, productID = "") {
                         <div class="mb-3">
                             <label for="product-price" class="col-form-label">Giá:</label>
                             <input type="number" min="1000" step="1000" class="form-control" id="product-price" value="${product.price || ""}" onkeyup="checkKey(this, event)">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product-remain" class="col-form-label">Tồn kho:</label>
+                            <input type="number" min="0" step="1" class="form-control" id="product-remain" value="${product.remain || ""}" onkeyup="checkKey(this, event)">
                         </div>
                         </form>
                     </div>
@@ -164,6 +190,8 @@ function addProduct() {
         img: './img/SP/0045.jpg',
         name: document.getElementById("product-name").value,
         price: Number(document.getElementById("product-price").value),
+        type: document.getElementById("product-type").value,
+        remain: Number(document.getElementById("product-remain").value),
         status: 1
     });
 }
@@ -175,6 +203,8 @@ function updateProduct(index) {
         img: './img/SP/0045.jpg',
         name: document.getElementById("product-name").value,
         price: Number(document.getElementById("product-price").value),
+        type: document.getElementById("product-type").value,
+        remain: Number(document.getElementById("product-remain").value),
         status: 1
     });
 }
