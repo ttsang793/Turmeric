@@ -31,7 +31,7 @@
             <thead style="font-size: 20px; vertical-align: middle">
                 <tr class="table-danger">
                     <th width="3%">
-                        <input type="checkbox" id="check-all" class="check" onclick="checkAll()">
+                        <input type="checkbox" id="check-all" class="check" onclick="checkAllChanged()">
                     </th>
                     <th width="20%">Hình ảnh</th>
                     <th width="45%">Tên sản phẩm</th>
@@ -43,6 +43,11 @@
             <tbody id="cart-body">
             </tbody>
         </table>
+
+        <div id="cart-action">            
+            <button class="btn btn-success" onclick="makeOrder()">Đặt hàng</button>
+            <button class="btn btn-danger" onclick="deleteAllCart()">Xóa giỏ hàng</button>
+        </div>
     </div>
 
     <div class="alert alert-danger py-1" role="alert">

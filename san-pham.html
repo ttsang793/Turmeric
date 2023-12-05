@@ -51,9 +51,9 @@
 
                     <fieldset>
                         <legend>Lọc giá</legend>
-                        <input type="number" name="" id="price-min" min="0" step="1000" value="0" style="width: 100px;" onkeyup="checkKey(this, event);">
+                        <input type="number" name="" id="price-min" min="0" step="1000" value="0" style="width: 100px;" onkeyup="checkKey(this, event);" onchange="checkValue(this)">
                         -
-                        <input type="number" name="" id="price-max" min="0" step="1000" value="0" style="width: 100px;" onkeyup="checkKey(this, event);">
+                        <input type="number" name="" id="price-max" min="0" step="1000" value="0" style="width: 100px;" onkeyup="checkKey(this, event);" onchange="checkValue(this)">
                         <br>
                         <button class="btn btn-success my-2" onclick="locGia()">Lọc</button>
                     </fieldset>

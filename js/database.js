@@ -1,5 +1,5 @@
 function filterProduct(filter)  {
-    let foundProduct = getProductListMax();
+    let foundProduct = getProductList();
     let i = 0;
 
     if (filter.searchString !== undefined && filter.searchString !== null && filter.searchString !== "") {

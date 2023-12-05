@@ -18,7 +18,8 @@ function insertCart(id, amount) {
         brand: product.brand,
         amount: amount,
         price: product.price,
-        total: product.price * amount
+        total: product.price * amount,
+        checked: true
     };
 
     cartList.push(temp);
@@ -61,10 +62,4 @@ function selectCart() {
     for (let i=0; i<cartList.length; i++)
         if (cartList[i].username === userLogin)
             userCart.push(cartList[i]);
-}
-
-function getTotal() {
-    let total = 0;
-    for (let i=0; i<userCart.length; i++) total += Number(userCart[i].total);
-    return total;
 }

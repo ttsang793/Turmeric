@@ -11,11 +11,20 @@ function emptyCart() {
     return false;
 }
 
+function getTotal() {
+    let total = 0;
+    for (let i=0; i<userCart.length; i++)
+        if (userCart[i].checked) total += Number(userCart[i].total);
+    return getGia(total);
+}
+
 function displayCart() {
     if (emptyCart()) {
         $('#cart-list').css("display", "none");
+        $("#cart-action").css("display", "none");
         return;
     }
+    document.getElementById("cart-body").innerHTML = "";
     $('#cart-empty').css("display", "none");
     let display = "";
     for (let i=0; i<userCart.length; i++) {
@@ -23,13 +32,15 @@ function displayCart() {
         display += `        
             <tr style="padding: 0px">
                 <td>
-                    <input type="checkbox" class="check" onclick="autoCheckAll()">
+                    <input type="checkbox" class="check" onclick="checkChanged(${i})">
                 </td>
                 <td>
                     <img src="${item.img}" alt="" width="80%">
                 </td>
                 <td>${item.name}</td>
-                <td>${item.amount}</td>
+                <td>
+                    <input type="number" class="text-center" value="${item.amount}" min="1" max="" style="width: 60px" onchange="tinhTong(this, ${i})" onkeyup="checkKey(this, event);">
+                </td>
                 <td>${getGia(item.total)}</td>
                 <td>
                     <button class="btn btn-danger" onclick="deleteCart(${i})">Xóa</button>
@@ -37,28 +48,51 @@ function displayCart() {
             </tr>        
         `;
     }
-    document.getElementById("cart-body").innerHTML += display;
-    document.getElementById("cart-body").innerHTML += `
+    document.getElementById("cart-body").innerHTML = document.getElementById("cart-body").innerHTML + display + `
         <tr style="padding: 0px;font-size: 20px;">
             <th colspan="4" class="text-end">TỔNG:</th>
-            <th colspan="2">${getGia(getTotal())}</th>
+            <th colspan="2" id="tong-hang">${getTotal()}</th>
         </tr>
     `;
-    document.getElementById("cart-list").innerHTML += `
-        <button class="btn btn-success" onclick="makeOrder()">Đặt hàng</button>
-        <button class="btn btn-danger" onclick="deleteAllCart()">Xóa giỏ hàng</button>
-    `
+    $("#cart-action").css("display", "initial");
+    for (let i=0; i<userCart.length; i++)
+        document.querySelectorAll(".check")[i+1].checked = userCart[i].checked;
+
+    autoCheckAll();
 }
 
-function checkAll() {
+function tinhTong(input, i) {
+    if (input.value === "") {
+        input.value = cartList[i].amount;
+        return
+    }
+    const index = cartList.findIndex(cart => cart === userCart[i]);
+    cartList[index].amount = Number(input.value);
+    cartList[index].total = Number(cartList[index].price) * cartList[index].amount;
+    localStorage.setItem('cartList',JSON.stringify(cartList));
+    displayCart();
+}
+
+function checkChanged(index) {
+    userCart[index].checked = !userCart[index].checked;
+    autoCheckAll();
+    document.getElementById("tong-hang").innerHTML = getTotal();
+    localStorage.setItem('cartList',JSON.stringify(cartList));
+}
+
+function checkAllChanged() {
     const status = document.getElementById("check-all").checked;
-    document.querySelectorAll(".check").forEach(check => check.checked = status);
+    for (let i=0; i<userCart.length; i++) {
+        document.querySelectorAll(".check")[i+1].checked = status;
+        userCart[i].checked = status;
+    }
+    document.getElementById("tong-hang").innerHTML = getTotal();
+    localStorage.setItem('cartList',JSON.stringify(cartList));
 }
 
 function autoCheckAll() {
-    const check = document.querySelectorAll(".check");
-    for (let i=1; i<check.length; i++)
-        if (!check[i].checked) {
+    for (let i=0; i<userCart.length; i++)
+        if (!userCart[i].checked) {
             document.getElementById("check-all").checked = false;
             return;
         }
@@ -67,12 +101,12 @@ function autoCheckAll() {
 
 function makeOrder() {
     let order = [];
-    const check = document.querySelectorAll(".check");
     let warning = true;
     const length = userCart.length;
     for (let i=0; i < length; ++i) {
-        if (check[i+1].checked) {
+        if (userCart[i].checked) {
             delete userCart[i].username;
+            delete userCart[i].checked;
             order.push(userCart[i]);
             let index = cartList.findIndex(cart => cart === userCart[i]);
             if (index !== -1) cartList.splice(index,1);
@@ -88,6 +122,11 @@ function makeOrder() {
         setTimeout(() => $('.alert-success').css("display", "none"), 3000);
         setTimeout(() => location.reload(), 3000);
         localStorage.setItem('cartList',JSON.stringify(cartList));
-        addOrder(order, new Date().toLocaleString("vi-VN"));
+        addOrder(order, new Date().toLocaleString("fr-FR"));
     }
+}
+
+function checkKey(input, event) {
+    if (event.key === "Backspace" || event.key === "Enter") return;
+    if (isNaN(event.key)) input.value = input.min;
 }

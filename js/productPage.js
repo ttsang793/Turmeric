@@ -50,7 +50,7 @@ function renderPage() {
                 <div class="gia">${getGia(productsList[i].price)}</div>
 
                 <div class="input-group mb-3 justify-content-center pt-3">
-                    <input type="number" name="" value="1" min="1" max="" class="amount amount-page text-center"  onkeyup="checkKey(this, event);">
+                    <input type="number" name="" value="1" min="1" max="" class="amount amount-page text-center" onkeyup="checkKey(this, event);" onchange="checkValue(this)">
                     <button class="btn btn-warning" onclick="addToCart(${productsList[i].id}, ${i%page.numOfProducts})">
                         <i class="bi bi-cart"></i>
                     </button>
@@ -160,6 +160,10 @@ function locThuongHieu() {
 }
 
 function checkKey(input, event) {
-    if (event.key === "Backspace") return;
+    if (event.key === "Backspace" || event.key === "Enter") return;
     if (isNaN(event.key)) input.value = input.min;
+}
+
+function checkValue(input) {    
+    if (input.value === "") input.value = input.min;
 }

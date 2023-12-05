@@ -62,7 +62,9 @@ function loadBang(search = "") {
                 <tr>
                     <th>${productData[i].id}</th>
                     <td>${productData[i].name}</td>
-                    <td>${productData[i].img}</td>
+                    <td>
+                        <img src="../${productData[i].img}" style="width: 100px">
+                    </td>
                     <td>${productData[i].brand}</td>
                     <td>${productData[i].price}</td>
                     <td>${productData[i].status}</td>
@@ -124,7 +126,7 @@ function openForm(handle, productID = "") {
                         </div>
                         <div class="mb-3">
                             <label for="product-price" class="col-form-label">Giá:</label>
-                            <input type="number" min="0" step="1000" class="form-control" id="product-price" value="${product.price || ""}">
+                            <input type="number" min="1000" step="1000" class="form-control" id="product-price" value="${product.price || ""}" onkeyup="checkKey(this, event)">
                         </div>
                         </form>
                     </div>
@@ -191,10 +193,17 @@ document.getElementById("search").addEventListener("keyup", event => {
     if (event.key === "Enter") searchProduct();
 })
 
-function getProductListMax() {
+function getProductList() {
+    if (localStorage.getItem('testList') === null)
+        localStorage.setItem('testList',JSON.stringify(productData));
     productList = JSON.parse(localStorage.getItem('testList'));
     let returnList = new Array();
     for (let i=0; i<productList.length; i++)
         if (productList[i].status === 1) returnList.push(productList[i]);
     return returnList;
+}
+
+function checkKey(input, event) {
+    if (event.key === "Backspace" || event.key === "Enter") return;
+    if (isNaN(event.key)) input.value = input.min;
 }

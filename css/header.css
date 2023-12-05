@@ -46,7 +46,7 @@ img.logo {
     position: -webkit-sticky;
     top: 50px;
 }
-
+/*
 .nav .btn-dark {
     border-radius: 0;
     transition: 0.15s;
@@ -63,4 +63,25 @@ img.logo {
     transition: background-color 0.15s linear, border 0.15s linear;
     padding-right: 8.5px;
     padding-left: 8.5px;
+}*/
+
+.main-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.main-nav * {
+    margin: 0 20px;
+    transition-duration: 0.15s;
+    font-size: 18px;
+    padding: 11px 0;
+    text-decoration: none;
+    color: white;
+}
+
+.main-nav *:hover {
+    margin: 0;
+    background-color: var(--bs-danger-bg-subtle);
+    color: #212529;
+    font-weight: bold;
 }

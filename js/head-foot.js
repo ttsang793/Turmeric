@@ -38,17 +38,17 @@ document.getElementsByTagName("header")[0].innerHTML += `
 
 <div class="row text-center nav">
     <div class="col-3"></div>
-    <div class="col-6 btn-group">
-        <a href="./index.html" class="btn btn-dark">
+    <div class="col-6 main-nav">
+        <a href="./index.html" class="">
             TRANG CHỦ
         </a>
-        <a href="./san-pham.html" class="btn btn-dark">
+        <a href="./san-pham.html" class="">
             SẢN PHẨM
         </a>
-        <a href="./gioi-thieu.html" class="btn btn-dark">
+        <a href="./gioi-thieu.html" class="">
             GIỚI THIỆU
         </a>
-        <a href="./blog.html" class="btn btn-dark">
+        <a href="./blog.html" class="">
             BLOG
         </a>
     </div>

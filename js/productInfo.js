@@ -13,17 +13,9 @@ function showInfo(id) {
                 <div class="container">
                     <div class="row p-5">
                         <div class="col-5">
-                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true" style="color: blue"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
                         </div>
                         <div class="col-7">
@@ -53,7 +45,8 @@ function showInfo(id) {
         </div>
     `;
 
-    const photo = ["./img/SP/0030.jpg", "./img/SP/0001.jpg", "./img/SP/0003.jpg"];
+    //Code dưới đây chỉ mang tính chất kiểm thử
+    const photo = (id%2==0) ? [product.img] : [product.img, "./img/SP/0001.jpg", "./img/SP/0003.jpg"];
     let slide = '';
     for (let i=0; i < photo.length; i++) {
         if (i === 0)
@@ -71,6 +64,16 @@ function showInfo(id) {
     }
     console.log(photo);
     document.querySelector(".carousel-inner").innerHTML = slide;
+    if (photo.length > 1) document.getElementById("productCarousel").innerHTML += `
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" style="color: blue"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    `
     
     new bootstrap.Modal(productView).show();
 }
