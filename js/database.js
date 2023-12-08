@@ -1,5 +1,59 @@
 function filterProduct(filter)  {
-    let foundProduct = getProductList();
+    let foundProduct = [
+        { id: '10007', brand: 'Innisfree', img: './img/SP/0007.jpg', name: 'Green Tea Foam Cleanser 150mL', price: 260000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10008', brand: 'Innisfree', img: './img/SP/0008.jpg', name: 'Green Tea Balancing Skin EX (Toner)', price: 345000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10009', brand: 'Innisfree', img: './img/SP/0009.jpg', name: 'Green Tea Fresh Skin Innisfree (Toner)', price: 322000, type: "Sửa rửa mặt", remain: 0, status: 1},
+        { id: '10012', brand: 'Innisfree', img: './img/SP/0012.jpg', name: 'Real Peppermint Mask (Mặt nạ Bạc hà Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10013', brand: 'Innisfree', img: './img/SP/0013.jpg', name: 'Real Rose Mask (Mặt nạ chiếc xuất Hoa hồng Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10018', brand: 'Hadalabo', img: './img/SP/0018.jpg', name: 'Hộp mặt nạ tinh chất dưỡng ẩm cao cấp (5 miếng)', price: 195000, type: "Mặt nạ", remain: 0, status: 1},
+        { id: '10042', brand: 'Maybelline', img: './img/SP/0042.jpg', name: 'Son Tint Maybelline Color Sensational Lip Tint', price: 170000, type: "Son", remain: 50, status: 1},
+        { id: '10043', brand: 'Maybelline', img: './img/SP/0043.jpg', name: 'Son Lì Maybelline Lips Vivid Matte 3.9gr', price: 190000, type: "Son", remain: 50, status: 1},
+        { id: '10044', brand: 'Maybelline', img: './img/SP/0044.jpg', name: 'Son Lì Maybelline The Loaded Bolds Matte Lips', price: 190000, type: "Son", remain: 0, status: 1},
+    
+        { id: '10001', brand: 'Innisfree', img: './img/SP/0007.jpg', name: 'Green Tea Foam Cleanser 150mL', price: 260000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10002', brand: 'Innisfree', img: './img/SP/0008.jpg', name: 'Green Tea Balancing Skin EX (Toner)', price: 345000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10003', brand: 'Innisfree', img: './img/SP/0009.jpg', name: 'Green Tea Fresh Skin Innisfree (Toner)', price: 322000, type: "Sửa rửa mặt", remain: 0, status: 1},
+        { id: '10004', brand: 'Innisfree', img: './img/SP/0012.jpg', name: 'Real Peppermint Mask (Mặt nạ Bạc hà Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10005', brand: 'Innisfree', img: './img/SP/0013.jpg', name: 'Real Rose Mask (Mặt nạ chiếc xuất Hoa hồng Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10006', brand: 'Hadalabo', img: './img/SP/0018.jpg', name: 'Hộp mặt nạ tinh chất dưỡng ẩm cao cấp (5 miếng)', price: 195000, type: "Mặt nạ", remain: 0, status: 1},
+        { id: '10014', brand: 'Maybelline', img: './img/SP/0042.jpg', name: 'Son Tint Maybelline Color Sensational Lip Tint', price: 170000, type: "Son", remain: 50, status: 1},
+        { id: '10015', brand: 'Maybelline', img: './img/SP/0043.jpg', name: 'Son Lì Maybelline Lips Vivid Matte 3.9gr', price: 190000, type: "Son", remain: 50, status: 1},
+        { id: '10016', brand: 'Maybelline', img: './img/SP/0044.jpg', name: 'Son Lì Maybelline The Loaded Bolds Matte Lips', price: 190000, type: "Son", remain: 0, status: 1},
+    
+    
+        { id: '10001', brand: 'Innisfree', img: './img/SP/0007.jpg', name: 'Green Tea Foam Cleanser 150mL', price: 260000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10002', brand: 'Innisfree', img: './img/SP/0008.jpg', name: 'Green Tea Balancing Skin EX (Toner)', price: 345000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10003', brand: 'Innisfree', img: './img/SP/0009.jpg', name: 'Green Tea Fresh Skin Innisfree (Toner)', price: 322000, type: "Sửa rửa mặt", remain: 0, status: 1},
+        { id: '10004', brand: 'Innisfree', img: './img/SP/0012.jpg', name: 'Real Peppermint Mask (Mặt nạ Bạc hà Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10005', brand: 'Innisfree', img: './img/SP/0013.jpg', name: 'Real Rose Mask (Mặt nạ chiếc xuất Hoa hồng Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10006', brand: 'Hadalabo', img: './img/SP/0018.jpg', name: 'Hộp mặt nạ tinh chất dưỡng ẩm cao cấp (5 miếng)', price: 195000, type: "Mặt nạ", remain: 0, status: 1},
+        { id: '10014', brand: 'Maybelline', img: './img/SP/0042.jpg', name: 'Son Tint Maybelline Color Sensational Lip Tint', price: 170000, type: "Son", remain: 50, status: 1},
+        { id: '10015', brand: 'Maybelline', img: './img/SP/0043.jpg', name: 'Son Lì Maybelline Lips Vivid Matte 3.9gr', price: 190000, type: "Son", remain: 50, status: 1},
+        { id: '10016', brand: 'Maybelline', img: './img/SP/0044.jpg', name: 'Son Lì Maybelline The Loaded Bolds Matte Lips', price: 190000, type: "Son", remain: 0, status: 1},
+    
+    
+        { id: '10001', brand: 'Innisfree', img: './img/SP/0007.jpg', name: 'Green Tea Foam Cleanser 150mL', price: 260000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10002', brand: 'Innisfree', img: './img/SP/0008.jpg', name: 'Green Tea Balancing Skin EX (Toner)', price: 345000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10003', brand: 'Innisfree', img: './img/SP/0009.jpg', name: 'Green Tea Fresh Skin Innisfree (Toner)', price: 322000, type: "Sửa rửa mặt", remain: 0, status: 1},
+        { id: '10004', brand: 'Innisfree', img: './img/SP/0012.jpg', name: 'Real Peppermint Mask (Mặt nạ Bạc hà Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10005', brand: 'Innisfree', img: './img/SP/0013.jpg', name: 'Real Rose Mask (Mặt nạ chiếc xuất Hoa hồng Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10006', brand: 'Hadalabo', img: './img/SP/0018.jpg', name: 'Hộp mặt nạ tinh chất dưỡng ẩm cao cấp (5 miếng)', price: 195000, type: "Mặt nạ", remain: 0, status: 1},
+        { id: '10014', brand: 'Maybelline', img: './img/SP/0042.jpg', name: 'Son Tint Maybelline Color Sensational Lip Tint', price: 170000, type: "Son", remain: 50, status: 1},
+        { id: '10015', brand: 'Maybelline', img: './img/SP/0043.jpg', name: 'Son Lì Maybelline Lips Vivid Matte 3.9gr', price: 190000, type: "Son", remain: 50, status: 1},
+        { id: '10016', brand: 'Maybelline', img: './img/SP/0044.jpg', name: 'Son Lì Maybelline The Loaded Bolds Matte Lips', price: 190000, type: "Son", remain: 0, status: 1},
+    
+    
+        { id: '10001', brand: 'Innisfree', img: './img/SP/0007.jpg', name: 'Green Tea Foam Cleanser 150mL', price: 260000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10002', brand: 'Innisfree', img: './img/SP/0008.jpg', name: 'Green Tea Balancing Skin EX (Toner)', price: 345000, type: "Sửa rửa mặt", remain: 50, status: 1},
+        { id: '10003', brand: 'Innisfree', img: './img/SP/0009.jpg', name: 'Green Tea Fresh Skin Innisfree (Toner)', price: 322000, type: "Sửa rửa mặt", remain: 0, status: 1},
+        { id: '10004', brand: 'Innisfree', img: './img/SP/0012.jpg', name: 'Real Peppermint Mask (Mặt nạ Bạc hà Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10005', brand: 'Innisfree', img: './img/SP/0013.jpg', name: 'Real Rose Mask (Mặt nạ chiếc xuất Hoa hồng Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+        { id: '10006', brand: 'Hadalabo', img: './img/SP/0018.jpg', name: 'Hộp mặt nạ tinh chất dưỡng ẩm cao cấp (5 miếng)', price: 195000, type: "Mặt nạ", remain: 0, status: 1},
+        { id: '10014', brand: 'Maybelline', img: './img/SP/0042.jpg', name: 'Son Tint Maybelline Color Sensational Lip Tint', price: 170000, type: "Son", remain: 50, status: 1},
+        { id: '10015', brand: 'Maybelline', img: './img/SP/0043.jpg', name: 'Son Lì Maybelline Lips Vivid Matte 3.9gr', price: 190000, type: "Son", remain: 50, status: 1},
+        { id: '10016', brand: 'Maybelline', img: './img/SP/0044.jpg', name: 'Son Lì Maybelline The Loaded Bolds Matte Lips', price: 190000, type: "Son", remain: 0, status: 1},
+    
+    ];
     let i = 0;
 
     if (filter.searchString !== undefined && filter.searchString !== null && filter.searchString !== "") {

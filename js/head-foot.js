@@ -1,23 +1,24 @@
 document.getElementsByTagName("header")[0].innerHTML += `
-<div class="container">
-    <div class="text-end align-items-center">                
-        <i class="bi bi-facebook icon align-middle"></i>
-        <i class="bi bi-instagram icon align-middle"></i>
-        <i class="bi bi-pinterest icon align-middle"></i>
-        <i class="bi bi-envelope icon align-middle"></i>
-        <button class="btn" id="login">
-            <i class="bi bi-person-fill"></i>
-            <div id="user-login"></div>
-        </button>
+<div class="container mb-2">
+    <div class="row align-items-start">
+    <div class="col-3">
+        <img src="./img/logo1.png" alt="" class="logo">
     </div>
 
-    <div class="row align-items-center">
-        <div class="col-3">
-            <img src="./img/logo1.png" alt="" class="logo">
+    <div class="col-9">
+        <div class="text-end align-items-center">                
+            <i class="bi bi-facebook icon align-middle"></i>
+            <i class="bi bi-instagram icon align-middle"></i>
+            <i class="bi bi-pinterest icon align-middle"></i>
+            <i class="bi bi-envelope icon align-middle"></i>
+            <button class="btn" id="login">
+                <i class="bi bi-person-fill"></i>
+                <div id="user-login"></div>
+            </button>
         </div>
 
-        <div class="col-8">
-            <div class="input-group">
+        <div class="row py-4">
+            <div class="col-11 input-group">
                 <input type="search" placeholder="Tìm kiếm" class="search" id="search">
                 <div class="input-group-append">
                     <button class="btn btn-warning" onclick="search()">
@@ -25,35 +26,38 @@ document.getElementsByTagName("header")[0].innerHTML += `
                     </button>
                 </div>
             </div>
+            
+            <div class="col-1">
+                <a href="./cart.html" style="color: black">
+                    <i class="bi bi-cart" style="font-size: 32px"></i>
+                </a>
+            </div>
         </div>
+    </div>
+    </div>
+    
 
-        <div class="col-1">
-        
-            <a href="./cart.html" style="color: black">
-                <i class="bi bi-cart" style="font-size: 32px"></i>
+    
+</div>
+
+    <div class="row text-center nav-bar bg-dark m-0">
+        <div class="col-3"></div>
+        <div class="col-6 main-nav">
+            <a href="./index.html" class="">
+                TRANG CHỦ
+            </a>
+            <a href="./san-pham.html" class="">
+                SẢN PHẨM
+            </a>
+            <a href="./gioi-thieu.html" class="">
+                GIỚI THIỆU
+            </a>
+            <a href="./blog.html" class="">
+                BLOG
             </a>
         </div>
-    </div>        
-</div>
-
-<div class="row text-center nav">
-    <div class="col-3"></div>
-    <div class="col-6 main-nav">
-        <a href="./index.html" class="">
-            TRANG CHỦ
-        </a>
-        <a href="./san-pham.html" class="">
-            SẢN PHẨM
-        </a>
-        <a href="./gioi-thieu.html" class="">
-            GIỚI THIỆU
-        </a>
-        <a href="./blog.html" class="">
-            BLOG
-        </a>
+        <div class="col-3"></div>
     </div>
-    <div class="col-3"></div>
-</div>
 `
 
 document.getElementsByTagName("footer")[0].innerHTML = `
@@ -124,5 +128,5 @@ function getGia(gia) {
     return Number(gia).toLocaleString("vi-VN") + "đ"; //định dạng số 1.000.000 VN
 }
 
-const userLogin = "sang"; //lưu ý: username này chỉ có mục đích là kiểm thử
+const userLogin = ""; //lưu ý: username này chỉ có mục đích là kiểm thử
 document.getElementById("user-login").innerHTML = (userLogin === "") ? "Đăng nhập" : userLogin;

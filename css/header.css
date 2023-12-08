@@ -1,5 +1,6 @@
 header {
     background-color: white;
+    padding: 10px 0;
 }
 
 .container {
@@ -19,9 +20,15 @@ img.logo {
     font-style: italic;
 }
 
-.text-end.align-items-center * {
+.text-end * {
     transition: 0.15s;
     display: inline-block;
+}
+
+.input-group {
+    width: 80%;
+    height: 100%;
+    padding-top: 10px;
 }
 
 .icon {
@@ -34,16 +41,19 @@ img.logo {
     transition: 0.15s;
 }
 
+#login {
+    border: none;
+}
+
 #login *:hover {
     transform: scale(1,1);
     transition: 0.15s;
 }
 
-.nav {
+.navbar {
     background-color: var(--bs-gray-900);
     margin-top: 10px;
     position: sticky;
-    position: -webkit-sticky;
     top: 50px;
 }
 /*
