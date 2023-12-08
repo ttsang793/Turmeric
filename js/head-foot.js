@@ -1,63 +1,61 @@
 document.getElementsByTagName("header")[0].innerHTML += `
 <div class="container mb-2">
     <div class="row align-items-start">
-    <div class="col-3">
-        <img src="./img/logo1.png" alt="" class="logo">
-    </div>
-
-    <div class="col-9">
-        <div class="text-end align-items-center">                
-            <i class="bi bi-facebook icon align-middle"></i>
-            <i class="bi bi-instagram icon align-middle"></i>
-            <i class="bi bi-pinterest icon align-middle"></i>
-            <i class="bi bi-envelope icon align-middle"></i>
-            <button class="btn" id="login">
-                <i class="bi bi-person-fill"></i>
-                <div id="user-login"></div>
-            </button>
+        <div class="col-3">
+            <img src="./img/logo1.png" alt="" class="logo">
         </div>
 
-        <div class="row py-4">
-            <div class="col-11 input-group">
-                <input type="search" placeholder="Tìm kiếm" class="search" id="search">
-                <div class="input-group-append">
-                    <button class="btn btn-warning" onclick="search()">
-                        <i class="bi bi-search"></i>
-                    </button>
+        <div class="col-9">
+            <div class="text-end align-items-center small-button">                
+                <i class="bi bi-facebook icon align-middle"></i>
+                <i class="bi bi-instagram icon align-middle"></i>
+                <i class="bi bi-pinterest icon align-middle"></i>
+                <i class="bi bi-tiktok icon align-middle"></i>
+                <i class="bi bi-envelope icon align-middle"></i>
+                <button class="btn" id="login">
+                    <i class="bi bi-person-fill"></i>
+                    <div id="user-login"></div>
+                </button>
+            </div>
+
+            <div class="row py-4">
+                <div class="col-11 input-group">
+                    <input type="search" placeholder="Tìm kiếm" class="search" id="search">
+                    <div class="input-group-append">
+                        <button class="btn btn-warning" onclick="search()">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="col-1">
+                    <a href="./cart.html" style="color: black">
+                        <i class="bi bi-cart" style="font-size: 32px"></i>
+                    </a>
                 </div>
             </div>
-            
-            <div class="col-1">
-                <a href="./cart.html" style="color: black">
-                    <i class="bi bi-cart" style="font-size: 32px"></i>
-                </a>
-            </div>
         </div>
     </div>
-    </div>
-    
-
-    
 </div>
 
-    <div class="row text-center nav-bar bg-dark m-0">
-        <div class="col-3"></div>
-        <div class="col-6 main-nav">
-            <a href="./index.html" class="">
-                TRANG CHỦ
-            </a>
-            <a href="./san-pham.html" class="">
-                SẢN PHẨM
-            </a>
-            <a href="./gioi-thieu.html" class="">
-                GIỚI THIỆU
-            </a>
-            <a href="./blog.html" class="">
-                BLOG
-            </a>
-        </div>
-        <div class="col-3"></div>
+<div class="row text-center nav-bar m-0">
+    <div class="col-3"></div>
+    <div class="col-6 main-nav">
+        <a href="./index.html" class="">
+            TRANG CHỦ
+        </a>
+        <a href="./san-pham.html" class="">
+            SẢN PHẨM
+        </a>
+        <a href="./gioi-thieu.html" class="">
+            GIỚI THIỆU
+        </a>
+        <a href="./blog.html" class="">
+            BLOG
+        </a>
     </div>
+    <div class="col-3"></div>
+</div>
 `
 
 document.getElementsByTagName("footer")[0].innerHTML = `
@@ -82,7 +80,7 @@ document.getElementsByTagName("footer")[0].innerHTML = `
         </div>
 
         <div class="col-4">
-            <h2>LIÊN HỆ</h2>
+            <h2>KẾT NỐI</h2>
             <ul>
                 <li>
                     <a href=""><i class="bi bi-facebook"></i> turmeric_cosmestic</a>
@@ -91,20 +89,22 @@ document.getElementsByTagName("footer")[0].innerHTML = `
                     <a href=""><i class="bi bi-instagram"></i> _Turmeric.2022_</a>
                 </li>
                 <li>
-                    <a href=""><i class="bi bi-envelope"></i> Turmeric@gmail.com</a>
+                    <a href=""><i class="bi bi-pinterest"></i> _Turmeric.2022_</a>
                 </li>
                 <li>
-                    <a href=""><i class="bi bi-telephone"></i> HOTLINE: 028 3827 9777</a>
-                </li>
+                    <a href=""><i class="bi bi-tiktok"></i> _Turmeric.2022_</a>
                 </li>
             </ul>
         </div>
 
         <div class="col-4">
-            <h2>DỊCH VỤ</h2>
+            <h2>LIÊN HỆ</h2>
             <ul>
                 <li class="highlight"><i class="bi bi-door-open"></i> OPEN: Thứ 2 ~ Thứ 6 (trừ ngày lễ)</li>
-                <li class="highlight"><i class="bi bi-phone"></i> 0348923412</li>
+                <li class="highlight"><i class="bi bi-phone"></i> 0348 923 412</li>
+                <li>
+                    <a href=""><i class="bi bi-envelope"></i> Turmeric@gmail.com</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -33,23 +33,23 @@ function renderPage() {
         return;
     }
 
-    let start = page.numOfProducts * (page.current - 1);
-    let end = Math.min(page.numOfProducts * page.current, productsList.length);
+    const start = page.numOfProducts * (page.current - 1);
+    const end = Math.min(page.numOfProducts * page.current, productsList.length);
     content.style.display = "flex";
     let contentDetail = "";
 
     for (let i=start; i<end; i++) {
         contentDetail += `
             <div id="chi-tiet" class="chi-tiet">
-                <div class="hinh-san-pham">
-                    <img src="${productsList[i].img}" alt="" onclick="showInfo(${productsList[i].id})">
+                <div class="hinh-san-pham" onclick="showInfo(${productsList[i].id})">
+                    <img src="${productsList[i].img}" alt="${productsList[i].id}">
                 </div>
                 <div class="ten-san-pham pt-3" onclick="showInfo(${productsList[i].id})">
                     ${productsList[i].name}
                 </div>
                 <div class="gia">${getGia(productsList[i].price)}</div>
 
-                <div class="mua-hang"></div>
+                <div class="mua-hang d-flex justify-content-center"></div>
             </div>
         `;
         content.innerHTML = contentDetail;
@@ -58,7 +58,7 @@ function renderPage() {
     for (let i=start, j=0; i<end; i++) {
         if (productsList[i].remain > 0)
             document.querySelectorAll(".mua-hang")[i%page.numOfProducts].innerHTML = `
-                <div class="input-group mb-3 justify-content-center pt-3">
+                <div class="input-group mb-3 d-flex justify-content-center pt-3">
                     <input type="number" name="" value="1" min="1" max="${Number(productsList[i].remain)}" class="amount amount-page text-center" onkeyup="checkKey(this, event);" onchange="checkValue(this)">
                     <button class="btn btn-warning" onclick="addToCart(${productsList[i].id}, ${j++})">
                         <i class="bi bi-cart"></i>

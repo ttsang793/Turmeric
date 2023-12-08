@@ -1,0 +1,35 @@
+.left {
+  position: fixed;
+  top: 0;
+  width: 14%;
+  background-color: #212529;
+  color: white;
+  height: 100%;
+}
+
+.nav-list {
+  position: relative;
+  height: 100%;
+}
+
+.left .btn {
+  width: 80%;
+  transition: 0.15s;
+  color: white;
+  border-radius: 0;
+  text-align: left;
+  font-size: 17px;
+}
+
+.right {
+  margin-top: 0.5%;
+  margin-left: 15%;
+  width: 85%;
+}
+
+.dang-xuat {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+}
