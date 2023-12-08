@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/san-pham.css">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <header></header>
+
+    <main class="san-pham">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <fieldset id="thuong-hieu">
+                        <legend>Thương hiệu</legend>
+                    </fieldset>
+                    
+                    <fieldset id="loai-san-pham">
+                        <legend>Loại sản phẩm</legend>
+                        <div class="input-group mb-3">
+                            <input type="checkbox" name="" value="Sửa rửa mặt" id="sua-rua-mat" class="check check-lsp">
+                            <label for="sua-rua-mat">Sửa rửa mặt</label>
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <input type="checkbox" name="" value="Son" id="son" class="check check-lsp">
+                            <label for="son">Son</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="checkbox" name="" value= "Mặt nạ" id="mat-na" class="check check-lsp">
+                            <label for="mat-na">Mặt nạ</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Lọc giá</legend>
+                        <input type="number" name="" id="price-min" min="0" step="1000" value="0" style="width: 100px;">
+                        -
+                        <input type="number" name="" id="price-max" min="0" step="1000" value="0" style="width: 100px;">
+                        <br>
+                        <button class="btn btn-success my-2" onclick="locGia()">Lọc</button>
+                    </fieldset>
+                </div>
+
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-6">
+                            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="./index.html">Trang chủ</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-6 text-end">
+                            <label for="so-sp">Số sản phẩm:</label>
+                            <select name="" id="so-sp" onchange="setPage(1, this.value)">
+                                <option value="9">9</option>
+                                <option value="18">18</option>
+                                <option value="27">27</option>
+                                <option value="36">36</option>
+                            </select>
+
+                            <label for="sap-xep">Sắp xếp:</label>
+                            <select name="" id="sap-xep" onchange="sort(this.selectedIndex)">
+                                <option value="mac-dinh">Mặc định</option>
+                                <option value="tang-dan">Giá tăng dần</option>
+                                <option value="giam-dan">Giá giảm dần</option>
+                                <option value="a-z">Sắp xếp từ A-Z</option>
+                                <option value="z-a">Sắp xếp từ Z-A</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="danh-sach text-center">
+                    </div>
+
+                    <div id="page" class="page text-center pt-3"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="product-view"></div>
+
+    <div class="alert alert-success py-1" role="alert"></div>
+    <div class="alert alert-danger py-1" role="alert">
+        Bạn cần phải đăng nhập để thêm sản phẩm
+    </div>
+
+    <footer></footer>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="./js/head-foot.js"></script>
+<script src="./js/database.js"></script>
+<script src="./js/productPage.js"></script>
+<script src="./js/productInfo.js"></script>
+<script src="./js/cart.js"></script>
+</html>
