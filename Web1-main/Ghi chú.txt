@@ -1,1 +1,0 @@
-Mỗi folder đều sẽ có file .gitignore. File này chỉ là file tạm thời để S commit các folder này lên GitHub (do Git ko cho upload file rỗng), và sẽ xóa khi đồ án dần dần đc thực hiện.
