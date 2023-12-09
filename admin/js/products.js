@@ -45,3 +45,201 @@
     { id: '10044', brand: 'Maybelline', img: './img/SP/0044.jpg', name: 'Son Lì Maybelline The Loaded Bolds Matte Lips', price: 190000, status: 1},
     { id: '10045', brand: 'Maybelline', img: './img/SP/0045.jpg', name: 'Nước Tẩy Trang Maybelline Micellar Water 400ml', price: 190000, status: 1}
 ];*/
+
+let productData = [
+    { id: '10007', brand: 'Innisfree', img: './img/SP/0007.jpg', name: 'Green Tea Foam Cleanser 150mL', price: 260000, type: "Sửa rửa mặt", remain: 50, status: 1},
+    { id: '10008', brand: 'Innisfree', img: './img/SP/0008.jpg', name: 'Green Tea Balancing Skin EX (Toner)', price: 345000, type: "Sửa rửa mặt", remain: 50, status: 1},
+    { id: '10009', brand: 'Innisfree', img: './img/SP/0009.jpg', name: 'Green Tea Fresh Skin Innisfree (Toner)', price: 322000, type: "Sửa rửa mặt", remain: 0, status: 1},
+    { id: '10012', brand: 'Innisfree', img: './img/SP/0012.jpg', name: 'Real Peppermint Mask (Mặt nạ Bạc hà Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+    { id: '10013', brand: 'Innisfree', img: './img/SP/0013.jpg', name: 'Real Rose Mask (Mặt nạ chiếc xuất Hoa hồng Innisfree)', price: 240000, type: "Mặt nạ", remain: 50, status: 1},
+    { id: '10018', brand: 'Hadalabo', img: './img/SP/0018.jpg', name: 'Hộp mặt nạ tinh chất dưỡng ẩm cao cấp (5 miếng)', price: 195000, type: "Mặt nạ", remain: 0, status: 1},
+    { id: '10042', brand: 'Maybelline', img: './img/SP/0042.jpg', name: 'Son Tint Maybelline Color Sensational Lip Tint', price: 170000, type: "Son", remain: 50, status: 1},
+    { id: '10043', brand: 'Maybelline', img: './img/SP/0043.jpg', name: 'Son Lì Maybelline Lips Vivid Matte 3.9gr', price: 190000, type: "Son", remain: 50, status: 1},
+    { id: '10044', brand: 'Maybelline', img: './img/SP/0044.jpg', name: 'Son Lì Maybelline The Loaded Bolds Matte Lips', price: 190000, type: "Son", remain: 0, status: 1},
+];
+
+onload = () => {
+    if (localStorage.getItem('testList') === null)
+        localStorage.setItem('testList',JSON.stringify(productData));
+    else
+        productData = JSON.parse(localStorage.getItem("testList"));
+    loadBang()
+}
+
+function loadBang(search = "") {
+    let dong = ''
+    for (let i=0; i<productData.length; i++)
+        if (search === "" || productData[i].name.toLowerCase().includes(search.toLowerCase()))
+            dong += `            
+                <tr>
+                    <th>${productData[i].id}</th>
+                    <td>${productData[i].name}</td>
+                    <td>${productData[i].type}</td>
+                    <td>${productData[i].brand}</td>
+                    <td>${productData[i].price}</td>
+                    <td>${productData[i].remain}</td>
+                    <td>
+                        <img src="../${productData[i].img}" style="width: 100px">
+                    </td>
+                    <td>
+                        <button class="btn btn-warning" onclick="openForm('Sửa', ${productData[i].id})">Sửa</button><br>
+                        <button class="btn btn-danger" onclick="lockProduct(${i})" id="lock">
+                            ${(productData[i].status === 0) ? 'Mở khóa' : 'Khóa'}
+                        </button>
+                    </td>
+                </tr>
+            `;
+    document.getElementById("product-list").innerHTML = dong;
+}
+
+function getProduct(id) {
+    for (let i=0; i<productData.length; i++)
+        if (productData[i].id === `${id}`) return i;
+    return -1;
+}
+
+function openForm(handle, productID = "") {
+    document.getElementById("productModal").innerHTML = "";
+    if (productID !== "") var index = getProduct(productID);
+    const product = productData[index] || {};
+    console.log(product);
+    const modal = document.getElementById("productModal");
+    const modalDetail = `
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">${handle} sản phẩm</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row m-0">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="product-id" class="col-form-label fw-bold">ID:</label>
+                                        <input type="text" class="form-control" id="product-id" value="${product.id || ""}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="product-name" class="col-form-label fw-bold">Tên sản phẩm:</label>
+                                        <input type="text" class="form-control" id="product-name" value="${product.name || ""}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="product-type" class="col-form-label fw-bold font-weight-bold">Loại sản phẩm:</label>
+                                        <select name="" class="form-control" id="product-type" value="">
+                                            <option value="Sửa rửa mặt">Sửa rửa mặt</option>
+                                            <option value="Son">Son</option>
+                                            <option value="Mặt nạ">Mặt nạ</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="product-brand" class="col-form-label fw-bold">Thương hiệu:</label>
+                                        <select name="" class="form-control" id="product-brand" value="">
+                                            <option value="Innisfree">Innisfree</option>
+                                            <option value="Hadalabo">Hadabalo</option>
+                                            <option value="Maybelline">Maybelline</option>
+                                            <option value="Blackrouge">Blackrouge</option>
+                                            <option value="Perfect Diary">Perfect Diary</option>
+                                            <option value="Romand">Romand</option>
+                                            <option value="Merzy">Merzy</option>
+                                            <option value="BBIA">BBIA</option>
+                                            <option value="Laroche Poshy">Laroche Poshy</option>
+                                            <option value="Vichy">Vichy</option>
+                                            <option value="L'ORÉAL">L'ORÉAL</option>
+                                            <option value="Gogotales">Gogotales</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="product-price" class="col-form-label fw-bold">Giá:</label>
+                                        <input type="number" min="1000" step="1000" class="form-control" id="product-price" value="${product.price || ""}" onkeyup="checkKey(this, event)">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="product-img" class="col-form-label fw-bold">Đường dẫn tới hình ảnh:</label>
+                                        <input type="text" class="form-control" id="product-name" value="${product.img || ""}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="product-remain" class="col-form-label fw-bold">Tồn kho:</label>
+                                        <input type="number" min="0" step="1" class="form-control" id="product-remain" value="${product.remain || ""}" onkeyup="checkKey(this, event)">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-success" onclick="handleProduct('${handle}', ${index})" data-bs-dismiss="modal">
+                            ${handle}
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.getElementById("productModal").innerHTML += modalDetail;
+    document.getElementById("product-brand").value = product.brand;
+    document.getElementById("product-type").value = product.type;
+    new bootstrap.Modal(modal).show();
+}
+
+function handleProduct(handle, index = 0) {
+    if (handle === "Thêm") addProduct()
+    else updateProduct(index);
+    localStorage.setItem('testList',JSON.stringify(productData));
+    loadBang();
+}
+
+function addProduct() {
+    productData.push({
+        id: document.getElementById("product-id").value,
+        brand: document.getElementById("product-brand").value,
+        img: './img/SP/0045.jpg',
+        name: document.getElementById("product-name").value,
+        price: Number(document.getElementById("product-price").value),
+        type: document.getElementById("product-type").value,
+        remain: Number(document.getElementById("product-remain").value),
+        status: 1
+    });
+}
+
+function updateProduct(index) {
+    productData.splice(index, 1, {
+        id: document.getElementById("product-id").value,
+        brand: document.getElementById("product-brand").value,
+        img: './img/SP/0045.jpg',
+        name: document.getElementById("product-name").value,
+        price: Number(document.getElementById("product-price").value),
+        type: document.getElementById("product-type").value,
+        remain: Number(document.getElementById("product-remain").value),
+        status: 1
+    });
+}
+
+function lockProduct(index) {
+    productData[index].status = (productData[index].status === 1) ? 0 : 1;
+    localStorage.setItem('testList',JSON.stringify(productData));
+    loadBang();
+}
+
+function searchProduct() {
+    loadBang(document.getElementById("search").value);
+}
+
+document.getElementById("search").addEventListener("keyup", event => {
+    if (event.key === "Enter") searchProduct();
+})
+
+function getProductList() {
+    if (localStorage.getItem('testList') === null)
+        localStorage.setItem('testList',JSON.stringify(productData));
+    productList = JSON.parse(localStorage.getItem('testList'));
+    let returnList = new Array();
+    for (let i=0; i<productList.length; i++)
+        if (productList[i].status === 1) returnList.push(productList[i]);
+    return returnList;
+}
+
+function checkKey(input, event) {
+    if (event.key === "Backspace" || event.key === "Enter") return;
+    if (isNaN(event.key)) input.value = input.min;
+}

@@ -213,8 +213,8 @@ function showInfo(id) {
                 <div class="container">
                     <div class="row p-5">
                         <div class="col-5">
-                            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
+                            <div id="productCarousel" class="carousel slide">
+                                <div class="carousel-inner row m-0 align-items-center">
                                 </div>
                             </div>
                         </div>
@@ -257,28 +257,25 @@ function showInfo(id) {
         if (i === 0)
             slide += `        
                 <div class="carousel-item active">
-                    <img src="${photo[i]}" class="d-block w-100" alt="...">
+                    <img src="${photo[i]}" class="d-block w-100" style="aspect-ratio: 1/1" alt="...">
                 </div>
             `;
         else
             slide += `        
                 <div class="carousel-item">
-                    <img src="${photo[i]}" class="d-block w-100" alt="...">
+                    <img src="${photo[i]}" class="d-block w-100" style="aspect-ratio: 1/1" alt="...">
                 </div>
             `;
     }
     document.querySelector(".carousel-inner").innerHTML = slide;
-    if (photo.length > 1) document.getElementById("productCarousel").innerHTML += `
+    if (photo.length > 1) document.querySelector(".carousel").innerHTML += `
         <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span>&lt;</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true" style="color: blue"></span>
-            <span class="visually-hidden">Next</span>
+            <span>&gt;</span>
         </button>
-    `
-    
+    `;    
     new bootstrap.Modal(productView).show();
 }
 

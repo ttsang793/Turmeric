@@ -92,21 +92,23 @@ button.amount:hover {
     border: 1px solid rgb(200,200,200);
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 90px;
-  width: 150px;
-  background-image: none;
+.carousel-control-prev, .carousel-control-next  {
+    font-size: 55px;
+    color: #FF4F81;
 }
 
-.carousel-control-next-icon:after {
-  content: '>';
-  font-size: 55px;
-  color: #FF4F81;
+.carousel-control-prev {
+    left: -40px;
 }
 
-.carousel-control-prev-icon:after {
-  content: '<';
-  font-size: 55px;
-  color: #FF4F81;
+.carousel-control-next {
+    right: -10px;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    color: #ff2160;    
+}
+
+.carousel-control-prev:focus, .carousel-control-next:focus {
+    color: #FF4F81;
 }
