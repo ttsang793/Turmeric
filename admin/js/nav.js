@@ -1,7 +1,7 @@
 document.querySelector('.left').innerHTML = `
   <div class="nav-list">
-    <div class="img text-center pb-3">
-        <img src="./img/logo1.png" alt="" width="80%">
+    <div class="img text-center py-3">
+        <img src="./img/logo1.png" alt="" width="60%">
     </div>
     <a href="./products.html" class="btn btn-left py-3 ps-2 products"><i class="bi bi-box-fill"></i> SẢN PHẨM</a>
     <a href="./orders.html" class="btn btn-left py-3 ps-2 orders"><i class="bi bi-cart-check-fill"></i> ĐƠN HÀNG</a>

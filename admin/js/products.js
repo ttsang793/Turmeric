@@ -80,7 +80,7 @@ let productData = [
      brand: "Innisfree",
      type: "Sữa rửa mặt",
      img: "./img/SP/0007.jpg",
-     description: "",
+     description: "Sữa rửa mặt trà xanh innisfree Green Tea Amino Cleansing Foam làm sạch tạp chất, đồng thời dưỡng ẩm để làn da sạch sẽ, mịn màng.",
      remain: 50,
      price: 260000,
      status: 1
