@@ -6,6 +6,24 @@ body {
     display: none;
     position: fixed;
     top: 0px;
+    left: 0px;
     right: 0px;
-    z-index: 10;
+    font-size: 20px;
+    z-index: 50;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fadeOut {
+    animation: fadeOut 0.5s
+}
+
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }

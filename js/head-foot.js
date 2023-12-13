@@ -122,5 +122,26 @@ function getGia(gia) {
     return Number(gia).toLocaleString("vi-VN") + "đ"; //định dạng số 1.000.000 VN
 }
 
+function dangerMessage(message) {
+    document.querySelector(".alert-danger").innerHTML = message;
+    $('.alert-danger').css("display", "initial");
+    setTimeout(() => document.querySelector(".alert-danger").classList.toggle('fadeOut'), 2500);
+    setTimeout(() => {
+        $('.alert-danger').css("display", "none");
+        document.querySelector(".alert-danger").classList.toggle('fadeOut')
+    }, 3000);
+}
+
+function successMessage(message, second = 3000) {
+    document.querySelector(".alert-success").innerHTML = message;
+    $('.alert-success').css("display", "initial");
+    setTimeout(() => document.querySelector(".alert-success").classList.toggle('fadeOut'), second - 500);
+    setTimeout(() => {
+        $('.alert-success').css("display", "none");
+        document.querySelector(".alert-danger").classList.toggle('fadeOut');
+    }, second);
+    
+}
+
 const userLogin = "sang"; //lưu ý: username này chỉ có mục đích là kiểm thử
 document.getElementById("user-login").innerHTML = (userLogin === "") ? "Đăng nhập" : userLogin;

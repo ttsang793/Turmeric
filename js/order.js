@@ -88,8 +88,7 @@ function checkHuy(index) {
 
 function huyDonHang(index) {
     orderList.splice(orderList.findIndex(order => order === userOrder[index]),1);
-    $('.alert-danger').css("display", "initial");
+    successMessage("Hủy đơn hàng thành công", 1500);
     localStorage.setItem('orderList',JSON.stringify(orderList));
-    setTimeout(() => $('.alert-danger').css("display", "none"), 3000);
-    setTimeout(() => location.reload(), 3000);
+    setTimeout(() => location.reload(), 2000);
 }

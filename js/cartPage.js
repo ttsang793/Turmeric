@@ -106,9 +106,11 @@ function makeOrder() {
     for (let i=0; i < length; ++i) {
         if (userCart[i].checked) {
             if (userCart[i].amount > userCart[i].remain) {
-                document.querySelector(".alert-danger").innerHTML = `Bạn đang đặt sản phẩm ${userCart[i].name} với số lượng nhiều hơn tồn kho (${userCart[i].remain})`;
-                $('.alert-danger').css("display", "initial");
-                setTimeout(() => $('.alert-danger').css("display", "none"), 3000);
+                dangerMessage(`Bạn đang đặt sản phẩm ${userCart[i].name} với số lượng nhiều hơn tồn kho (${userCart[i].remain})`);
+                return
+            }
+            if (userCart[i].amount == 0) {
+                dangerMessage(`Vui lòng thêm số lượng cho ${userCart[i].name}`);
                 return
             }
             delete userCart[i].username;
@@ -119,15 +121,10 @@ function makeOrder() {
             warning = false;
         }
     }
-    if (warning) {
-        document.querySelector(".alert-danger").innerHTML = "Vui lòng chọn 1 món để đặt hàng";
-        $('.alert-danger').css("display", "initial");
-        setTimeout(() => $('.alert-danger').css("display", "none"), 3000);
-    }
-    else {        
-        $('.alert-success').css("display", "initial");
-        setTimeout(() => $('.alert-success').css("display", "none"), 3000);
-        setTimeout(() => location.reload(), 3000);
+    if (warning) dangerMessage("Vui lòng chọn 1 món để đặt hàng");
+    else { 
+        successMessage("Đặt hàng thành công", 1500);
+        setTimeout(() => location.reload(), 1500);
         localStorage.setItem('cartList',JSON.stringify(cartList));
         addOrder(order, new Date().toLocaleString("fr-FR"));
     }

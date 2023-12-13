@@ -4,29 +4,10 @@ let filter = {searchString: "", priceMin: 0, priceMax: 0, searchBrand: [], searc
 
 const brandList = ["Innisfree", "Hadalabo", "Maybelline"];
 
-const typeList = [
-"Combo",
-"Tẩy trang",
-"Sữa rửa mặt",
-"Toner",
-"Son môi",
-"Mặt nạ",
-"Kem chống nắng",
-"Lotion",
-"Kem dưỡng",
-"Sữa dưỡng trắng",
-"Gel dưỡng ẩm",
-"Kem nền",
-"Phấn phủ",
-"Cushion",
-"Phấn má hồng",
-"Che khuyết điểm",
-"Phấn mắt",
-"Eyeliner",
-"Mascara",
-"Kẻ mày, Tạo khối",
-"Kẻ mày"
-];
+const typeList = [ "Combo", "Tẩy trang", "Sữa rửa mặt", "Toner", "Son môi", "Mặt nạ",
+"Kem chống nắng", "Lotion", "Kem dưỡng", "Sữa dưỡng trắng", "Gel dưỡng ẩm", "Kem nền",
+"Phấn phủ", "Cushion", "Phấn má hồng", "Che khuyết điểm", "Phấn mắt", "Eyeliner", "Mascara",
+"Kẻ mày, Tạo khối", "Kẻ mày" ];
 
 
 window.onload = () => {
@@ -285,8 +266,7 @@ function changeNumber(input) {
 
 function addToCart(product, index = undefined) {
     if (userLogin === "") {
-        $('.alert-danger').css("display", "initial");
-        setTimeout(() => $('.alert-danger').css("display", "none"),3000);
+        dangerMessage("Bạn cần phải đăng nhập để thêm sản phẩm");
         return;
     }
     if (index === undefined)
@@ -294,15 +274,17 @@ function addToCart(product, index = undefined) {
     else
         amount = document.getElementsByClassName("amount-page")[index];
 
-    if(findProduct(product) === -1) {
-        insertCart(product, amount.value);
-        document.querySelector(".alert-success").innerHTML = "Thêm thành công sản phẩm";
-    }
-
+    if (amount.value === "") dangerMessage("Vui lòng nhập số lượng cần thêm");
+    else if (amount.value == 0) dangerMessage("Vui lòng thêm nhiều hơn 1 sản phẩm");
     else {
-        updateCart(product, amount.value);
-        document.querySelector(".alert-success").innerHTML = "Update thành công sản phẩm";
-    };
-    $('.alert-success').css("display", "initial");
-    setTimeout(() => $('.alert').css("display", "none"),3000);
+        if(findProduct(product) === -1) {
+            insertCart(product, amount.value);
+            successMessage("Thêm thành công sản phẩm");
+        }
+
+        else {
+            updateCart(product, amount.value);
+            successMessage("Update thành công sản phẩm");
+        }
+    }
 }

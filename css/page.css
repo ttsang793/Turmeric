@@ -75,6 +75,10 @@ img.logo {
     font-weight: bold;
 }
 
+.sticky-top {
+    z-index: 20;
+}
+
 footer {
     background-color: #212529;
     padding-top: 20px;

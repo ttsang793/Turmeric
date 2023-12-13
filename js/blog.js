@@ -74,6 +74,9 @@ function showModal(index) {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
+                <div class="text-end">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <h5 class="modal-title my-2 text-center" id="detailsModalLabel">${mangBlog[index].tieuDe}</h5>
                 <!-- Chi tiết bài viết sẽ được thêm ở đây -->
                 <div id="modalContent">

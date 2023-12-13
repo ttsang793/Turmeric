@@ -112,8 +112,8 @@ let productData = [
      name: "Canola Honey Deep-Moisture",
      brand: "Innisfree",
      type: "Son môi",
-     img: ".P/0010.jpg",
-     description: " dưỡng ẩm sâu không màu. innisfree Canola Honey Lip Balm Deep Moisture 3.5g.  dưỡng ẩm sâu không màu Innisfree Canola Honey Lip Balm Deep Moisture chiết xuất từ mật ong hoa cải giúp dưỡng ẩm sâu, tăng độ đàn hồi và hình thành màng chắn bảo vệ đôi môi.",
+     img: "./img/SP/0010.jpg",
+     description: "Son dưỡng ẩm sâu không màu. Innisfree Canola Honey Lip Balm Deep Moisture 3.5g. Son dưỡng ẩm sâu không màu Innisfree Canola Honey Lip Balm Deep Moisture chiết xuất từ mật ong hoa cải giúp dưỡng ẩm sâu, tăng độ đàn hồi và hình thành màng chắn bảo vệ đôi môi.",
      remain: 50,price: 130000,
      status: 1
     },
@@ -122,8 +122,8 @@ let productData = [
      name: "Green Tea Lip",
      brand: "Innisfree",
      type: "Son môi",
-     img: ".P/0011.jpg",
-     description: " dưỡng Innisfree Green Tea Lip chứa 99.9% thành phần được chiết xuất từ thiên nhiên, tiêu biểu chính là chiết xuất từ Trà Xanh giúp dưỡng ẩm cao, kháng khuẩn, bảo vệ da khỏi các tác hại của môi trường sống xung quanh, giảm thâm môi, tăng cường độ đàn hồi của môi, mang lại cho bạn đôi môi căng mướt, loại bỏ tình trạng môi khô, nứt nẻ hay bong tróc.",
+     img: "./img/SP/0011.jpg",
+     description: "Son dưỡng Innisfree Green Tea Lip chứa 99.9% thành phần được chiết xuất từ thiên nhiên, tiêu biểu chính là chiết xuất từ Trà Xanh giúp dưỡng ẩm cao, kháng khuẩn, bảo vệ da khỏi các tác hại của môi trường sống xung quanh, giảm thâm môi, tăng cường độ đàn hồi của môi, mang lại cho bạn đôi môi căng mướt, loại bỏ tình trạng môi khô, nứt nẻ hay bong tróc.",
      remain: 50,price: 140000,
      status: 1
     },
@@ -176,8 +176,8 @@ let productData = [
      name: " Kem Lì Innisfree Real Fit Matte Liquid",
      brand: "Maybefree",
      type: "Son môi",
-     img: ".P/0016.jpg",
-     description: "Innisfree Real Fit Matte Liquid là dòng  kem lì dạng lỏng, nó là sự kết hợp đặc sắc giữa  lì và  bóng. Innisfree Real Fit Matte Liquid có chất  lên môi rất mịn, cực mượt và mềm, không hề gây bí hay nặng môi, đặc biệt màu  giữ được khá lâu trên môi.  có chứa dưỡng chất dưỡng ẩm cho môi nên không hề gây khô môi hay bợn màu.",
+     img: "./img/SP/0016.jpg",
+     description: "Innisfree Real Fit Matte Liquid là dòng son kem lì dạng lỏng, nó là sự kết hợp đặc sắc giữa son lì và son bóng. Innisfree Real Fit Matte Liquid có chất son lên môi rất mịn, cực mượt và mềm, không hề gây bí hay nặng môi, đặc biệt màu son giữ được khá lâu trên môi. Son có chứa dưỡng chất dưỡng ẩm cho môi nên không hề gây khô môi hay bợn màu.",
      remain: 50,price: 190000,
      status: 1
     },
@@ -186,8 +186,8 @@ let productData = [
      name: " Lì Innisfree Real Fit Matte Lipstick 3.6gr",
      brand: "Maybefree",
      type: "Son môi",
-     img: ".P/0017.jpg",
-     description: `Innisfree Real Fit Matte Lipstick là bộ sưu tập  10 shape với các màu chủ đạo thiên về tông cam, hồng, đỏ,… với khả năng “mix & match” tinh tế, tạo ra những sắc  rạng rỡ, đánh bật tông da, giúp bạn trở nên nổi bật, quyến rũ.`,
+     img: "./img/SP/0017.jpg",
+     description: `Innisfree Real Fit Matte Lipstick là bộ sưu tập son 10 shape với các màu chủ đạo thiên về tông cam, hồng, đỏ,… với khả năng “mix & match” tinh tế, tạo ra những sắc son rạng rỡ, đánh bật tông da, giúp bạn trở nên nổi bật, quyến rũ.`,
      remain: 50,price: 230000,
      status: 1
     },
@@ -455,7 +455,7 @@ let productData = [
      brand: "Maybelline",
      type: "Son môi",
      img: "./img/SP/0041.jpg",
-     description: " Kem Lì 16H Lâu Trôi SuperStay Matte Ink™ nổi tiếng với công nghệ mực đàn hồi độc quyền giúp  lên màu chuẩn, lâu trôi 16h, không lem, dính và không gây khô môi, giúp bạn ăn uống, hoạt động thả ga cả ngày dài mà không lo lem, dính trên thành ly, đồ ăn hay quần áo.",
+     description: "Son Kem Lì 16H Lâu Trôi SuperStay Matte Ink™ nổi tiếng với công nghệ mực đàn hồi độc quyền giúp son lên màu chuẩn, lâu trôi 16h, không lem, dính và không gây khô môi, giúp bạn ăn uống, hoạt động thả ga cả ngày dài mà không lo lem, dính trên thành ly, đồ ăn hay quần áo.",
      remain: 50,
      price: 210000,
      status: 1
@@ -466,7 +466,7 @@ let productData = [
      brand: "Maybelline",
      type: "Son môi",
      img: "./img/SP/0042.jpg",
-     description: " tint nhẹ môi Color Sensational Lip Tint với 8 màu thời thượng lấy cảm hứng từ thành phố New York, tôn lên vẻ đẹp của tông da châu Á.  lên chuẩn màu chỉ sau một lần lướt, để lại hiệu ứng lì và cảm giác siêu nhẹ trên môi. Chất  mềm mịn, dễ tán, có thể sử dụng như  môi, phấn má và mắt dạng kem giúp bạn trang điểm dễ dàng bằng một cây .",
+     description: "Son tint nhẹ môi Color Sensational Lip Tint với 8 màu thời thượng lấy cảm hứng từ thành phố New York, tôn lên vẻ đẹp của tông da châu Á. Son lên chuẩn màu chỉ sau một lần lướt, để lại hiệu ứng lì và cảm giác siêu nhẹ trên môi. Chất son mềm mịn, dễ tán, có thể sử dụng như son môi, phấn má và mắt dạng kem giúp bạn trang điểm dễ dàng bằng một cây son.",
      remain: 50,
      price: 170000,
      status: 1
@@ -477,7 +477,7 @@ let productData = [
      brand: "Maybelline",
      type: "Son môi",
      img: "./img/SP/0043.jpg",
-     description: " màu lâu phai Vivid Maybelline với tinh chất mật ong dưỡng chất làm cho môi trở nên đàn hồi và mềm mại, mang đến bờ môi ẩm mượt suốt ngày dài. Với sắc tố màu nguyên chất giúp cho màu  lên màu chuẩn, bao phủ tuyệt vời, giữ màu trong suốt 6 giờ.",
+     description: "Son màu lâu phai Vivid Maybelline với tinh chất mật ong dưỡng chất làm cho môi trở nên đàn hồi và mềm mại, mang đến bờ môi ẩm mượt suốt ngày dài. Với sắc tố màu nguyên chất giúp cho màu son lên màu chuẩn, bao phủ tuyệt vời, giữ màu trong suốt 6 giờ.",
      remain: 50,
      price: 190000,
      status: 1
@@ -488,7 +488,7 @@ let productData = [
      brand: "Maybelline",
      type: "Son môi",
      img: "./img/SP/0044.jpg",
-     description: "Maybelline là thương hiệu mỹ phẩm quá quen thuộc với chị em phụ nữ yêu thích làm đẹp. Bên cạnh các dòng mascara từng gây sốt, các dòng  Maybelline cũng được các cô nàng yêu thích không kém, đặc biệt là dòng Creamy Matte đã ra mắt cách đây 1 năm. Mùa hè năm nay, hãng vừa cho ra đời dòng son Maybelline The Loaded Bold, đúng như tên gọi, chính các gam màu đậm mới là điều khiến phái đẹp chú ý nhất.",
+     description: "Maybelline là thương hiệu mỹ phẩm quá quen thuộc với chị em phụ nữ yêu thích làm đẹp. Bên cạnh các dòng mascara từng gây sốt, các dòng son Maybelline cũng được các cô nàng yêu thích không kém, đặc biệt là dòng Creamy Matte đã ra mắt cách đây 1 năm. Mùa hè năm nay, hãng vừa cho ra đời dòng son Maybelline The Loaded Bold, đúng như tên gọi, chính các gam màu đậm mới là điều khiến phái đẹp chú ý nhất.",
      remain: 50,
      price: 190000,
      status: 1
@@ -691,12 +691,13 @@ function handleProduct(handle, index = 0) {
 function addProduct() {
     productData.push({
         id: document.getElementById("product-id").value,
-        brand: document.getElementById("product-brand").value,
-        img: document.getElementById("product-img").value,
         name: document.getElementById("product-name").value,
-        price: Number(document.getElementById("product-price").value),
+        brand: document.getElementById("product-brand").value,
         type: document.getElementById("product-type").value,
+        img: document.getElementById("product-img").value,
+        description: document.getElementById("product-description").innerHTML,
         remain: Number(document.getElementById("product-remain").value),
+        price: Number(document.getElementById("product-price").value),
         status: 1
     });
 }
@@ -709,12 +710,13 @@ function updateSoLuong(id, soLuong) {
 function updateProduct(index) {
     productData.splice(index, 1, {
         id: document.getElementById("product-id").value,
-        brand: document.getElementById("product-brand").value,
-        img: document.getElementById("product-img").value,
         name: document.getElementById("product-name").value,
-        price: Number(document.getElementById("product-price").value),
+        brand: document.getElementById("product-brand").value,
         type: document.getElementById("product-type").value,
+        img: document.getElementById("product-img").value,
+        description: document.getElementById("product-description").innerHTML,
         remain: Number(document.getElementById("product-remain").value),
+        price: Number(document.getElementById("product-price").value),
         status: 1
     });
 }
