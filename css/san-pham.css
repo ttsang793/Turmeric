@@ -12,7 +12,7 @@
     margin: 10px 0;
     border: 1px solid black;
     padding: 10px;
-    box-shadow: -5px 5px rgba(0,0,0,0.15);
+    box-shadow: -4px 4px 5px rgba(0,0,0,0.3);
     background-color: white;
     cursor: pointer;
     transition-duration: 0.15s;
@@ -64,24 +64,8 @@ legend {
     aspect-ratio: 1/1;
 }
 
-.product-view .container{
-    position: relative;
-    background-color: white;
-    transform: translate(0%, 10%);
-    max-height: 80%;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.product-view {
-    display: none;
-    background-color: rgba(0,0,0,0.6);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1001;
+#productModal .modal-content {
+    box-shadow: -4px 4px 5px rgba(0,0,0,0.3);
 }
 
 button.amount {

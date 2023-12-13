@@ -38,9 +38,9 @@ function updateCart(id, amount) {
 }
 
 function deleteCart(id) {
-    cartList.splice((cartList.findIndex(cart => cart === userCart[id]), 1), 1);
+    cartList.splice(cartList.findIndex(cart => cart === userCart[id]), 1);
     localStorage.setItem('cartList',JSON.stringify(cartList));
-    location.reload();
+    if (cartList.length === 0) location.reload();
     displayCart();
 }
 

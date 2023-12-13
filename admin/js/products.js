@@ -59,10 +59,10 @@ let productData = [
 ];
 
 onload = () => {
-    if (localStorage.getItem('testList') === null)
-        localStorage.setItem('testList',JSON.stringify(productData));
+    if (localStorage.getItem('productDatabase') === null)
+        localStorage.setItem('productDatabase',JSON.stringify(productData));
     else
-        productData = JSON.parse(localStorage.getItem("testList"));
+        productData = JSON.parse(localStorage.getItem("productDatabase"));
     loadBang()
 }
 
@@ -101,39 +101,52 @@ function getProduct(id) {
 function openForm(handle, productID = "") {
     document.getElementById("productModal").innerHTML = "";
     if (productID !== "") var index = getProduct(productID);
-    const product = productData[index] || {};
-    console.log(product);
+    const product = productData[index] || {type: "Sửa rửa mặt", brand: "Innisfree"};
     const modal = document.getElementById("productModal");
     const modalDetail = `
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">${handle} sản phẩm</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">${`${handle} sản phẩm`.toUpperCase()}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="row m-0">
                                 <div class="col">
-                                    <div class="mb-3">
+                                    <div>
                                         <label for="product-id" class="col-form-label fw-bold">ID:</label>
                                         <input type="text" class="form-control" id="product-id" value="${product.id || ""}">
+                                        <p id="id-error" class="error">&nbsp;</p>
                                     </div>
-                                    <div class="mb-3">
+                                    <div>
                                         <label for="product-name" class="col-form-label fw-bold">Tên sản phẩm:</label>
                                         <input type="text" class="form-control" id="product-name" value="${product.name || ""}">
+                                        <p id="name-error" class="error">&nbsp;</p>
                                     </div>
-                                    <div class="mb-3">
+                                    <div>
+                                        <label for="product-price" class="col-form-label fw-bold">Giá:</label>
+                                        <input type="number" min="1000" step="500" class="form-control" id="product-price" value="${product.price || ""}" onkeyup="checkKey(this, event)">
+                                        <p id="price-error" class="error">&nbsp;</p></div>
+                                    <div>
+                                        <label for="product-img" class="col-form-label fw-bold">Đường dẫn tới hình ảnh:</label>
+                                        <input type="text" class="form-control" id="product-img" value="${product.img || ""}">
+                                        <p id="img-error" class="error">&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div>
                                         <label for="product-type" class="col-form-label fw-bold font-weight-bold">Loại sản phẩm:</label>
-                                        <select name="" class="form-control" id="product-type" value="">
+                                        <select name="" class="form-select" id="product-type" value="">
                                             <option value="Sửa rửa mặt">Sửa rửa mặt</option>
                                             <option value="Son">Son</option>
                                             <option value="Mặt nạ">Mặt nạ</option>
                                         </select>
+                                        <p class="error">&nbsp;</p>
                                     </div>
-                                    <div class="mb-3">
+                                    <div>
                                         <label for="product-brand" class="col-form-label fw-bold">Thương hiệu:</label>
-                                        <select name="" class="form-control" id="product-brand" value="">
+                                        <select name="" class="form-select" id="product-brand" value="">
                                             <option value="Innisfree">Innisfree</option>
                                             <option value="Hadalabo">Hadabalo</option>
                                             <option value="Maybelline">Maybelline</option>
@@ -147,27 +160,19 @@ function openForm(handle, productID = "") {
                                             <option value="L'ORÉAL">L'ORÉAL</option>
                                             <option value="Gogotales">Gogotales</option>
                                         </select>
+                                        <p class="error">&nbsp;</p>
                                     </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label for="product-price" class="col-form-label fw-bold">Giá:</label>
-                                        <input type="number" min="1000" step="1000" class="form-control" id="product-price" value="${product.price || ""}" onkeyup="checkKey(this, event)">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="product-img" class="col-form-label fw-bold">Đường dẫn tới hình ảnh:</label>
-                                        <input type="text" class="form-control" id="product-name" value="${product.img || ""}">
-                                    </div>
-                                    <div class="mb-3">
+                                    <div>
                                         <label for="product-remain" class="col-form-label fw-bold">Tồn kho:</label>
-                                        <input type="number" min="0" step="1" class="form-control" id="product-remain" value="${product.remain || ""}" onkeyup="checkKey(this, event)">
+                                        <input type="number" min="0" step="1" class="form-control" id="product-remain" value="${(product.remain >= 0) ? product.remain : ''}" onkeyup="checkKey(this, event)">
+                                        <p id="remain-error" class="error">&nbsp;</p>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-success" onclick="handleProduct('${handle}', ${index})" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-success" onclick="handleProduct('${handle}', ${index})">
                             ${handle}
                         </button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
@@ -180,12 +185,44 @@ function openForm(handle, productID = "") {
     document.getElementById("product-brand").value = product.brand;
     document.getElementById("product-type").value = product.type;
     new bootstrap.Modal(modal).show();
+    if (handle === "Sửa") document.getElementById("product-id").setAttribute("readonly", "true");
 }
 
 function handleProduct(handle, index = 0) {
+    let error = false;
+    if (document.getElementById("product-id").value === "") {
+        document.getElementById("id-error").innerHTML = "ID không được trống";
+        error = true;
+    }
+    else if (!document.getElementById("product-id").hasAttribute("readonly") && getProduct(document.getElementById("product-id").value) !== -1) {
+        document.getElementById("id-error").innerHTML = "ID đã tồn tại";
+        error = true;
+    }
+    if (document.getElementById("product-name").value === "") {
+        document.getElementById("name-error").innerHTML = "Tên không được trống";
+        error = true;
+    }
+    if (document.getElementById("product-price").value === "") {
+        document.getElementById("price-error").innerHTML = "Giá không được trống";
+        error = true;
+    }
+    if (document.getElementById("product-img").value === "") {
+        document.getElementById("img-error").innerHTML = "Hình ảnh không được trống";
+        error = true;
+    }
+    if (document.getElementById("product-remain").value === "") {
+        document.getElementById("remain-error").innerHTML = "Tồn kho không được trống";
+        error = true;
+    }
+
+    if (error) return;
+    $("#productModal").modal('hide');
     if (handle === "Thêm") addProduct()
     else updateProduct(index);
-    localStorage.setItem('testList',JSON.stringify(productData));
+    localStorage.setItem('productDatabase',JSON.stringify(productData));
+    $('.alert-success').css("display", "initial");
+    document.querySelector(".alert-success").innerHTML = `${handle} sản phẩm thành công`;
+    setTimeout(() => $('.alert-success').css("display", "none"), 3000);
     loadBang();
 }
 
@@ -193,7 +230,7 @@ function addProduct() {
     productData.push({
         id: document.getElementById("product-id").value,
         brand: document.getElementById("product-brand").value,
-        img: './img/SP/0045.jpg',
+        img: document.getElementById("product-img").value,
         name: document.getElementById("product-name").value,
         price: Number(document.getElementById("product-price").value),
         type: document.getElementById("product-type").value,
@@ -202,11 +239,16 @@ function addProduct() {
     });
 }
 
+function updateSoLuong(id, soLuong) {
+    productData[getProduct(id)].remain += soLuong;
+    localStorage.setItem('productDatabase',JSON.stringify(productData));
+}
+
 function updateProduct(index) {
     productData.splice(index, 1, {
         id: document.getElementById("product-id").value,
         brand: document.getElementById("product-brand").value,
-        img: './img/SP/0045.jpg',
+        img: document.getElementById("product-img").value,
         name: document.getElementById("product-name").value,
         price: Number(document.getElementById("product-price").value),
         type: document.getElementById("product-type").value,
@@ -217,7 +259,7 @@ function updateProduct(index) {
 
 function lockProduct(index) {
     productData[index].status = (productData[index].status === 1) ? 0 : 1;
-    localStorage.setItem('testList',JSON.stringify(productData));
+    localStorage.setItem('productDatabase',JSON.stringify(productData));
     loadBang();
 }
 
@@ -230,9 +272,9 @@ document.getElementById("search").addEventListener("keyup", event => {
 })
 
 function getProductList() {
-    if (localStorage.getItem('testList') === null)
-        localStorage.setItem('testList',JSON.stringify(productData));
-    productList = JSON.parse(localStorage.getItem('testList'));
+    if (localStorage.getItem('productDatabase') === null)
+        localStorage.setItem('productDatabase',JSON.stringify(productData));
+    productList = JSON.parse(localStorage.getItem('productDatabase'));
     let returnList = new Array();
     for (let i=0; i<productList.length; i++)
         if (productList[i].status === 1) returnList.push(productList[i]);

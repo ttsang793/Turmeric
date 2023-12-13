@@ -1,5 +1,5 @@
 document.getElementsByTagName("header")[0].innerHTML += `
-<div class="container mb-2">
+<div class="container">
     <div class="row align-items-start">
         <div class="col-3">
             <img src="./img/logo1.png" alt="" class="logo">
@@ -37,25 +37,17 @@ document.getElementsByTagName("header")[0].innerHTML += `
         </div>
     </div>
 </div>
+`
 
-<div class="row text-center nav-bar m-0">
+document.getElementById("nav-bar").innerHTML = `
     <div class="col-3"></div>
     <div class="col-6 main-nav">
-        <a href="./index.html" class="">
-            TRANG CHỦ
-        </a>
-        <a href="./san-pham.html" class="">
-            SẢN PHẨM
-        </a>
-        <a href="./gioi-thieu.html" class="">
-            GIỚI THIỆU
-        </a>
-        <a href="./blog.html" class="">
-            BLOG
-        </a>
+        <a href="./index.html">TRANG CHỦ</a>
+        <a href="./san-pham.html">SẢN PHẨM</a>
+        <a href="./gioi-thieu.html">GIỚI THIỆU</a>
+        <a href="./blog.html">BLOG</a>
     </div>
     <div class="col-3"></div>
-</div>
 `
 
 document.getElementsByTagName("footer")[0].innerHTML = `
@@ -113,6 +105,8 @@ document.getElementsByTagName("footer")[0].innerHTML = `
         <span class="text-center">&copy 2023 | Copyright by Turmeric</span>
     </div>
 </div>
+
+<button class="btn btn-danger back-up" onclick="window.scroll(0,0)"><i class="bi bi-arrow-up"></i></button>
 `
 
 function search() {

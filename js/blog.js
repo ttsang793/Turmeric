@@ -58,9 +58,9 @@ var mangBlog = [
     - Chấm đều kem nền 5 điểm lên mặt (vùng trán, mũi, cằm và 2 má).<br>
     - Tán đều kem theo hướng từ trong ra ngoài.<br>
     - Sử dụng các bước sau để đảm bảo một lớp nền hoàn hảo lâu trôi không tì vết:<br>
-        1. Dùng Kem lót Baby Skin giúp làm mịn và mờ khuyết điểm, giúp giữ lớp trang điểm lâu hơn và mền mịn hơn trước.<br>
-        2. Sau bước kem nền, sử dụng kem che khuyết điểm Fit Me để che các khuyết điểm trên da và sử dụng tiếp phấn phủ Fit Me Matte Powder để khóa lớp trang điểm trên da.<br>
-        3. Cuối cùng sử dụng phấn má hồng Fit Me để tô điểm cho gương mặt ửng hồng tự nhiên<br>
+      &nbsp;&nbsp;&nbsp;1. Dùng Kem lót Baby Skin giúp làm mịn và mờ khuyết điểm, giúp giữ lớp trang điểm lâu hơn và mền mịn hơn trước.<br>
+      &nbsp;&nbsp;&nbsp;2. Sau bước kem nền, sử dụng kem che khuyết điểm Fit Me để che các khuyết điểm trên da và sử dụng tiếp phấn phủ Fit Me Matte Powder để khóa lớp trang điểm trên da.<br>
+      &nbsp;&nbsp;&nbsp;3. Cuối cùng sử dụng phấn má hồng Fit Me để tô điểm cho gương mặt ửng hồng tự nhiên<br>
 
 
       `,

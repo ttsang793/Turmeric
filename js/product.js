@@ -2,6 +2,14 @@ const page = {current: 1, numOfProducts: 9};
 const content = document.querySelector(".danh-sach");
 let filter = {searchString: "", priceMin: 0, priceMax: 0, searchBrand: [], searchType: [], index: 0, checked: false}
 
+const brandList = [
+    "Innisfree", "Hadalabo", "Maybelline", "Blackrouge",
+    "Perfect Diary", "Romand", "Merzy", "BBIA",
+    "Laroche Poshy", "Vichy", "L'ORÉAL", "Gogotales"
+];
+
+const typeList = ["Sửa rửa mặt", "Son", "Mặt nạ"];
+
 window.onload = () => {
     const urlParam = new URLSearchParams(location.search);
     filter.searchString = urlParam.get('search');
@@ -59,7 +67,7 @@ function renderPage() {
         if (productsList[i].remain > 0)
             document.querySelectorAll(".mua-hang")[i%page.numOfProducts].innerHTML = `
                 <div class="input-group mb-3 d-flex justify-content-center pt-3">
-                    <input type="number" name="" value="1" min="1" max="${Number(productsList[i].remain)}" class="amount amount-page text-center" onkeyup="checkKey(this, event);" onchange="checkValue(this)">
+                    <input type="number" name="" value="1" min="1" max="${Number(productsList[i].remain)}" class="amount amount-page text-center" onkeyup="checkKey(this, event);">
                     <button class="btn btn-warning" onclick="addToCart(${productsList[i].id}, ${j++})">
                         <i class="bi bi-cart"></i>
                     </button>
@@ -133,18 +141,16 @@ function locGia() {
     filter.priceMin = Number(document.getElementById("price-min").value);
     filter.priceMax = Number(document.getElementById("price-max").value);
 
-    if (filter.priceMin > filter.priceMax) [filter.priceMin, filter.priceMax] = [filter.priceMax, filter.priceMin];
+    if (filter.priceMin > filter.priceMax) {
+        [filter.priceMin, filter.priceMax] = [filter.priceMax, filter.priceMin];
+        document.getElementById("price-min").value = filter.priceMin;
+        document.getElementById("price-max").value = filter.priceMax;     
+    }
     filterProduct(filter);
     
     productsList = JSON.parse(localStorage.getItem("productsList"));
     setPage(1);
 }
-
-const brandList = [
-    "Innisfree", "Hadalabo", "Maybelline", "Blackrouge",
-    "Perfect Diary", "Romand", "Merzy", "BBIA",
-    "Laroche Poshy", "Vichy", "L'ORÉAL", "Gogotales"
-];
 
 function loadThuongHieu() {
     brandList.forEach(brand => {
@@ -166,8 +172,6 @@ function locThuongHieu() {
     productsList = JSON.parse(localStorage.getItem("productsList"));
     setPage(1);
 }
-
-const typeList = ["Sửa rửa mặt", "Son", "Mặt nạ"];
 
 function locLoaiSanPham() {
     const check = document.querySelectorAll(".check-lsp");
@@ -191,11 +195,6 @@ function locCoHang() {
 function checkKey(input, event) {
     if (event.key === "Backspace" || event.key === "Enter") return;
     if (isNaN(event.key)) input.value = input.min;
-}
-
-function checkValue(input) {    
-    if (input.value === "") input.value = input.min;
-    else if (input.value > input.max) input.value = input.max;
 }
 
 const productView = document.getElementById("productModal");
@@ -247,6 +246,7 @@ function showInfo(id) {
             <button class="btn amount text-center" onclick="changeNumber('+')">+</button>
             <div class="btn btn-warning" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</div>
         </div>
+        <div>Tồn kho: ${product.remain}</div>
     `
     else document.getElementById("mua-hang-info").innerHTML = `<div class="mb-3 pt-3">Hết hàng</div>`
 
@@ -280,9 +280,9 @@ function showInfo(id) {
 }
 
 function changeNumber(input) {
-    ammount = document.getElementById("amount-info");
-    if (input === "+") ammount.value++;
-    else if (ammount.value > 1) ammount.value--;
+    amount = document.getElementById("amount-info");
+    if (input === "+" && amount.value + 1 <= document.getElementById("amount-info").max) amount.value++;
+    else if (amount.value > 1) amount.value--;
 }
 
 function addToCart(product, index = undefined) {
@@ -295,7 +295,7 @@ function addToCart(product, index = undefined) {
         amount = document.getElementById("amount-info");
     else
         amount = document.getElementsByClassName("amount-page")[index];
-    console.log(amount);
+
     if(findProduct(product) === -1) {
         insertCart(product, amount.value);
         document.querySelector(".alert-success").innerHTML = "Thêm thành công sản phẩm";

@@ -67,7 +67,6 @@ function displayOrder() {
 }
 
 function checkHuy(index) {
-    $('#cancelModal').modal("show");
     document.getElementById("cancelModal").innerHTML = `    
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -78,12 +77,13 @@ function checkHuy(index) {
                     Bạn có muốn hủy hàng?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal" onclick="huyDonHang(${index})">Có</button>
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Không</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" onclick="huyDonHang(${index})">Có</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Không</button>
                 </div>
             </div>
         </div>
     `;
+    new bootstrap.Modal(document.getElementById("cancelModal")).show();
 }
 
 function huyDonHang(index) {
