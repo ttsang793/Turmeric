@@ -76,23 +76,11 @@ button.amount:hover {
     border: 1px solid rgb(200,200,200);
 }
 
-.carousel-control-prev, .carousel-control-next  {
-    font-size: 55px;
-    color: #FF4F81;
+#listLoaiSP {
+    height: 150px;
+    overflow: auto;
 }
 
-.carousel-control-prev {
-    left: -40px;
-}
-
-.carousel-control-next {
-    right: -10px;
-}
-
-.carousel-control-prev:hover, .carousel-control-next:hover {
-    color: #ff2160;    
-}
-
-.carousel-control-prev:focus, .carousel-control-next:focus {
-    color: #FF4F81;
+#listLoaiSP div {
+    height: fit-content;
 }

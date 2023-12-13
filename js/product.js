@@ -2,13 +2,32 @@ const page = {current: 1, numOfProducts: 9};
 const content = document.querySelector(".danh-sach");
 let filter = {searchString: "", priceMin: 0, priceMax: 0, searchBrand: [], searchType: [], index: 0, checked: false}
 
-const brandList = [
-    "Innisfree", "Hadalabo", "Maybelline", "Blackrouge",
-    "Perfect Diary", "Romand", "Merzy", "BBIA",
-    "Laroche Poshy", "Vichy", "L'ORÉAL", "Gogotales"
+const brandList = ["Innisfree", "Hadalabo", "Maybelline"];
+
+const typeList = [
+"Combo",
+"Tẩy trang",
+"Sữa rửa mặt",
+"Toner",
+"Son môi",
+"Mặt nạ",
+"Kem chống nắng",
+"Lotion",
+"Kem dưỡng",
+"Sữa dưỡng trắng",
+"Gel dưỡng ẩm",
+"Kem nền",
+"Phấn phủ",
+"Cushion",
+"Phấn má hồng",
+"Che khuyết điểm",
+"Phấn mắt",
+"Eyeliner",
+"Mascara",
+"Kẻ mày, Tạo khối",
+"Kẻ mày"
 ];
 
-const typeList = ["Sửa rửa mặt", "Son", "Mặt nạ"];
 
 window.onload = () => {
     const urlParam = new URLSearchParams(location.search);
@@ -19,7 +38,7 @@ window.onload = () => {
     productsList = JSON.parse(localStorage.getItem("productsList"));
     setPage();
     loadThuongHieu();
-    //loadLoaiSanPham();
+    loadLoaiSanPham();
 }
 
 function setPage(current = page.current, numOfProducts = page.numOfProducts) {
@@ -173,6 +192,17 @@ function locThuongHieu() {
     setPage(1);
 }
 
+function loadLoaiSanPham() {
+    typeList.forEach(type => {
+        document.getElementById("listLoaiSP").innerHTML += `
+            <div class="input-group mb-3">
+                <input type="checkbox" class="check check-lsp" onclick="locLoaiSanPham()">
+                <label>${type}</label>
+            </div>`;
+    });
+
+}
+
 function locLoaiSanPham() {
     const check = document.querySelectorAll(".check-lsp");
     filter.searchType = [];
@@ -212,10 +242,7 @@ function showInfo(id) {
                 <div class="container">
                     <div class="row p-5">
                         <div class="col-5">
-                            <div id="productCarousel" class="carousel slide">
-                                <div class="carousel-inner row m-0 align-items-center">
-                                </div>
-                            </div>
+                            <img src=${product.img} class="d-block w-100" style="aspect-ratio: 1/1">
                         </div>
                         <div class="col-7">
                             <fieldset class="tieu-de mb-5">
@@ -227,9 +254,7 @@ function showInfo(id) {
                             <fieldset class="mb-3">
                                 <legend>Mô tả</legend>
                                 <p>
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                    Sunt veniam perspiciatis id, numquam, aspernatur aliquam reiciendis pariatur unde
-                                    asperiores laboriosam facere, ipsum dolorem odit sit? Ad vitae dicta laboriosam odio.
+                                    ${product.description}
                                 </p>
                             </fieldset>
                         </div>
@@ -248,34 +273,7 @@ function showInfo(id) {
         </div>
         <div>Tồn kho: ${product.remain}</div>
     `
-    else document.getElementById("mua-hang-info").innerHTML = `<div class="mb-3 pt-3">Hết hàng</div>`
-
-    //Code dưới đây chỉ mang tính chất kiểm thử
-    const photo = (id%2==0) ? [product.img] : [product.img, "./img/SP/0001.jpg", "./img/SP/0003.jpg"];
-    let slide = '';
-    for (let i=0; i < photo.length; i++) {
-        if (i === 0)
-            slide += `        
-                <div class="carousel-item active">
-                    <img src="${photo[i]}" class="d-block w-100" style="aspect-ratio: 1/1" alt="...">
-                </div>
-            `;
-        else
-            slide += `        
-                <div class="carousel-item">
-                    <img src="${photo[i]}" class="d-block w-100" style="aspect-ratio: 1/1" alt="...">
-                </div>
-            `;
-    }
-    document.querySelector(".carousel-inner").innerHTML = slide;
-    if (photo.length > 1) document.querySelector(".carousel").innerHTML += `
-        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-            <span>&lt;</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-            <span>&gt;</span>
-        </button>
-    `;    
+    else document.getElementById("mua-hang-info").innerHTML = `<div class="mb-3 pt-3">Hết hàng</div>`    
     new bootstrap.Modal(productView).show();
 }
 

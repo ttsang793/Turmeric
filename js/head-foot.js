@@ -122,5 +122,5 @@ function getGia(gia) {
     return Number(gia).toLocaleString("vi-VN") + "đ"; //định dạng số 1.000.000 VN
 }
 
-const userLogin = ""; //lưu ý: username này chỉ có mục đích là kiểm thử
+const userLogin = "sang"; //lưu ý: username này chỉ có mục đích là kiểm thử
 document.getElementById("user-login").innerHTML = (userLogin === "") ? "Đăng nhập" : userLogin;
