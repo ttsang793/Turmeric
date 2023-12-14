@@ -75,8 +75,6 @@ function initCart(){
 }
 
 function initOrder() {
-    if(localStorage.getItem('orderList') === null){
-        let initOrder = [];
-        localStorage.setItem('orderList',JSON.stringify(initOrder));
-    }
+    let initOrder = getOrderList(userLogin);
+    localStorage.setItem('orderList',JSON.stringify(initOrder));
 }

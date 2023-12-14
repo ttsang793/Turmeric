@@ -18,8 +18,8 @@
 
     <link rel="stylesheet" href="./css/san-pham.css">
 </head>
-<body onload="displayOrder()">
-    <header class="mx-0 py-2"></header>
+<body>
+    <header class="mx-0 my-2"></header>
     <div class="row text-center nav-bar m-0 sticky-top" id="nav-bar"></div>
 
     <div class="container my-5 text-center" id="order-empty">
@@ -32,11 +32,11 @@
         <table class="text-center table table-bordered" style="vertical-align: middle;">
             <thead style="font-size: 20px; vertical-align: middle">
                 <tr class="table-danger">
-                    <th width="15%">Hình ảnh</th>
+                    <th width="14%">Hình ảnh</th>
                     <th width="40%">Tên sản phẩm</th>
-                    <th width="11%">Giá</th>
+                    <th width="10%">Giá</th>
                     <th width="15%">Thời gian đặt</th>
-                    <th width="13%">Trạng thái</th>
+                    <th width="15%">Trạng thái</th>
                     <th width="6%"></th>
                 </tr>
             </thead>
@@ -48,6 +48,7 @@
     <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true"></div>
 
     <div class="alert alert-success py-1" role="alert"></div>
+    <div class="alert alert-danger py-1" role="alert"></div>
 
     <footer></footer>
 </body>
@@ -55,6 +56,8 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
 <script src="./js/head-foot.js"></script>
+<script src="./admin/js/products.js"></script>
+<script src="./admin/js/orders.js"></script>
 <script src="./js/database.js"></script>
 <script src="./js/order.js"></script>
 </html>

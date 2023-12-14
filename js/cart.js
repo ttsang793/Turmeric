@@ -1,5 +1,5 @@
 initCart();
-let cartList = JSON.parse(localStorage.getItem('cartList')); //danh sách toàn bộ cart của toàn bộ user
+cartList = JSON.parse(localStorage.getItem('cartList')); //danh sách toàn bộ cart của toàn bộ user
 
 function findProduct(id) {
     for (let i=0; i<cartList.length; i++)

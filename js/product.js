@@ -2,7 +2,8 @@ const page = {current: 1, numOfProducts: 9};
 const content = document.querySelector(".danh-sach");
 let filter = {searchString: "", priceMin: 0, priceMax: 0, searchBrand: [], searchType: [], index: 0, checked: false}
 
-const brandList = ["Innisfree", "Hadalabo", "Maybelline"];
+const brandList = ["Innisfree", "Hadalabo", "Maybelline", "Black Rouge",
+"Perfect Diary", "Romand", "Merzy", "BBIA", "La Roche-Posay"];
 
 const typeList = [ "Combo", "Tẩy trang", "Sữa rửa mặt", "Toner", "Son môi", "Mặt nạ",
 "Kem chống nắng", "Lotion", "Kem dưỡng", "Sữa dưỡng trắng", "Gel dưỡng ẩm", "Kem nền",
@@ -154,7 +155,7 @@ function locGia() {
 
 function loadThuongHieu() {
     brandList.forEach(brand => {
-        document.getElementById("thuong-hieu").innerHTML += `
+        document.getElementById("listThuongHieu").innerHTML += `
             <div class="input-group mb-3">
                 <input type="checkbox" id="${brand}" class="check check-th" onclick="locThuongHieu()">
                 <label for="${brand}">${brand}</label>

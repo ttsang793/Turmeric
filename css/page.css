@@ -46,8 +46,7 @@ img.logo {
 }
 
 #login *:hover {
-    transform: scale(1,1);
-    transition: 0.15s;
+    transform: none;
 }
 
 .nav-bar {
@@ -77,6 +76,56 @@ img.logo {
 
 .sticky-top {
     z-index: 20;
+}
+
+.userDetail {
+    position: relative;
+    display: inline-block;
+}
+
+.userDetail:hover {
+    transform: none;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border: 1px solid #212529;
+    min-width: 170px;
+    overflow: auto;
+    z-index: 15;
+    text-align: right;
+    transform: none!important;
+}
+
+.dropdown-content:hover {
+    transform: none!important;
+}
+
+.dropdown-content a {
+    color: #212529;
+    font-weight: normal;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    transition: 0.15s;
+    transform: none!important;
+}
+
+.dropdown-content a:hover {
+    color: #FF4F81;
+    background-color: var(--bs-gray-200);
+    font-weight: bold;
+    transform: none!important;
+    transition: 0.15s;
+}
+
+.show {
+    display: block;
+    transition: 0.15s;
 }
 
 footer {

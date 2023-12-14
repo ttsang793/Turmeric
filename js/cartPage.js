@@ -1,3 +1,7 @@
+onload = () => {
+    displayCart();
+}
+
 function emptyCart() {
     if (userLogin === "") {
         document.getElementById("cart-empty-message").innerHTML = "Bạn cần phải đăng nhập để mua sắm!!!";
@@ -15,7 +19,7 @@ function getTotal() {
     let total = 0;
     for (let i=0; i<userCart.length; i++)
         if (userCart[i].checked) total += Number(userCart[i].total);
-    return getGia(total);
+    return total;
 }
 
 function displayCart() {
@@ -30,7 +34,7 @@ function displayCart() {
     for (let i=0; i<userCart.length; i++) {
         let item = userCart[i];
         display += `        
-            <tr style="padding: 0px">
+            <tr class="p-0">
                 <td>
                     <input type="checkbox" class="check" onclick="checkChanged(${i})">
                 </td>
@@ -51,7 +55,7 @@ function displayCart() {
     document.getElementById("cart-body").innerHTML = document.getElementById("cart-body").innerHTML + display + `
         <tr style="padding: 0px;font-size: 20px;">
             <th colspan="4" class="text-end">TỔNG:</th>
-            <th colspan="2" id="tong-hang">${getTotal()}</th>
+            <th colspan="2" id="tong-hang">${getGia(getTotal())}</th>
         </tr>
     `;
     $("#cart-action").css("display", "initial");
@@ -76,7 +80,7 @@ function tinhTong(input, i) {
 function checkChanged(index) {
     userCart[index].checked = !userCart[index].checked;
     autoCheckAll();
-    document.getElementById("tong-hang").innerHTML = getTotal();
+    document.getElementById("tong-hang").innerHTML = getGia(getTotal());
     localStorage.setItem('cartList',JSON.stringify(cartList));
 }
 
@@ -86,7 +90,7 @@ function checkAllChanged() {
         document.querySelectorAll(".check")[i+1].checked = status;
         userCart[i].checked = status;
     }
-    document.getElementById("tong-hang").innerHTML = getTotal();
+    document.getElementById("tong-hang").innerHTML = getGia(getTotal());
     localStorage.setItem('cartList',JSON.stringify(cartList));
 }
 
@@ -102,6 +106,7 @@ function autoCheckAll() {
 function makeOrder() {
     let order = [];
     let warning = true;
+    let total = getTotal();
     const length = userCart.length;
     for (let i=0; i < length; ++i) {
         if (userCart[i].checked) {
@@ -123,10 +128,10 @@ function makeOrder() {
     }
     if (warning) dangerMessage("Vui lòng chọn 1 món để đặt hàng");
     else { 
+        themDonHang(new Date().toLocaleString("fr-FR"), userLogin, order, total);
         successMessage("Đặt hàng thành công", 1500);
         setTimeout(() => location.reload(), 1500);
         localStorage.setItem('cartList',JSON.stringify(cartList));
-        addOrder(order, new Date().toLocaleString("fr-FR"));
     }
 }
 

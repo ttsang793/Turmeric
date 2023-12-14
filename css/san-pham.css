@@ -76,11 +76,11 @@ button.amount:hover {
     border: 1px solid rgb(200,200,200);
 }
 
-#listLoaiSP {
+#listLoaiSP, #listThuongHieu {
     height: 150px;
     overflow: auto;
 }
 
-#listLoaiSP div {
+#listLoaiSP div, #listThuongHieu div {
     height: fit-content;
 }

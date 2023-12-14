@@ -36,7 +36,7 @@ let productData = [
      description: `Dầu tẩy trang hạt táo xanh innisfree Apple Seed Lip & Eye Makeup Remover dành riêng cho mắt & môi, nhẹ nhàng làm sạch bụi bẩn và cặn trang điểm lâu trôi. Tẩy trang lành tính với 5 không: <br?
      Không chứa dầu khoáng, không màu tổng hợp, không chế phẩm từ động vật, không chất hoạt động bề mặt có gốc sulfat và không chất tạo mùi hương
      `,
-     remain: 50,
+     remain: 0,
      price: 510000,
      status: 1
     },
@@ -81,7 +81,7 @@ let productData = [
      type: "Sữa rửa mặt",
      img: "./img/SP/0007.jpg",
      description: "Sữa rửa mặt trà xanh innisfree Green Tea Amino Cleansing Foam làm sạch tạp chất, đồng thời dưỡng ẩm để làn da sạch sẽ, mịn màng.",
-     remain: 50,
+     remain: 0,
      price: 260000,
      status: 1
     },
@@ -114,7 +114,8 @@ let productData = [
      type: "Son môi",
      img: "./img/SP/0010.jpg",
      description: "Son dưỡng ẩm sâu không màu. Innisfree Canola Honey Lip Balm Deep Moisture 3.5g. Son dưỡng ẩm sâu không màu Innisfree Canola Honey Lip Balm Deep Moisture chiết xuất từ mật ong hoa cải giúp dưỡng ẩm sâu, tăng độ đàn hồi và hình thành màng chắn bảo vệ đôi môi.",
-     remain: 50,price: 130000,
+     remain: 0,
+     price: 130000,
      status: 1
     },
     {
@@ -124,7 +125,8 @@ let productData = [
      type: "Son môi",
      img: "./img/SP/0011.jpg",
      description: "Son dưỡng Innisfree Green Tea Lip chứa 99.9% thành phần được chiết xuất từ thiên nhiên, tiêu biểu chính là chiết xuất từ Trà Xanh giúp dưỡng ẩm cao, kháng khuẩn, bảo vệ da khỏi các tác hại của môi trường sống xung quanh, giảm thâm môi, tăng cường độ đàn hồi của môi, mang lại cho bạn đôi môi căng mướt, loại bỏ tình trạng môi khô, nứt nẻ hay bong tróc.",
-     remain: 50,price: 140000,
+     remain: 50,
+     price: 140000,
      status: 1
     },
     {
@@ -156,7 +158,7 @@ let productData = [
      type: "Kem chống nắng",
      img: "./img/SP/0014.jpg",
      description: "Kem chống nắng innisfree Tone Up No Sebum Sunscreen EX SPF 50+ PA++++ với màng lọc chống nắng vật lý, giúp bảo vệ da tối ưu, đồng thời mang lại hiệu quả nâng tông, kiềm dầu vượt trội, duy trì làn da hồng hào, mịn mượt suốt 24 giờ.",
-     remain: 50,
+     remain: 0,
      price: 330000,
      status: 1
     },
@@ -173,7 +175,7 @@ let productData = [
     },
     {
      id: "10016",
-     name: " Kem Lì Innisfree Real Fit Matte Liquid",
+     name: "Son Kem Lì Innisfree Real Fit Matte Liquid",
      brand: "Maybefree",
      type: "Son môi",
      img: "./img/SP/0016.jpg",
@@ -183,7 +185,7 @@ let productData = [
     },
     {
      id: "10017",
-     name: " Lì Innisfree Real Fit Matte Lipstick 3.6gr",
+     name: "Son Lì Innisfree Real Fit Matte Lipstick 3.6gr",
      brand: "Maybefree",
      type: "Son môi",
      img: "./img/SP/0017.jpg",
@@ -198,7 +200,7 @@ let productData = [
      type: "Mặt nạ",
      img: "./img/SP/0018.jpg",
      description: "Cung cấp dưỡng chất dưỡng ẩm gấp 30 lần tinh chất dưỡng thông thường chỉ sau 1 lần sử dụng.",
-     remain: 50,
+     remain: 0,
      price: 195000,
      status: 1
     },
@@ -225,7 +227,7 @@ let productData = [
      type: "Lotion",
      img: "./img/SP/0020.jpg",
      description: "Cấp ẩm chuyên sâu suốt 36 giờ, dưỡng da căng mịn, sáng khỏe.",
-     remain: 50,
+     remain: 0,
      price: 190000,
      status: 1
     },
@@ -236,7 +238,7 @@ let productData = [
      type: "Kem dưỡng",
      img: "./img/SP/0021.jpg",
      description: "Tăng cường độ ẩm gấp 2 lần, dưỡng da căng mịn, sáng khỏe.",
-     remain: 50,
+     remain: 0,
      price: 200000,
      status: 1
     },
@@ -247,7 +249,7 @@ let productData = [
      type: "Lotion",
      img: "./img/SP/0022.jpg",
      description: "Cấp ẩm chuyên sâu suốt 36 giờ, dưỡng da căng mịn, sáng khỏe.",
-     remain: 50,
+     remain: 0,
      price: 190000,
      status: 1
     },
@@ -313,7 +315,7 @@ let productData = [
      type: "Phấn phủ",
      img: "./img/SP/0028.jpg",
      description: "Phấn Nền Dạng Nén Che Phủ Hoàn Hảo, Kiềm Dầu Hiệu Quả Maybelline Fit Me Matte Poreless Powder SPF32 /PA+++ là phấn nền đến từ thương hiệu Maybelline công thức chứa hạt phấn Micro Power cho lớp nền mịn, kiềm dầu lên đến 16h, mang đến cho bạn một lớp nền hoàn hảo, phủ mịn và không bị bóng dầu.",
-     remain: 50,
+     remain: 0,
      price: 220000,
      status: 1
     },
@@ -368,7 +370,7 @@ let productData = [
      type: "Che khuyết điểm",
      img: "./img/SP/0033.jpg",
      description: "Trong khi các loại kem che khuyết điểm màu khác đều khá khó khăn để bạn có thể bắt đầu sử dụng, thì với bảng màu Face Studio Master Camo Color Correcting Kit này, các bạn có thể thực hiện đơn giản hơn với việc che phủ đi các nốt mụn, thâm hay tàn nhang đáng ghét nhé!",
-     remain: 50,
+     remain: 0,
      price: 150000,
      status: 1
     },
@@ -445,13 +447,13 @@ let productData = [
      type: "Kẻ mày",
      img: "./img/SP/0040.jpg",
      description: "Để giúp các nàng dễ dàng có được hàng chân mày đẹp chỉ trong vài bước đơn giản, Hasaki xin giới thiệu sản phẩm Chì Kẻ Chân Mày 2 Đầu Maybelline Natural Brow Duo đến từ thương hiệu mỹ phẩm trang điểm nổi tiếng Maybelline. Đây là chì kẻ mày có thiết kế 2 đầu độc đáo: đầu chì dạng vặn sắc sảo giúp định dạng và tạo nét chân mày tinh tế, đầu cọ bột với công thức chứa silicon & khoáng chất giúp tán đều cho nét mày đầy đặn, tự nhiên, mềm mại và giữ màu lâu trôi suốt 12 giờ. Sản phẩm thích hợp cho cả những bạn nữ đang trong quá trình “tập tành” trang điểm, giúp mang lại nét mày hoàn hảo một cách dễ dàng nhất. ",
-     remain: 50,
+     remain: 0,
      price: 180000,
      status: 1
     },
     {
      id: "10041",
-     name: " Kem Lì Maybelline Super Stay Matte Ink",
+     name: "Son Kem Lì Maybelline Super Stay Matte Ink",
      brand: "Maybelline",
      type: "Son môi",
      img: "./img/SP/0041.jpg",
@@ -462,7 +464,7 @@ let productData = [
     },
     {
      id: "10042",
-     name: " Tint Maybelline Color Sensational Lip Tint",
+     name: "Son Tint Maybelline Color Sensational Lip Tint",
      brand: "Maybelline",
      type: "Son môi",
      img: "./img/SP/0042.jpg",
@@ -473,7 +475,7 @@ let productData = [
     },
     {
      id: "10043",
-     name: " Lì Maybelline Lips Vivid Matte 3.9gr",
+     name: "Son Lì Maybelline Lips Vivid Matte 3.9gr",
      brand: "Maybelline",
      type: "Son môi",
      img: "./img/SP/0043.jpg",
@@ -484,7 +486,7 @@ let productData = [
     },
     {
      id: "10044",
-     name: " Lì Maybelline The Loaded Bolds Matte Lips",
+     name: "Son Lì Maybelline The Loaded Bolds Matte Lips",
      brand: "Maybelline",
      type: "Son môi",
      img: "./img/SP/0044.jpg",
@@ -503,6 +505,160 @@ let productData = [
      remain: 50,
      price: 190000,
      status: 1
+    },
+    {
+        id: "10046",
+        name: "Bảng phấn mắt Perfect Diary 12 màu sắc hiệu ứng ánh nhũ lấp lánh 14g",
+        brand: "Perfect Diary",
+        type: "Phấn mắt",
+        description: "Bảng phấn mắt Perfect Diary với 12 màu sắc hiệu ứng ánh nhũ lấp lánh sẽ giúp tạo ra nhiều kiểu trang điểm khác nhau, từ nhẹ nhàng đến sắc nét và cá tính. Với công thức mịn màng và bám dính tốt, bảng phấn mắt Perfect Diary sẽ giúp giữ màu lâu và không lem bởi mồ hôi hay nước. Sản phẩm có thiết kế nhỏ gọn và tiện lợi để bạn mang theo bên mình, phù hợp cho cả những chuyến đi xa hay đi làm.",
+        img: "./img/SP/0046.jpeg",
+        price: 469000,
+        remain: 0,
+        status: 1
+    },
+    {
+        id: "10047",
+        name: "Son bóng ReadMe Rippled Lip Gloss High Shine Finish Perfect Diary 6 màu 4g",
+        brand: "Perfect Diary",
+        type: "Son môi",
+        description: "Son bóng ReadMe Rippled Lip Gloss High Shine Finish của Perfect Diary là sự lựa chọn tuyệt vời cho những ai muốn sở hữu làn môi căng bóng và quyến rũ. Với 6 màu sắc tùy chọn, sản phẩm này sẽ tạo ra hiệu ứng sáng bóng và làm cho đôi môi trông thêm đầy sức sống. Ngoài ra, sản phẩm còn giúp dưỡng ẩm và nuôi dưỡng cho làn môi mềm mịn hơn, không bị khô hay nứt nẻ.",
+        img: "./img/SP/0047.jpeg",
+        price: 279000,
+        remain: 50,
+        status: 1
+    },
+    {
+        id: "10048",
+        name: "Hộp 4 thỏi son kem Perfect Diary xinh xắn làm quà tặng cho bạn gái",
+        brand: "Perfect Diary",
+        type: "Son môi",
+        description: "Hộp quà Perfect Diary với 4 thỏi son kem đa dạng màu sắc sẽ là món quà tuyệt vời dành cho bạn gái của bạn. Bên cạnh việc làm đẹp cho đôi môi, sản phẩm còn được thiết kế với kiểu dáng xinh xắn, gọn nhẹ và tiện lợi để mang theo bên mình khi đi ra ngoài.",
+        img: "./img/SP/0048.jpeg",
+        price: 999000,
+        remain: 1,
+        status: 1
+    },
+    {
+        id: "10049",
+        name: "Bộ Son môi nhung lì độ lên màu cao và Bảng phấn mắt có sắc tố cao Perfect Diary",
+        brand: "Perfect Diary",
+        type: "Combo",
+        description: "Bộ Son môi nhung lì, độ lên màu cao, phiên bản mùa đông và Bảng phấn mắt có sắc tố cao Perfect Diary là lựa chọn hoàn hảo để tạo ra vẻ đẹp tự nhiên và quyến rũ. Với son môi lì độ cao và bảng phấn mắt với sắc tố cao, sản phẩm sẽ giúp bạn tạo ra những trang điểm đầy sáng tạo và ấn tượng.",
+        img: "./img/SP/0049.jpeg",
+        price: 730000,
+        remain: 50,
+        status: 1
+    },
+    {
+        id: "10050",
+        name: "Sữa Chống Nắng La Roche-Posay Bảo Vệ Da Tối Ưu SPF50+ 50ml Anthelios UVMune 400 Fluide Invisible Fluid SPF50+",
+        brand: "La Roche-Posay",
+        type: "Kem chống nắng",
+        description: "Sữa Chống Nắng La Roche-Posay Anthelios UVMune 400 Fluide Invisible Fluid SPF50+ là phiên bản cải tiến của Anthelios Invisible Fluid – dòng sản phẩm chống nắng rất được yêu thích và được đánh giá cao từ thương hiệu dược mỹ phẩm La Roche-Posay. Sản phẩm cung cấp khả năng bảo vệ da vượt trội khỏi tia UVB & UVA dài – ngay cả các tia ở bước sóng 380 – 400 NM – thủ phạm tiềm ẩn hình thành các gốc thâm nám nằm sâu dưới da.",
+        img: "./img/SP/0050.jpg",
+        price: 390000,
+        remain: 50,
+        status: 1
+    },
+    {
+        id: "10051",
+        name: "Kem Dưỡng La Roche-Posay Giúp Phục Hồi Da Đa Công Dụng 40ml Cicaplast Baume B5+ Ultra-Repairing Soothing Balm",
+        brand: "La Roche-Posay",
+        type: "Kem dưỡng",
+        description: "Kem Dưỡng Giúp Phục Hồi Da Đa Công Dụng La Roche-Posay Cicaplast Baume B5+ Combo Kem Dưỡng Cicaplast Baume B5+ Ultra-Repairing Soothing Balm 40ml + Xịt Khoáng Thermal Spring Water 50ml",
+        img: "./img/SP/0051.jpg",
+        price: 280000,
+        remain: 0,
+        status: 1
+    },
+    {
+        id: "10052",
+        name: "Chì Kẻ Mắt Dạng Sáp Nét Mảnh, Lâu Trôi Romand Han All Shade Liner 0.09g",
+        brand: "Romand",
+        type: "Kẻ mày",
+        description: "Chì Kẻ Mắt Dạng Sáp Nét Mảnh, Lâu Trôi Romand Han All Shade Liner là chì kẻ mắt đến từ thương hiệu Romand giúp tạo đường viền mắt sắc sảo, chì kẻ có nét vẽ thanh mảnh cùng bảng màu tự nhiên và là bước trang điểm cần thiết cho bạn để sở hữu đôi mắt long lanh tự nhiên không kém phần thu hút. ",
+        img: "./img/SP/0052.jpg",
+        price: 129000,
+        remain: 50,
+        status: 1
+    },
+    {
+        id: "10053",
+        name: "Son Kem Lì, Mịn Mượt Như Nhung Romand Milk Tea Velvet Tint 4.4g",
+        brand: "Romand",
+        type: "Son môi",
+        description: "Son Kem Lì Romand Milk Tea Velvet Tint  là son kem lì của thương hiệu Romand có chất son xốp mịn, độ lên màu chuẩn, dễ tán đều trên môi cùng bảng màu ngọt ngào, mùi thơm dịu nhẹ tựa ly trà sữa hương socola ngọt ngào, êm dịu cho bạn đôi môi ngọt ngào, xinh xắn thu hút mọi ánh nhìn.",
+        img: "./img/SP/0053.jpg",
+        price: 139000,
+        remain: 50,
+        status: 1
+    },
+    {
+        id: "10054",
+        name: "Romand Bare Water Cushion HCT",
+        brand: "Romand",
+        type: "Cushion",
+        description: "Phấn Nước Trang Điểm Che Phủ Tự Nhiên, Dưỡng Ẩm Cho Da Căng Bóng Romand Bare Water Cushion là phấn nước trang điểm đến từ thương hiệu Romand có kết cấu chất phấn mỏng nhẹ tự nhiên, khả năng che phủ hoàn hảo cho làn da ẩm mượt, căng bóng, duy trì lớp nền rạng rỡ suốt cả ngày dài.",
+        img: "./img/SP/0054.jpg",
+        price: 159000,
+        remain: 0,
+        status: 1
+    },
+    {
+        id: "10055",
+        name: "Bảng Phấn Mắt 6 Ô Siêu Xinh Bbia Ready To Wear Eye Palette 5g",
+        brand: "BBIA",
+        type: "Phấn mắt",
+        description: "Bảng Phấn Mắt 6 Ô Siêu Xinh Bbia Ready To Wear Eye Palette là phấn mắt của thương hiệu Bbia với thiết kế bảng màu 6 ô xinh xắn, chất phấn mướt mịn, độ lên màu và bám màu tốt giúp cho bạn sở hữu đôi mắt long lanh cùng nhũ lấp lánh cực kỳ cuốn hút.",
+        img: "./img/SP/0055.jpg",
+        price: 259000,
+        remain: 50,
+        status: 1
+    },
+    {
+        id: "10056",
+        name: "Bảng Phấn Mắt 9 Ô Xinh Xắn Black Rouge Colordation Mood Palette",
+        brand: "Black Rouge",
+        type: "Phấn mắt",
+        description: "Bảng Phấn Mắt 9 Ô Xinh Xắn Black Rouge Colordation Mood Palette là phấn mắt thuộc thương hiệu Black Rouge với thiết kế 9 ô màu xinh xắn, bảng màu trendy với đủ cấp độ và phân cấp rõ ràng: 3 cấp Light – Point – Deep cho bạn thỏa sức sáng tạo phong cách makeup khác nhau. Bảng màu với kết cấu mềm mịn, bền màu giúp giữ đôi mắt luôn lung linh, cuốn hút mọi ánh nhìn. ",
+        img: "./img/SP/0056.jpg",
+        price: 409000,
+        remain: 50,
+        status: 1
+    },
+    {
+        id: "10057",
+        name: "Bút Kẻ Mắt Nước Chống Trôi Black Rouge Power Proof Pen Liner 0.5g",
+        brand: "Black Rouge",
+        type: "Eyeliner",
+        description: `Bút Kẻ Mắt Nước Chống Trôi Black Rouge Power Proof Pen Liner là bút  kẻ mắt nước đến từ thương hiệu Black Rouge vừa cho ra mắt bộ siêu tập Pool Party. Trong đó "Power Proof Pen Liner" là dòng kẻ mắt nằm trong bộ sưu tập lần này của Black Rouge với đường kẻ cực kì sắc nét & khó lem, lên màu rõ ngay lần di bút đầu tiên.`,
+        img: "./img/SP/0057.webp",
+        price: 149000,
+        remain: 50,
+        status: 1
+    },
+    {
+        id: "10058",
+        name: "Phấn Nước Che Phủ Cao, Lâu Trôi Merzy The First Cushion Cover SPF50+/PA+++ 13g",
+        brand: "Merzy",
+        type: "Cushion",
+        description: "Phấn Nước Che Phủ Cao, Lâu Trôi Merzy The First Cushion Cover là dòng phấn nước trang điểm thuộc thương hiệu Merzy với chất mịn siêu nhẹ cho lớp nền lâu trôi nhưng không hề nặng da, che phủ từ những khuyết điểm nhỏ đến những điểm xỉn màu trên da, cấp ẩm giữ da luôn ẩm mịn cùng với chỉ số chống nắng SPF50+/PA+++ giúp bảo vệ da hiệu quả dưới tác hại của tia UV ",
+        img: "./img/SP/0058.jpg",
+        price: 232000,
+        remain: 0,
+        status: 1
+    },
+    {
+        id: "10059",
+        name: "Bút Kẻ Mắt Nước Chống Trôi Hiệu Quả Cho Đôi Mắt Sắc Nét Merzy The Heritage Pen Eyeliner - Màu HP2 0.5g",
+        brand: "Merzy",
+        type: "Eyeliner",
+        description: "Bút Kẻ Mắt Nước Chống Trôi Hiệu Quả Cho Đôi Mắt Sắc Nét Merzy The Heritage Pen Eyeliner là kẻ mắt nước nằm trong bộ sưu tập được thương hiệu Merzy ấp ủ đã lâu với tên gọi The Heritage Collection dễ dàng hoàn thiện đường kẻ mắt chỉ với một lần kẻ cùng khả năng chống thấm nước mạnh mẽ cho đôi mắt thêm phần sắc nét huyền bí và cuốn hút.",
+        img: "./img/SP/0059.jpg",
+        price: 99000,
+        remain: 0,
+        status: 1
     }
    ];
 
@@ -549,7 +705,7 @@ function getProduct(id) {
 function openForm(handle, productID = "") {
     document.getElementById("productModal").innerHTML = "";
     if (productID !== "") var index = getProduct(productID);
-    const product = productData[index] || {type: "", brand: "Innisfree"};
+    const product = productData[index] || {type: "Combo", brand: "Innisfree"};
     const modal = document.getElementById("productModal");
     const modalDetail = `
             <div class="modal-dialog modal-dialog-centered">
@@ -584,8 +740,8 @@ function openForm(handle, productID = "") {
                                             <option value="Combo">Combo</option>
                                             <option value="Tẩy trang">Tẩy trang</option>
                                             <option value="Sữa rửa mặt">Sữa rửa mặt</option>
-                                            <option value="Ton"Maybeer">Toner</option>
-                                            <option value="SonSon môi">Son môi</option>
+                                            <option value="Toner">Toner</option>
+                                            <option value="Son môi">Son môi</option>
                                             <option value="Mặt nạ">Mặt nạ</option>
                                             <option value="Kem chống nắng">Kem chống nắng</option>
                                             <option value="Lotion">Lotion</option>
@@ -611,6 +767,12 @@ function openForm(handle, productID = "") {
                                             <option value="Innisfree">Innisfree</option>
                                             <option value="Hadalabo">Hadabalo</option>
                                             <option value="Maybelline">Maybelline</option>
+                                            <option value="Black Rouge">Black Rouge</option>
+                                            <option value="Perfect Diary">Perfect Diary</option>
+                                            <option value="Romand">Romand</option>
+                                            <option value="Merzy">Merzy</option>
+                                            <option value="BBIA">BBIA</option>
+                                            <option value="La Roche-Posay">La Roche-Posay</option>
                                         </select>
                                         <p class="error">&nbsp;</p>
                                     </div>
@@ -628,7 +790,7 @@ function openForm(handle, productID = "") {
                                 <div>
                                     <label for="product-name" class="col-form-label fw-bold">Mô tả: (Nhập '&lt;br&gt;' nếu muốn xuống dòng)</label>
                                     <textarea class="form-control" id="product-description" rows="6">${product.description || ""}</textarea>
-                                    <p id="name-error" class="error">&nbsp;</p>
+                                    <p id="description-error" class="error">&nbsp;</p>
                                 </div>
                             </div>
                         </form>
@@ -676,6 +838,10 @@ function handleProduct(handle, index = 0) {
         document.getElementById("remain-error").innerHTML = "Tồn kho không được trống";
         error = true;
     }
+    if (document.getElementById("product-description").value === "") {
+        document.getElementById("description-error").innerHTML = "Vui lòng nhập mô tả sản phẩm";
+        error = true;
+    }
 
     if (error) return;
     $("#productModal").modal('hide');
@@ -703,7 +869,8 @@ function addProduct() {
 }
 
 function updateSoLuong(id, soLuong) {
-    productData[getProduct(id)].remain += soLuong;
+    productData = JSON.parse(localStorage.getItem('productDatabase'));
+    productData[getProduct(id)].remain = Number(productData[getProduct(id)].remain) + Number(soLuong);
     localStorage.setItem('productDatabase',JSON.stringify(productData));
 }
 

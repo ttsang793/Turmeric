@@ -12,10 +12,12 @@ document.getElementsByTagName("header")[0].innerHTML += `
                 <i class="bi bi-pinterest icon align-middle"></i>
                 <i class="bi bi-tiktok icon align-middle"></i>
                 <i class="bi bi-envelope icon align-middle"></i>
-                <button class="btn" id="login">
-                    <i class="bi bi-person-fill"></i>
-                    <div id="user-login"></div>
-                </button>
+                <div class="userDetail">
+                    <button class="btn dropbtn" id="login" onmouseenter="enter('userDrop')" onmouseleave="leave('userDrop')">
+                        <i class="bi bi-person-fill"></i>
+                        <div id="user-login"></div>
+                    </button>
+                </div>
             </div>
 
             <div class="row py-4">
@@ -125,23 +127,28 @@ function getGia(gia) {
 function dangerMessage(message) {
     document.querySelector(".alert-danger").innerHTML = message;
     $('.alert-danger').css("display", "initial");
-    setTimeout(() => document.querySelector(".alert-danger").classList.toggle('fadeOut'), 2500);
-    setTimeout(() => {
-        $('.alert-danger').css("display", "none");
-        document.querySelector(".alert-danger").classList.toggle('fadeOut')
-    }, 3000);
+    setTimeout(() => $('.alert-danger').css("display", "none"), 3000);
 }
 
 function successMessage(message, second = 3000) {
     document.querySelector(".alert-success").innerHTML = message;
     $('.alert-success').css("display", "initial");
-    setTimeout(() => document.querySelector(".alert-success").classList.toggle('fadeOut'), second - 500);
-    setTimeout(() => {
-        $('.alert-success').css("display", "none");
-        document.querySelector(".alert-danger").classList.toggle('fadeOut');
-    }, second);
-    
+    setTimeout(() => $('.alert-success').css("display", "none"), second);
 }
 
-const userLogin = "sang"; //lưu ý: username này chỉ có mục đích là kiểm thử
+function enter(element) {
+    document.getElementById(element).classList.toggle("show");
+}
+
+function leave(element) {
+    document.getElementById(element).classList.toggle("show");
+}
+
+const userLogin = ""; //lưu ý: username này chỉ có mục đích là kiểm thử
 document.getElementById("user-login").innerHTML = (userLogin === "") ? "Đăng nhập" : userLogin;
+if (userLogin !== "") document.querySelector(".userDetail").innerHTML += `    
+    <div onmouseenter="enter('userDrop')" onmouseleave="leave('userDrop')" id="userDrop" class="dropdown-content">
+        <a href="./order.html">Đơn hàng đã đặt</a>
+        <a href="">Đăng xuất</a>
+    </div>
+`
