@@ -659,6 +659,17 @@ let productData = [
         price: 99000,
         remain: 0,
         status: 1
+    },
+    {
+        id: "10060",
+        name: "Set mỹ phẩm Perfect Diary bộ sưu tập hoa hồng hạc 02 0.8g",
+        brand: "Perfect Diary",
+        type: "Combo",
+        description: "Set mỹ phẩm Perfect Diary bộ sưu tập hoa hồng hạc là sự kết hợp hoàn hảo giữa các sản phẩm trang điểm như Son kem, Son bóng, Phấn mắt. Thiết kế độc đáo với họa tiết hoa hồng hạc tinh tế và sang trọng. Sản phẩm được làm từ chất liệu an toàn và chất lượng cao, giúp giữ màu lâu và không gây kích ứng cho da. Bộ sưu tập hoa hồng hạc là lựa chọn tuyệt vời cho những ai yêu thích phong cách sang trọng và độc đáo.",
+        img: "./img/SP/0060.jpeg",
+        price: 999000,
+        remain: 50,
+        status: 1
     }
    ];
 

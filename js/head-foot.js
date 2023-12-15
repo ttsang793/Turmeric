@@ -122,6 +122,7 @@ document.getElementById("loginModal").innerHTML = `
                     <div class="input_box">
                         <input type="text" id="userNameLG" placeholder="Tên đăng nhập" name="Tên đăng nhập">
                         <i class="fa-regular fa-user user"></i>
+                        <div id="error_userNameLG_empty" class="error-message"></div>
                         <div id="error_userNameLG" class="error-message"></div>
                     </div>
                     <div class="input_box">
@@ -156,6 +157,7 @@ document.getElementById("loginModal").innerHTML = `
                         <input type="text" id="userNameSU" name="Tên đăng nhập" placeholder="Tên đăng nhập">
                         <i class="fa-regular fa-user user"></i>
                         <i class="fa-regular fa-user user"></i>
+                        <div id="error_userNameSU_empty" class="error-message"></div>
                         <div id="error_userNameSU" class="error-message"></div>
                     </div>
                     <div class="input_box">
@@ -168,12 +170,14 @@ document.getElementById("loginModal").innerHTML = `
                         <i class="fa fa-lock password"></i>
                         <i class="fa-regular fa-eye-slash pw_hide"></i>
                         <div id="error_passwordSU" class="error-message"></div>
+                        <div id="error_passwordSU_length" class="error-message"></div>
                     </div>
                     <div class="input_box">
                         <input type="password" id="confirmPasswordSU" placeholder="Xác nhận mật khẩu"
                             name="Xác nhận mật khẩu">
                         <i class="fa fa-lock password"></i>
                         <i class="fa-regular fa-eye-slash pw_hide"></i>
+                        <div id="error_confirmPasswordSU_empty" class="error-message"></div>
                         <div id="error_confirmPasswordSU" class="error-message"></div>
                     </div>
 
@@ -214,6 +218,7 @@ document.getElementById("loginModal").innerHTML = `
                         <input type="password" id="passwordFG" placeholder="Mật khẩu mới" name="Mật khẩu" minlength="6" maxlength="32">
                         <i class="fa fa-lock password"></i>
                         <i class="fa-regular fa-eye-slash pw_hide"></i>
+                        <span id="error_passwordFG_empty" class="helper-text text-danger"></span>
                         <span id="error_passwordFG" class="helper-text text-danger"></span>
                     </div>
                     <div class="input_box">
@@ -236,7 +241,7 @@ document.getElementById("loginModal").innerHTML = `
         </div>
         <div class="overlay-notify"></div>
     </section>
-`;
+`
 
 document.getElementById("search").addEventListener("keyup", event => {
     if (event.key === "Enter") search();
@@ -247,7 +252,7 @@ function getGia(gia) {
 }
 
 if (localStorage.getItem('userLogin') === null) {
-    localStorage.setItem('userLogin',JSON.stringify(""));
+    localStorage.setItem('userLogin', JSON.stringify(""));
     userLogin = "";
 }
 else userLogin = JSON.parse(localStorage.getItem("userLogin"));
@@ -296,16 +301,16 @@ function leave(element) {
 }
 
 const formOpenBtn = document.querySelector("#form_open"),
-blurOverplay = document.querySelector(".blur-bg-overplay"),
-formContainer = document.querySelector(".form_container"),
-formCloseBtn = document.querySelector(".form_close"),
-signupBtn = document.querySelector("#signup"),
-loginBtn = document.querySelector("#login"),
-pwShowHide = document.querySelectorAll(".pw_hide"),
-forgotPW = document.querySelector(".forgot_pw"),
-signupPW = document.querySelector("#signupPW"),
-loginPW = document.querySelector("#loginPW"),
-form = document.querySelector('.form-inner');
+    blurOverplay = document.querySelector(".blur-bg-overplay"),
+    formContainer = document.querySelector(".form_container"),
+    formCloseBtn = document.querySelector(".form_close"),
+    signupBtn = document.querySelector("#signup"),
+    loginBtn = document.querySelector("#login"),
+    pwShowHide = document.querySelectorAll(".pw_hide"),
+    forgotPW = document.querySelector(".forgot_pw"),
+    signupPW = document.querySelector("#signupPW"),
+    loginPW = document.querySelector("#loginPW"),
+    form = document.querySelector('.form-inner');
 
 formOpenBtn.addEventListener("click", () => {
     if (userLogin === "") blurOverplay.classList.add("show-popup");
@@ -313,9 +318,9 @@ formOpenBtn.addEventListener("click", () => {
 formCloseBtn.addEventListener("click", () => blurOverplay.classList.remove("show-popup"));
 
 pwShowHide.forEach((icon) => {
-    icon.addEventListener("click", () =>{
+    icon.addEventListener("click", () => {
         let getPwInput = icon.parentElement.querySelector("input");
-        if(getPwInput.type === "password"){
+        if (getPwInput.type === "password") {
             getPwInput.type = "text";
             icon.classList.replace("fa-eye-slash", "fa-eye");
         } else {
@@ -349,32 +354,29 @@ signupPW.addEventListener("click", (e) => {
 loginPW.addEventListener("click", (e) => {  // Corrected ID
     e.preventDefault();
     formContainer.classList.remove("pw");
-}); 
+});
 
 
 const checkValidation = (value) => {
     let valid = true;
     switch (value) {
         case 1:
-            valid &= kiemTraRong("userNameLG", 'error_userNameLG');
-            valid &= kiemTraRong("passwordLG", 'error_passwordLG');
+            valid &= kiemTraRong("userNameLG", 'error_userNameLG_empty') & kiemTraRong("passwordLG", 'error_passwordLG');
             valid &= kiemTraDangNhap("userNameLG", 'error_userNameLG', "passwordLG", 'error_passwordLG');
             return valid;
         case 2:
             //Kiểm tra rổng
-            valid &= kiemTraRong("userNameSU", 'error_userNameSU');
-            valid &= kiemTraRong("passwordSU", 'error_passwordSU');
-            valid &= kiemTraRong("confirmPasswordSU", 'error_confirmPasswordSU');
+            valid &= kiemTraRong("userNameSU", 'error_userNameSU_empty') & kiemTraEmail('#emailSU', '#error_emailSU') & kiemTraRong("passwordSU", 'error_passwordSU') & kiemTraRong("confirmPasswordSU", 'error_confirmPasswordSU_empty');
             // Kiểm tra tên người dùng
             valid &= kiemTraUserName("#userNameSU", "#error_userNameSU");
             // Kiểm tra email
             valid &= kiemTraEmail('#emailSU', '#error_emailSU');
-        
+
             // Kiểm tra password
-            valid &= kiemTraPass('#passwordSU', '#error_passwordSU');
-        
+            valid &= kiemTraPass('#passwordSU', '#error_passwordSU_length');
+
             valid &= kiemTraKhopPass('#passwordSU', '#confirmPasswordSU', '#error_confirmPasswordSU');
-            
+
             return valid;
         case 3:
             valid &= kiemTraRong("userNameFG", 'error_userNameFG');
@@ -397,8 +399,6 @@ const kiemTraRong = (idValue, idError) => {
     if (inputText.value.trim() === '') {
         document.getElementById(idError).innerHTML = inputText.name + ' không được bỏ trống !';
         document.getElementById(idError).style.display = 'block';
-        document.getElementById(idError).style.fontSize = "10px";
-        document.getElementById(idError).style.color = "red";
         return false;
     } else {
         document.getElementById(idError).innerHTML = '';
@@ -415,28 +415,21 @@ const kiemTraUserName = (selectorValue, selectorError) => {
     let khongHopLe = false;
 
     if (inputText.value.length < 6 || inputText.value.length > 20) {
-        document.querySelector(selectorError).innerHTML += inputText.name + ' từ 6 đến 20 kí tự! <br>' ;
+        document.querySelector(selectorError).innerHTML += inputText.name + ' từ 6 đến 20 kí tự! <br>';
         document.querySelector(selectorError).style.display = 'block';
-        document.querySelector(selectorError).style.fontSize = "10px";
-        document.querySelector(selectorError).style.color = "red";
         khongHopLe = true;
     }
     if (!regexKiTu.test(inputText.value)) {
         document.querySelector(selectorError).innerHTML += inputText.name + ' có chứa các ký tự không hợp lệ!';
         document.querySelector(selectorError).style.display = 'block';
-        document.querySelector(selectorError).style.fontSize = "10px";
-        document.querySelector(selectorError).style.color = "red";
         khongHopLe = true;
     }
     if (inputText.value.length >= 6 && usernameTonTai(inputText.value) !== -1) {
-        document.querySelector(selectorError).innerHTML += 'User ' + inputText.value + ' đã tồn tại';
+        document.querySelector(selectorError).innerHTML += 'Tên đăng nhập' + ' đã tồn tại';
         document.querySelector(selectorError).style.display = 'block';
-        document.querySelector(selectorError).style.fontSize = "10px";
-        document.querySelector(selectorError).style.color = "red";
         khongHopLe = true;
     }
-    if (!khongHopLe)
-    {
+    if (!khongHopLe) {
         document.querySelector(selectorError).innerHTML = '';
         document.querySelector(selectorError).style.display = "none"
     }
@@ -445,19 +438,15 @@ const kiemTraUserName = (selectorValue, selectorError) => {
 
 const kiemTraEmail = (selectorValue, selectorError) => {
     let inputText = document.querySelector(selectorValue);
-    const regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    
+    const regexEmail = /\S*@[a-zA-Z]*(\.[a-zA-Z]*)*/
+
     if (inputText.value.trim() === '') {
         document.querySelector(selectorError).innerHTML = 'Email không được để trống!';
         document.querySelector(selectorError).style.display = 'block';
-        document.querySelector(selectorError).style.fontSize = "10px";
-        document.querySelector(selectorError).style.color = "red";
         return false;
     } else if (!regexEmail.test(inputText.value)) {
         document.querySelector(selectorError).innerHTML = 'Email không hợp lệ!';
         document.querySelector(selectorError).style.display = 'block';
-        document.querySelector(selectorError).style.fontSize = "10px";
-        document.querySelector(selectorError).style.color = "red";
         return false;
     } else {
         document.querySelector(selectorError).innerHTML = '';
@@ -476,8 +465,6 @@ const kiemTraPass = (selectorValue, selectorError) => {
     } else {
         document.querySelector(selectorError).innerHTML = inputText.name + ' từ ' + inputText.minLength + ' đến ' + inputText.maxLength + ' ký tự!';
         document.querySelector(selectorError).style.display = 'block';
-        document.querySelector(selectorError).style.fontSize = "10px";
-        document.querySelector(selectorError).style.color = "red";
         return false;
     }
 }
@@ -492,36 +479,28 @@ const kiemTraKhopPass = (password, confirmPassword, selectorError) => {
     } else {
         document.querySelector(selectorError).innerHTML = "Xác nhận mật khẩu không trùng khớp"
         document.querySelector(selectorError).style.display = 'block';
-        document.querySelector(selectorError).style.fontSize = "10px";
-        document.querySelector(selectorError).style.color = "red";
         return false;
     }
 }
 
 const kiemTraDangNhap = (loginInput, loginError, passwordInput, passwordError) => {
     if (document.getElementById(loginInput).value === "") return false;
-    if (checkKhoa(document.getElementById(loginInput).value)) {
-        document.getElementById(loginError).innerHTML = "User đang bị khóa. Vui lòng thử lại sau";
-        document.getElementById(loginError).style.display = 'block';
-        document.getElementById(loginError).style.fontSize = "10px";
-        document.getElementById(loginError).style.color = "red";
-        return false;
-
-    }
+    
     const index = usernameTonTai(document.getElementById(loginInput).value);
     const password = document.getElementById(passwordInput).value;
     if (index === -1) {
-        document.getElementById(loginError).innerHTML = "Username không tồn tại!!!";
+        document.getElementById(loginError).innerHTML = "Tên đăng nhập không tồn tại!!!";
         document.getElementById(loginError).style.display = 'block';
-        document.getElementById(loginError).style.fontSize = "10px";
-        document.getElementById(loginError).style.color = "red";
         return false;
     }
-    if (!checkPassword(index, password)) {                
-        document.getElementById(passwordError).innerHTML = "Nhập sai password!!!";
+    if (checkKhoa(document.getElementById(loginInput).value)) {
+        document.getElementById(loginError).innerHTML = "Tên đăng nhập đang bị khóa. Vui lòng thử lại sau";
+        document.getElementById(loginError).style.display = 'block';
+        return false;
+    }
+    if (!checkPassword(index, password)) {
+        document.getElementById(passwordError).innerHTML = "Nhập sai mật khẩu!!!";
         document.getElementById(passwordError).style.display = 'block';
-        document.getElementById(passwordError).style.fontSize = "10px";
-        document.getElementById(passwordError).style.color = "red";
         return false;
     }
     return true;
@@ -532,17 +511,13 @@ const kiemTraTonTai = (loginInput, loginError, emailInput, emailError) => {
     const index = usernameTonTai(document.getElementById(loginInput).value);
     const email = document.getElementById(emailInput).value;
     if (index === -1) {
-        document.getElementById(loginError).innerHTML = "Username không tồn tại!!!";
+        document.getElementById(loginError).innerHTML = "Tên đăng nhập không tồn tại!!!";
         document.getElementById(loginError).style.display = 'block';
-        document.getElementById(loginError).style.fontSize = "10px";
-        document.getElementById(loginError).style.color = "red";
         return false;
     }
-    if (!checkEmail(index, email)) {                
+    if (!checkEmail(index, email)) {
         document.getElementById(emailError).innerHTML = "Nhập sai email!!!";
         document.getElementById(emailError).style.display = 'block';
-        document.getElementById(emailError).style.fontSize = "10px";
-        document.getElementById(emailError).style.color = "red";
         return false;
     }
     return true;
@@ -552,8 +527,16 @@ function doSubmit(value) {
     if (!checkValidation(value)) return;
     switch (value) {
         case 1:
-            localStorage.setItem('userLogin',JSON.stringify(document.getElementById("userNameLG").value));
-            location.reload();
+            const username = document.getElementById("userNameLG").value;
+            if (username === "admin") {
+                localStorage.setItem('adminLogin', JSON.stringify());
+                location.href = "./admin/products.html"
+            }
+
+            else {
+                localStorage.setItem('userLogin', JSON.stringify());
+                location.reload();
+            }
             break;
         case 2:
             dangKi({

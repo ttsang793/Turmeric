@@ -217,35 +217,3 @@
   font-size: 10px;
   color: red;
 }
-
-.overlay-notify {
-  position: fixed;
-  top: 0;
-  right: 0;
-  transform: translateX(100%);
-  transition: all 0.8s;
-  opacity: 0;
-  z-index: 1000;
-}
-
-.login-notify {
-  color: var(--white-color);
-  padding: 20px;
-  margin: 20px;
-  font-size: 18px;
-  font-weight: 900;
-  background-color: white;
-  border-radius: 50px;
-}
-
-.login-notify.success {
-  color: #3eda3e;
-}
-
-.login-notify.error {
-  color: #de1818;
-}
-
-.login-notify i {
-  margin-right: 6px;
-}
