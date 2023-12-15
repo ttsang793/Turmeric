@@ -898,9 +898,10 @@ function searchProduct() {
     loadBang(document.getElementById("search").value);
 }
 
-document.getElementById("search").addEventListener("keyup", event => {
-    if (event.key === "Enter") searchProduct();
-})
+if (location.pathname.includes("products.html"))
+    document.getElementById("searchProduct").addEventListener("keyup", event => {
+        if (event.key === "Enter") searchProduct();
+    })
 
 function getProductList() {
     if (localStorage.getItem('productDatabase') === null)

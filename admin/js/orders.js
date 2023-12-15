@@ -1,11 +1,26 @@
-let orderData = [];
+let orderData = [
+  {date: "21/11/2023 20:53:00", username: "admin", order: [ {
+      id: "10007",
+      name: "Green Tea Foam Cleanser 150mL",
+      img: './img/SP/0007.jpg',
+      amount: 10,  
+    }, {
+      id: "10010",
+      name: "Canola Honey Deep-Moisture",
+      img: './img/SP/0010.jpg',
+      amount: 10,
+    }
+  ],
+  total: 3900000,
+  status: "Chờ xác nhận"
+}];
 
-  onload = () => {
-    if (localStorage.getItem('orderDatabase') === null)
-        localStorage.setItem('orderDatabase',JSON.stringify(orderData));
-    else
-        orderData = JSON.parse(localStorage.getItem("orderDatabase"));
-    loadBang()
+onload = () => {
+  if (localStorage.getItem('orderDatabase') === null)
+      localStorage.setItem('orderDatabase',JSON.stringify(orderData));
+  else
+      orderData = JSON.parse(localStorage.getItem("orderDatabase"));
+  loadBang();
 }
 
 function loadBang(searchValue = '') {
@@ -88,7 +103,6 @@ function SearchOrder(date, username){
 }
 
 function deleteOrder(date, username) {
-  // orderList.splice(orderList.findIndex(order => order === userOrder[index]),1);
   const index = SearchOrder(date, username);
   for(var i = 0; i < orderData[index].order.length; i++) {
       updateSoLuong(orderData[index].order[i].id, orderData[index].order[i].amount);

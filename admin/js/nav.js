@@ -7,7 +7,7 @@ document.querySelector('.left').innerHTML = `
     <a href="./orders.html" class="btn btn-left py-3 ps-2 orders"><i class="bi bi-cart-check-fill"></i> ĐƠN HÀNG</a>
     <a href="./accounts.html" class="btn btn-left py-3 ps-2 accounts"><i class="bi bi-file-earmark-person-fill"></i> TÀI KHOẢN</a>
     <a href="./statistics.html" class="btn btn-left py-3 ps-2 statistics"><i class="bi bi-pie-chart-fill"></i> THỐNG KÊ</a>
-    <a href="./admin.html" class="btn btn-left py-3 ps-2 dang-xuat"><i class="bi bi-door-open-fill"></i> ĐĂNG XUẤT</a>
+    <button class="btn btn-left py-3 ps-2" id="dang-xuat" onclick="dangXuat()"><i class="bi bi-door-open-fill"></i> ĐĂNG XUẤT</button>
   </div>
 `;
 

@@ -41,11 +41,11 @@ img.logo {
     transition: 0.15s;
 }
 
-#login {
+#form_open {
     border: none;
 }
 
-#login *:hover {
+#form_open *:hover {
     transform: none;
 }
 
