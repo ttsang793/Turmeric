@@ -45,16 +45,16 @@
 .blog-content {
     text-align: center;
     font-family:'Dancing Script', sans-serif;
-    background-color: black;
+    background-color: white;
 } 
 
 .blog-content h1{
     font-size: 80px;
-    color:blanchedalmond;
+    color:black;
 }
 
 .blog-content1{
-    background-color: aliceblue;
+    background-color: rgb(250, 224, 243);
     padding: 10px;
     margin: 30px;
     display: flex;
@@ -67,17 +67,17 @@
 }
 
 .content-blog-content1 h3{
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold; 
 }
 
 .content-blog-content1 p{
     padding: 10px;
-    font-size: 40px; 
+    font-size: 25px; 
 }
 
 .blog-content1 img{
-    width: 40%; /* Đặt chiều rộng của container hình ảnh */
+    width: 20%; /* Đặt chiều rộng của container hình ảnh */
 }
 
 #carouselArticle {
@@ -120,7 +120,7 @@
     color: white;
     text-align: center;
     font-family:'Dancing Script', sans-serif;
-    font-size: 48px;
+    font-size: 70px;
     font-weight: bold;
 }
 

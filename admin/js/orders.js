@@ -29,7 +29,7 @@ function loadBang(searchValue = '') {
     if(orderData[i].username.toLowerCase().includes(searchValue.toLowerCase()) || searchValue ===''){
       let order = orderData[i];
       for (let j=0; j<order.order.length; j++)
-          if (j===0)
+          if (j===0) {
               display += `        
                   <tr style="padding: 0px">
                       <td rowspan="${order.order.length}">${order.username}</td>
@@ -40,11 +40,23 @@ function loadBang(searchValue = '') {
                       <td rowspan="${order.order.length}">${order.total}</td>
                       <td rowspan="${order.order.length}">${order.date}</td>
                       <td rowspan="${order.order.length}">${order.status}</td>
+              `;
+              if (order.status === "Chờ xác nhận")
+                display += `
                       <td rowspan="${order.order.length}">
                           <button class="btn btn-success" onclick="xacNhan(${i})">Xác nhận</button>
                       </td>
                   </tr>      
-              `;
+                `;
+              else
+                display += `
+                      <td rowspan="${order.order.length}">
+                          <button class="btn btn-success disable">Xác nhận</button>
+                      </td>
+                  </tr>      
+                `;
+
+          }
           else
               display += `        
                   <tr style="padding: 0px">
