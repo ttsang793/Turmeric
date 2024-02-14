@@ -1,10 +1,10 @@
 let userData = [
   { username: 'admin', password: 'admin', email: 'admin@gmail.com', ngaydangky: '27/11/2022', status: 1 },
-  { username: 'vancong', password: '123456', email: 'cong@gmail.com', ngaydangky: '15/12/2022', status: 1 },
-  { username: 'nhuquynh', password: '123456', email: 'quynh@gmail.com', ngaydangky: '15/12/2022', status: 1 },
-  { username: 'tuansang', password: '123456', email: 'sang@gmail.com', ngaydangky: '15/12/2022', status: 1 },
-  { username: 'lnbthao', password: '123456', email: 'thao@gmail.com', ngaydangky: '15/12/2022', status: 1 },
-  { username: 'bichtram', password: '123456', email: 'tram@gmail.com', ngaydangky: '15/12/2022', status: 1 },
+  { username: 'cong', password: '123456', email: 'cong@gmail.com', ngaydangky: '15/12/2022', status: 1 },
+  { username: 'quynh', password: '123456', email: 'quynh@gmail.com', ngaydangky: '15/12/2022', status: 1 },
+  { username: 'sang', password: '123456', email: 'sang@gmail.com', ngaydangky: '15/12/2022', status: 1 },
+  { username: 'thao', password: '123456', email: 'thao@gmail.com', ngaydangky: '15/12/2022', status: 1 },
+  { username: 'tram', password: '123456', email: 'tram@gmail.com', ngaydangky: '15/12/2022', status: 1 },
 ];
 
 onload = () => {
@@ -12,7 +12,8 @@ onload = () => {
       localStorage.setItem('userDatabase',JSON.stringify(userData));
   else
       userData = JSON.parse(localStorage.getItem("userDatabase"));
-  loadBang()
+  
+  if (location.pathname.includes("admin")) loadBang()
 }
 
 function loadBang() {

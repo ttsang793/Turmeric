@@ -11,7 +11,7 @@ function emptyOrder() {
   }
 
   if (userOrder.length === 0) {
-      document.getElementById("order-empty-message").innerHTML = `Bạn cần chưa đặt một đơn hàng nào!!!`;
+      document.getElementById("order-empty-message").innerHTML = `Bạn chưa đặt một đơn hàng nào!!!`;
       return true;
   }
   return false;

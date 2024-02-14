@@ -678,7 +678,7 @@ onload = () => {
         localStorage.setItem('productDatabase',JSON.stringify(productData));
     else
         productData = JSON.parse(localStorage.getItem("productDatabase"));
-    loadBang()
+    if (location.pathname.includes("admin")) loadBang()
 }
 
 function loadBang(search = "") {

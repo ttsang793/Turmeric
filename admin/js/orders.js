@@ -20,7 +20,7 @@ onload = () => {
       localStorage.setItem('orderDatabase',JSON.stringify(orderData));
   else
       orderData = JSON.parse(localStorage.getItem("orderDatabase"));
-  loadBang();
+  if (location.pathname.includes("admin")) loadBang();
 }
 
 function loadBang(searchValue = '') {

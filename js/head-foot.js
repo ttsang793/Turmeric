@@ -251,6 +251,7 @@ function getGia(gia) {
     return Number(gia).toLocaleString("vi-VN") + "đ"; //định dạng số 1.000.000 VN
 }
 
+let userLogin;
 if (localStorage.getItem('userLogin') === null) {
     localStorage.setItem('userLogin', JSON.stringify(""));
     userLogin = "";
@@ -529,12 +530,12 @@ function doSubmit(value) {
         case 1:
             const username = document.getElementById("userNameLG").value;
             if (username === "admin") {
-                localStorage.setItem('adminLogin', JSON.stringify());
+                localStorage.setItem('adminLogin', JSON.stringify(username));
                 location.href = "./admin/products.html"
             }
 
             else {
-                localStorage.setItem('userLogin', JSON.stringify());
+                localStorage.setItem('userLogin', JSON.stringify(username));
                 location.reload();
             }
             break;
